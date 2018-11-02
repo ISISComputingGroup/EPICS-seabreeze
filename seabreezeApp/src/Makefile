@@ -24,9 +24,11 @@ MSBUILD_BIN = MSBuild.exe
 
 VS_CONFIG=Release
 VS_PLATFORM=Win32
+SB_ARCH=i386
 MSBUILD_OUTPUT_DIR := $(SEABREEZE_WINTOP)
 ifneq ($(findstring windows,$(EPICS_HOST_ARCH)),)
 VS_PLATFORM=x64
+SB_ARCH=amd64
 MSBUILD_OUTPUT_DIR := $(MSBUILD_OUTPUT_DIR)/x64
 endif
 ifneq ($(findstring debug,$(EPICS_HOST_ARCH)),)
@@ -34,6 +36,13 @@ VS_CONFIG=Debug
 endif
 MSBUILD_OPTS = /p:Configuration=$(VS_CONFIG) /p:Platform=$(VS_PLATFORM)
 MSBUILD_OUTPUT_DIR := $(MSBUILD_OUTPUT_DIR)/$(VS_CONFIG)
+
+# not sure if needed?
+#BIN_INSTALLS += \
+# $(SEABREEZE_WINTOP)\FilesToInstall\windows-support\$(SB_ARCH)\dpinst.exe \
+# $(SEABREEZE_WINTOP)\FilesToInstall\windows-support\$(SB_ARCH)\WdfCoInstaller01007.dll \
+# $(SEABREEZE_WINTOP)\FilesToInstall\windows-support\$(SB_ARCH)\WinUSBCoInstaller.dll \
+# $(SEABREEZE_WINTOP)\FilesToInstall\windows-support\$(SB_ARCH)\WUDFUpdate_01007.dll 
 
 include $(TOP)/configure/RULES
 
