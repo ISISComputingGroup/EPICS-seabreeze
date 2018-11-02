@@ -8,7 +8,6 @@ CFLAGS_BASE = -I${SEABREEZE}/include \
               -Wall \
               -Wunused \
               -Wmissing-include-dirs \
-              -Werror \
               -O0 \
               -fpic \
               -fno-stack-protector \

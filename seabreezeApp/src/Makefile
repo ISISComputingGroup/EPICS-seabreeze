@@ -46,6 +46,15 @@ MSBUILD_OUTPUT_DIR := $(MSBUILD_OUTPUT_DIR)/$(VS_CONFIG)
 
 include $(TOP)/configure/RULES
 
+ifneq ($(findstring linux,$(EPICS_HOST_ARCH)),)
+install:
+	$(MAKE) -C $(SEABREEZE_TOP)
+	-$(MKDIR) -p $(TOP)/lib/$(EPICS_HOST_ARCH) $(TOP)/bin/$(EPICS_HOST_ARCH)
+	$(CP) $(SEABREEZE_TOP)/lib/libseabreeze.so $(TOP)/lib/$(EPICS_HOST_ARCH)
+
+clean:
+	$(MAKE) -C $(SEABREEZE_TOP) clean
+else
 install:
 	@echo Building seabreeze in $(MSBUILD_OUTPUT_DIR) 
 	$(MSBUILD_BIN) $(MSBUILD_OPTS) $(SEABREEZE_SLN)
@@ -57,3 +66,4 @@ clean:
 	$(MSBUILD_BIN) $(MSBUILD_OPTS) /t:Clean $(SEABREEZE_SLN)
 	$(RMDIR) $(SEABREEZE_WINTOP)/Debug $(SEABREEZE_WINTOP)/Release $(SEABREEZE_WINTOP)/x64
 	$(RMDIR) $(SEABREEZE_WINTOP)/VSProj/Debug $(SEABREEZE_WINTOP)/VSProj/Release $(SEABREEZE_WINTOP)/VSProj/x64
+endif
