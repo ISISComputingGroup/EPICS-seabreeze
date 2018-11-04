@@ -27,7 +27,10 @@ seabreeze: lib/$(LIBNAME)
 lib/libseabreeze.$(SUFFIX): initialize
 	$(info flags = $(LFLAGS_LIB))
 	$(MAKE) -C src
-	$(CPP) $(LFLAGS_LIB) -o $@ lib/*.o  
+	$(CPP) $(LFLAGS_LIB) -o $@ lib/*.o
+	$(RM) lib/libseabreeze.a
+	$(AR) cr lib/libseabreeze.a lib/*.o
+	$(AR) s lib/libseabreeze.a
 
 lib/SeaBreeze.dll: initialize
 	$(MAKE) -C os-support/windows/$(VISUALSTUDIO_PROJ)
