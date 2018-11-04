@@ -51,6 +51,7 @@ install:
 	$(MAKE) -C $(SEABREEZE_TOP)
 	-$(MKDIR) -p $(TOP)/lib/$(EPICS_HOST_ARCH) $(TOP)/bin/$(EPICS_HOST_ARCH)
 	$(CP) $(SEABREEZE_TOP)/lib/libseabreeze.so $(TOP)/lib/$(EPICS_HOST_ARCH)
+	$(CP) $(SEABREEZE_TOP)/lib/libseabreeze.a $(TOP)/lib/$(EPICS_HOST_ARCH)
 
 clean:
 	$(MAKE) -C $(SEABREEZE_TOP) clean
