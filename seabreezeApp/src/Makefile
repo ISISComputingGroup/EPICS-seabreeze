@@ -10,8 +10,12 @@ include $(TOP)/configure/CONFIG
 
 ifneq ($(findstring 10.0,$(VCVERSION)),)
 VSNUM=2010
-else
+endif
+ifneq ($(findstring 15.0,$(VCVERSION)),)
 VSNUM=2017
+endif
+ifneq ($(findstring 16.0,$(VCVERSION)),)
+VSNUM=2019
 endif
 SEABREEZE_TOP = $(TOP)/vendor/SeaBreeze
 SEABREEZE_WINTOP = $(SEABREEZE_TOP)/os-support/windows/VisualStudio$(VSNUM)
