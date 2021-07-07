@@ -7,7 +7,7 @@ include $(TOP)/configure/CONFIG
 
 #==================================================
 # build a support library
-
+WindowsTargetPlatformVersion=8.1
 ifneq ($(findstring 10.0,$(VCVERSION)),)
 VSNUM=2010
 endif
@@ -16,6 +16,7 @@ VSNUM=2017
 endif
 ifneq ($(findstring 16.0,$(VCVERSION)),)
 VSNUM=2019
+WindowsTargetPlatformVersion=$(subst \,,$(WindowsSDKVersion))
 endif
 SEABREEZE_TOP = $(TOP)/vendor/SeaBreeze
 SEABREEZE_WINTOP = $(SEABREEZE_TOP)/os-support/windows/VisualStudio$(VSNUM)
@@ -38,7 +39,7 @@ endif
 ifneq ($(findstring debug,$(EPICS_HOST_ARCH)),)
 VS_CONFIG=Debug
 endif
-MSBUILD_OPTS = /p:Configuration=$(VS_CONFIG) /p:Platform=$(VS_PLATFORM)
+MSBUILD_OPTS = /p:Configuration=$(VS_CONFIG) /p:Platform=$(VS_PLATFORM);WindowsTargetPlatformVersion=$(WindowsTargetPlatformVersion)
 MSBUILD_OUTPUT_DIR := $(MSBUILD_OUTPUT_DIR)/$(VS_CONFIG)
 
 # not sure if needed?
