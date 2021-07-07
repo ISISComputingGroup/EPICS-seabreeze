@@ -13,6 +13,7 @@ VSNUM=2010
 endif
 ifneq ($(findstring 15.0,$(VCVERSION)),)
 VSNUM=2017
+WindowsTargetPlatformVersion=$(subst \,,$(WindowsSDKVersion))
 endif
 ifneq ($(findstring 16.0,$(VCVERSION)),)
 VSNUM=2019
