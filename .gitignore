@@ -27,3 +27,4 @@ relPaths.sh
 /vendor/SeaBreeze/os-support/windows/VisualStudio20*/x64/
 /vendor/SeaBreeze/os-support/windows/VisualStudio20*/Debug/
 /vendor/SeaBreeze/os-support/windows/VisualStudio20*/Release/
+UpgradeLog.htm
