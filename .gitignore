@@ -28,3 +28,8 @@ relPaths.sh
 /vendor/SeaBreeze/os-support/windows/VisualStudio20*/Debug/
 /vendor/SeaBreeze/os-support/windows/VisualStudio20*/Release/
 UpgradeLog.htm
+/vendor/SeaBreeze/sample-code/c/
+/vendor/SeaBreeze/sample-code/cpp/
+/vendor/SeaBreeze/test/api_test
+/vendor/SeaBreeze/test/seabreeze_test_posix
+
