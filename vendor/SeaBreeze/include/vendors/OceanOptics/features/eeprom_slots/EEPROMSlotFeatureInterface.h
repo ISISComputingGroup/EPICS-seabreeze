@@ -45,10 +45,10 @@ namespace seabreeze {
                 const Bus &bus) noexcept(false) = 0;
 
         virtual std::vector<byte> *readEEPROMSlot(const Protocol &protocol,
-                const Bus &bus, unsigned int slot) throw (FeatureException, IllegalArgumentException) = 0;
+                const Bus &bus, unsigned int slot) noexcept(false) = 0;
         virtual int writeEEPROMSlot(const Protocol &protocol,
                 const Bus &bus, unsigned int slot, const std::vector<byte> &data)
-                throw (FeatureException, IllegalArgumentException) = 0;
+                noexcept(false) = 0;
     };
 
     /* Default implementation for (otherwise) pure virtual destructor */

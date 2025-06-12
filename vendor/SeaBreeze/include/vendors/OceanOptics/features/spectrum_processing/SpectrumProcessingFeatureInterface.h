@@ -46,10 +46,10 @@ namespace seabreeze {
                 const Bus &bus) noexcept(false) = 0;
         virtual void writeSpectrumProcessingBoxcarWidth(const Protocol &protocol,
                 const Bus &bus, unsigned char boxcarWidth)
-                throw (FeatureException, IllegalArgumentException) = 0;
+                noexcept(false) = 0;
         virtual void writeSpectrumProcessingScansToAverage(const Protocol &protocol,
                 const Bus &bus, unsigned short int scansToAverage)
-                throw (FeatureException, IllegalArgumentException) = 0;
+                noexcept(false) = 0;
     };
 
     /* Default implementation for (otherwise) pure virtual destructor */

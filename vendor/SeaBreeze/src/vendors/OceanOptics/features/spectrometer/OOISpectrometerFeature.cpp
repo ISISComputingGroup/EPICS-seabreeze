@@ -173,7 +173,7 @@ vector<double> *OOISpectrometerFeature::getWavelengths(const Protocol &protocol,
 
 void OOISpectrometerFeature::setIntegrationTimeMicros(const Protocol &protocol,
         const Bus &bus, unsigned long time_usec)
-throw (FeatureException, IllegalArgumentException) {
+noexcept(false) {
 
     ProtocolHelper *proto;
     SpectrometerProtocolInterface *spec;

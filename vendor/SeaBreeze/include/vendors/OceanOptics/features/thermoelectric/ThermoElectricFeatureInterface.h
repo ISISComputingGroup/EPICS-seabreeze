@@ -49,7 +49,7 @@ namespace seabreeze {
                 const Bus &bus) noexcept(false) = 0;
         virtual void setTemperatureSetPointCelsius(const Protocol &protocol,
                 const Bus &bus, double degreesC)
-                throw (FeatureException, IllegalArgumentException) = 0;
+                noexcept(false) = 0;
 
         virtual double getDefaultSetPointCelsius(const Protocol &protocol,
                 const Bus &bus) noexcept(false) = 0;

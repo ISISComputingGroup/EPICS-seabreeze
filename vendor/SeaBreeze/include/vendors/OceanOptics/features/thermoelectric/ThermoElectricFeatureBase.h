@@ -58,7 +58,7 @@ namespace seabreeze {
                 const Bus &bus) noexcept(false);
         virtual void setTemperatureSetPointCelsius(const Protocol &protocol,
                 const Bus &bus, double degreesC)
-                throw (FeatureException, IllegalArgumentException);
+                noexcept(false);
 
         /* These remain abstract because the limits of any given device will
          * depend on its implementation.  They will either need to be hardcoded

@@ -58,7 +58,7 @@ EEPROMSlotFeatureBase::~EEPROMSlotFeatureBase() {
 
 vector<byte> *EEPROMSlotFeatureBase::readEEPROMSlot(const Protocol &protocol,
         const Bus &bus, unsigned int slot)
-        throw (FeatureException, IllegalArgumentException) {
+        noexcept(false) {
 
     EEPROMProtocolInterface *eeprom = NULL;
     ProtocolHelper *proto;
@@ -99,7 +99,7 @@ vector<byte> *EEPROMSlotFeatureBase::readEEPROMSlot(const Protocol &protocol,
 
 int EEPROMSlotFeatureBase::writeEEPROMSlot(const Protocol &protocol,
         const Bus &bus, unsigned int slot, const vector<byte> &data)
-        throw (FeatureException, IllegalArgumentException) {
+        noexcept(false) {
 
     int bytesWritten = 0;
 

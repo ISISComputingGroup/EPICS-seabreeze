@@ -62,7 +62,7 @@ namespace seabreeze {
         /* Set the integration time of the spectrometer */
         virtual void setIntegrationTimeMicros(const Protocol &protocol,
                 const Bus &bus, unsigned long time_usec)
-                throw (FeatureException, IllegalArgumentException) = 0;
+                noexcept(false) = 0;
 
         /* Request that the spectrometer make a spectrum available for
          * reading (e.g. with readUnformattedSpectrum())
