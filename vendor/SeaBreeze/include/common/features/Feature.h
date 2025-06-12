@@ -59,7 +59,7 @@ namespace seabreeze {
          * otherwise.
          */
         virtual bool initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException) = 0;
+            noexcept(false) = 0;
 
         virtual FeatureFamily getFeatureFamily() = 0;
     };

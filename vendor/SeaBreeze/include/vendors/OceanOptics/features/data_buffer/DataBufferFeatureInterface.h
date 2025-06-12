@@ -46,23 +46,23 @@ namespace seabreeze {
 
         virtual DataBufferCount_t getNumberOfBuffers() = 0;
         virtual void clearBuffer(const Protocol &protocol, const Bus &bus,
-                const DataBufferIndex_t bufferIndex) throw (FeatureException) = 0;
+                const DataBufferIndex_t bufferIndex) noexcept(false) = 0;
         virtual DataBufferElementCount_t getBufferCapacity(const Protocol &protocol,
                 const Bus &bus, const DataBufferIndex_t bufferIndex)
-                throw (FeatureException) = 0;
+                noexcept(false) = 0;
         virtual DataBufferElementCount_t getBufferCapacityMaximum(
                 const Protocol &protocol, const Bus &bus,
-                const DataBufferIndex_t bufferIndex) throw (FeatureException) = 0;
+                const DataBufferIndex_t bufferIndex) noexcept(false) = 0;
         virtual DataBufferElementCount_t getBufferCapacityMinimum(
                 const Protocol &protocol, const Bus &bus,
-                const DataBufferIndex_t bufferIndex) throw (FeatureException) = 0;
+                const DataBufferIndex_t bufferIndex) noexcept(false) = 0;
         virtual DataBufferElementCount_t getNumberOfElements(
                 const Protocol &protocol, const Bus &bus,
-                const DataBufferIndex_t bufferIndex) throw (FeatureException) = 0;
+                const DataBufferIndex_t bufferIndex) noexcept(false) = 0;
         virtual void setBufferCapacity(const Protocol &protocol, const Bus &bus,
                 const DataBufferIndex_t bufferIndex,
                 const DataBufferElementCount_t bufferSize)
-                throw (FeatureException) = 0;
+                noexcept(false) = 0;
     };
 
     /* Default implementation for (otherwise) pure virtual destructor */

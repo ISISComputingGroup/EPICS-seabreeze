@@ -45,19 +45,19 @@ namespace seabreeze {
 
         /* Request and read out a spectrum formatted into intensity (A/D counts) */
         virtual std::vector<double> *getSpectrum(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
 
         /* Request and read out the raw spectrum data stream */
         virtual std::vector<byte> *getUnformattedSpectrum(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
 
         /* Request and read out the wavelengths in nanometers as a vector of doubles */
         virtual std::vector<double> *getWavelengths(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
 
         /* Read the raw spectrum data stream.  No request is made first. */
         virtual std::vector<byte> *readUnformattedSpectrum(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
 
         /* Set the integration time of the spectrometer */
         virtual void setIntegrationTimeMicros(const Protocol &protocol,
@@ -68,11 +68,11 @@ namespace seabreeze {
          * reading (e.g. with readUnformattedSpectrum())
          */
         virtual void writeRequestSpectrum(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
 
         /* Setting the external trigger mode for the spectrometer */
         virtual void setTriggerMode(const Protocol &protocol,
-                const Bus &bus, SpectrometerTriggerMode &mode) throw (FeatureException) = 0;
+                const Bus &bus, SpectrometerTriggerMode &mode) noexcept(false) = 0;
 
         virtual std::vector<SpectrometerTriggerMode *> getTriggerModes() const = 0;
 

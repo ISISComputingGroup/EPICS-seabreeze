@@ -47,11 +47,11 @@ namespace seabreeze {
         virtual void setAcquisitionDelayMicroseconds(
                     const Protocol &protocol, const Bus &bus,
                     const unsigned long delayMicros)
-                    throw (FeatureException);
+                    noexcept(false);
 
         virtual unsigned long getAcquisitionDelayMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException);
+                    noexcept(false);
 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();
@@ -62,13 +62,13 @@ namespace seabreeze {
          */
         virtual unsigned long getAcquisitionDelayIncrementMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException) = 0;
+                    noexcept(false) = 0;
         virtual unsigned long getAcquisitionDelayMaximumMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException) = 0;
+                    noexcept(false) = 0;
         virtual unsigned long getAcquisitionDelayMinimumMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException) = 0;
+                    noexcept(false) = 0;
 
     protected:
         unsigned long lastAcquisitionDelayMicroseconds;

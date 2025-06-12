@@ -97,7 +97,7 @@ QE65000SpectrometerFeature::~QE65000SpectrometerFeature() {
 }
 
 vector<double> *QE65000SpectrometerFeature::getWavelengths(
-            const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+            const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     WavelengthEEPROMSlotFeature_QE65000 wlFeature(this->numberOfPixels);
 

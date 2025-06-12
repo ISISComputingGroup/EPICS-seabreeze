@@ -52,7 +52,7 @@ FeatureImpl::~FeatureImpl() {
 }
 
 bool FeatureImpl::initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException) {
+            noexcept(false) {
     /* Override this to initialize device, and/or return a different status */
     return true;
 }

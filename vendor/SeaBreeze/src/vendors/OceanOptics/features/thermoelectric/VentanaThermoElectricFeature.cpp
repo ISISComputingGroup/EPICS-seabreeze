@@ -50,13 +50,13 @@ VentanaThermoElectricFeature::~VentanaThermoElectricFeature() {
 }
 
 double VentanaThermoElectricFeature::getDefaultSetPointCelsius(const Protocol &protocol,
-        const Bus &bus) throw (FeatureException) {
+        const Bus &bus) noexcept(false) {
 
     return VENTANA_DEFAULT_TE_SETPOINT_CELSIUS;
 }
 
 bool VentanaThermoElectricFeature::getDefaultThermoElectricEnable(
-        const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+        const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     return VENTANA_DEFAULT_TE_ENABLE;
 }
@@ -65,7 +65,7 @@ bool VentanaThermoElectricFeature::getDefaultThermoElectricEnable(
 #pragma warning (disable: 4101) // unreferenced local variable
 #endif
 bool VentanaThermoElectricFeature::initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException) {
+            noexcept(false) {
 
     try {
         /* Try to detect whether this kind of Ventana has a thermoelectric

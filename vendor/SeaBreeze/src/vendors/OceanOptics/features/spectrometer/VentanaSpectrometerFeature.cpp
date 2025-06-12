@@ -88,7 +88,7 @@ VentanaSpectrometerFeature::~VentanaSpectrometerFeature() {
 }
 
 vector<double> *VentanaSpectrometerFeature::getWavelengths(const Protocol &protocol,
-            const Bus &bus) throw (FeatureException) {
+            const Bus &bus) noexcept(false) {
 
     /* FIXME: this probably ought to attempt to create an instance based on
      * any available protocol.  However, this should suffice.

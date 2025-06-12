@@ -48,10 +48,10 @@ namespace seabreeze {
         virtual ~SpectrumProcessingFeature();
         virtual unsigned char readSpectrumProcessingBoxcarWidth(
         	const Protocol &protocol, const Bus &bus) 
-            throw (FeatureException);
+            noexcept(false);
         virtual unsigned short int readSpectrumProcessingScansToAverage(
         	const Protocol &protocol, const Bus &bus) 
-        	throw (FeatureException);
+        	noexcept(false);
         virtual void writeSpectrumProcessingBoxcarWidth(const Protocol &protocol,
         	const Bus &bus, unsigned char boxcarWidth) 
         	throw (FeatureException, IllegalArgumentException);

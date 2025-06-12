@@ -45,13 +45,13 @@ namespace seabreeze {
         /* Inherited from AcquisitionDelayFeature */
         virtual unsigned long getAcquisitionDelayIncrementMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException);
+                    noexcept(false);
         virtual unsigned long getAcquisitionDelayMaximumMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException);
+                    noexcept(false);
         virtual unsigned long getAcquisitionDelayMinimumMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException);
+                    noexcept(false);
     };
 
 } /* end namespace seabreeze */

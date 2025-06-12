@@ -47,7 +47,7 @@ EEPROMSlotFeature::~EEPROMSlotFeature() {
 #pragma warning (disable: 4101) // unreferenced local variable
 #endif
 vector< vector<byte> * > *EEPROMSlotFeature::readAllEEPROMSlots(
-        const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+        const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     unsigned int i;
     vector< vector<byte> * > *retval = new vector< vector<byte> * >();

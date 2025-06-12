@@ -47,14 +47,14 @@ namespace seabreeze {
         virtual ~TemperatureFeature();
         
         virtual unsigned char readTemperatureCount(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
         
         virtual double readTemperature(const Protocol &protocol,
-                const Bus &bus, int index) throw (FeatureException);
+                const Bus &bus, int index) noexcept(false);
         
         virtual std::vector<double> *readAllTemperatures(
                 const Protocol &protocol, const Bus &bus)
-                throw (FeatureException);
+                noexcept(false);
                 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();

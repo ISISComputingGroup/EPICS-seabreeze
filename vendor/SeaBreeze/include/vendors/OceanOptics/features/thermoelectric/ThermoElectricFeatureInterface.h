@@ -44,17 +44,17 @@ namespace seabreeze {
     public:
         virtual ~ThermoElectricFeatureInterface() = 0;
         virtual void setThermoElectricEnable(const Protocol &protocol,
-                const Bus &bus, bool enable) throw (FeatureException) = 0;
+                const Bus &bus, bool enable) noexcept(false) = 0;
         virtual double getTemperatureCelsius(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
         virtual void setTemperatureSetPointCelsius(const Protocol &protocol,
                 const Bus &bus, double degreesC)
                 throw (FeatureException, IllegalArgumentException) = 0;
 
         virtual double getDefaultSetPointCelsius(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
         virtual bool getDefaultThermoElectricEnable(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
     };
 
     /* Default implementation for (otherwise) pure virtual destructor */

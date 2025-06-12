@@ -45,7 +45,7 @@ namespace seabreeze {
 
         /* Inherited from Feature */
         virtual bool initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException);
+            noexcept(false);
 
     protected:
         ProgrammableSaturationFeature *saturation; 

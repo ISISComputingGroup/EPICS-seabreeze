@@ -57,7 +57,7 @@ SpectrumProcessingFeature::~SpectrumProcessingFeature() {
 #endif
 
 unsigned short int SpectrumProcessingFeature::readSpectrumProcessingScansToAverage(
-		const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+		const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     SpectrumProcessingProtocolInterface *processingPI = NULL;
 	unsigned short int scansToAverage;
@@ -111,7 +111,7 @@ void SpectrumProcessingFeature::writeSpectrumProcessingScansToAverage(const Prot
 }
 
 unsigned char SpectrumProcessingFeature::readSpectrumProcessingBoxcarWidth(
-		const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+		const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     SpectrumProcessingProtocolInterface *processingPI = NULL;
 	unsigned char boxcarWidth;

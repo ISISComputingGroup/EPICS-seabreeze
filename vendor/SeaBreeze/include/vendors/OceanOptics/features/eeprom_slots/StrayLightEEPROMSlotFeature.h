@@ -44,7 +44,7 @@ namespace seabreeze {
         StrayLightEEPROMSlotFeature();
         virtual ~StrayLightEEPROMSlotFeature();
         std::vector<double> *readStrayLightCoefficients(const Protocol &protocol, const Bus &bus)
-                throw (FeatureException);
+                noexcept(false);
 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();
