@@ -48,9 +48,9 @@ namespace seabreeze {
         TransferHelper();
         virtual ~TransferHelper();
         virtual int receive(std::vector<byte> &buffer, unsigned int length)
-            throw (BusTransferException) = 0;
+            noexcept(false) = 0;
         virtual int send(const std::vector<byte> &buffer, unsigned int length) const
-            throw (BusTransferException) = 0;
+            noexcept(false) = 0;
     };
 
 }

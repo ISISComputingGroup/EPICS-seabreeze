@@ -41,7 +41,7 @@ namespace seabreeze {
 
         /* Overriding from Feature */
         virtual bool initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException);
+            noexcept(false);
     };
 
 }

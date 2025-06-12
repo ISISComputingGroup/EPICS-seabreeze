@@ -45,9 +45,9 @@ namespace seabreeze {
         SerialNumberFeature(std::vector<ProtocolHelper *> helpers);
         virtual ~SerialNumberFeature();
         virtual std::string *readSerialNumber(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
         virtual unsigned char readSerialNumberMaximumLength(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();

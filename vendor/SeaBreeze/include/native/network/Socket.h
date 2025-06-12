@@ -67,9 +67,9 @@ namespace seabreeze {
         
         /* Data transfer */
         virtual int read(unsigned char *buffer, unsigned long length)
-            throw (BusTransferException) = 0;
+            noexcept(false) = 0;
         virtual int write(const unsigned char *buffer, unsigned long length)
-            throw (BusTransferException) = 0;
+            noexcept(false) = 0;
         
     };
     

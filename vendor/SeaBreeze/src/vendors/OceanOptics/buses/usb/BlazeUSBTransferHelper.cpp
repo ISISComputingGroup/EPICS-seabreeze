@@ -47,7 +47,7 @@ BlazeUSBTransferHelper::~BlazeUSBTransferHelper() {
 }
 
 int BlazeUSBTransferHelper::receive(vector<byte> &buffer,
-        unsigned int length) throw (BusTransferException) {
+        unsigned int length) noexcept(false) {
     if(0 != (length % WORD_SIZE_BYTES)) {
         vector<byte> *inBuffer;
         int paddedLength;
@@ -72,7 +72,7 @@ int BlazeUSBTransferHelper::receive(vector<byte> &buffer,
 }
 
 int BlazeUSBTransferHelper::send(const std::vector<byte> &buffer,
-        unsigned int length) const throw (BusTransferException) {
+        unsigned int length) const noexcept(false) {
     
     if(0 != (length % WORD_SIZE_BYTES)) {
         /* Pad up to a multiple of the word size */

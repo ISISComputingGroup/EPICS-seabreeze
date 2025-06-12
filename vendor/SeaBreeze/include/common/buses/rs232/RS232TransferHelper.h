@@ -52,9 +52,9 @@ namespace seabreeze {
         virtual ~RS232TransferHelper();
 
         virtual int receive(std::vector<byte> &buffer, unsigned int length)
-            throw (BusTransferException);
+            noexcept(false);
         virtual int send(const std::vector<byte> &buffer, unsigned int length) const
-            throw (BusTransferException);
+            noexcept(false);
 
     protected:
         RS232 *rs232;

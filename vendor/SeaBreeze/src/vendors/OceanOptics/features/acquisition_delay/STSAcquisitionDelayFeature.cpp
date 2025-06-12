@@ -51,19 +51,19 @@ STSAcquisitionDelayFeature::~STSAcquisitionDelayFeature() {
 
 unsigned long STSAcquisitionDelayFeature::getAcquisitionDelayIncrementMicroseconds(
                     const Protocol &protocol, const Bus &bus)
-                    throw (FeatureException) {
+                    noexcept(false) {
     return STS_ACQUISITION_DELAY_INCREMENT_USEC;
 }
 
 unsigned long STSAcquisitionDelayFeature::getAcquisitionDelayMaximumMicroseconds(
             const Protocol &protocol, const Bus &bus)
-            throw (FeatureException) {
+            noexcept(false) {
     return STS_ACQUISITION_DELAY_MAXIMUM_USEC;
 }
 
 unsigned long STSAcquisitionDelayFeature::getAcquisitionDelayMinimumMicroseconds(
             const Protocol &protocol, const Bus &bus)
-            throw (FeatureException) {
+            noexcept(false) {
     return STS_ACQUISITION_DELAY_MINIMUM_USEC;
 }
 

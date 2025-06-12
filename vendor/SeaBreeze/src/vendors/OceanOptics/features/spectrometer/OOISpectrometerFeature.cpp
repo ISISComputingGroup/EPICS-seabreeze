@@ -58,7 +58,7 @@ OOISpectrometerFeature::~OOISpectrometerFeature() {
     }
 }
 
-vector<double> *OOISpectrometerFeature::getSpectrum(const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+vector<double> *OOISpectrometerFeature::getSpectrum(const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     LOG(__FUNCTION__);
     // logger.debug("starting OOISpectrometerFeature::getSpectrum");
@@ -94,14 +94,14 @@ vector<double> *OOISpectrometerFeature::getSpectrum(const Protocol &protocol, co
 }
 
 vector<byte> *OOISpectrometerFeature::getUnformattedSpectrum(
-        const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+        const Protocol &protocol, const Bus &bus) noexcept(false) {
     LOG(__FUNCTION__);
     writeRequestSpectrum(protocol, bus);
     return readUnformattedSpectrum(protocol, bus);
 }
 
 void OOISpectrometerFeature::writeRequestSpectrum(const Protocol &protocol,
-        const Bus &bus) throw (FeatureException) {
+        const Bus &bus) noexcept(false) {
 
     LOG(__FUNCTION__);
     // logger.debug("starting OOISpectrometerFeature::writeRequestSpectrum");
@@ -131,7 +131,7 @@ void OOISpectrometerFeature::writeRequestSpectrum(const Protocol &protocol,
 }
 
 vector<byte> *OOISpectrometerFeature::readUnformattedSpectrum(const Protocol &protocol,
-        const Bus &bus) throw (FeatureException) {
+        const Bus &bus) noexcept(false) {
     LOG(__FUNCTION__);
     // logger.debug("starting OOISpectrometerFeature::readUnformattedSpectrum");
 
@@ -164,7 +164,7 @@ vector<byte> *OOISpectrometerFeature::readUnformattedSpectrum(const Protocol &pr
 }
 
 vector<double> *OOISpectrometerFeature::getWavelengths(const Protocol &protocol,
-        const Bus &bus) throw (FeatureException) {
+        const Bus &bus) noexcept(false) {
 
     WavelengthEEPROMSlotFeature wlFeature(this->numberOfPixels);
 
@@ -173,7 +173,7 @@ vector<double> *OOISpectrometerFeature::getWavelengths(const Protocol &protocol,
 
 void OOISpectrometerFeature::setIntegrationTimeMicros(const Protocol &protocol,
         const Bus &bus, unsigned long time_usec)
-throw (FeatureException, IllegalArgumentException) {
+noexcept(false) {
 
     ProtocolHelper *proto;
     SpectrometerProtocolInterface *spec;
@@ -208,7 +208,7 @@ throw (FeatureException, IllegalArgumentException) {
 
 void OOISpectrometerFeature::setTriggerMode(const Protocol &protocol,
         const Bus &bus, SpectrometerTriggerMode &mode)
-        throw (FeatureException) {
+        noexcept(false) {
     LOG(__FUNCTION__);
 
     ProtocolHelper *proto;

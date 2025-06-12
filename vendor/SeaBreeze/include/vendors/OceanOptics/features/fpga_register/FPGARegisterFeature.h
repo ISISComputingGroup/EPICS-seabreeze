@@ -43,11 +43,11 @@ namespace seabreeze {
         FPGARegisterFeature();
         virtual ~FPGARegisterFeature();
         virtual unsigned int readRegister(const Bus &bus, byte address)
-                throw (FeatureException);
+                noexcept(false);
         virtual void writeRegister(const Bus &bus, byte address, unsigned int value)
-                throw (FeatureException);
+                noexcept(false);
         virtual unsigned char getMajorVersion(const Bus &bus)
-                throw (FeatureException);
+                noexcept(false);
 
         virtual FeatureFamily getFeatureFamily();
     };

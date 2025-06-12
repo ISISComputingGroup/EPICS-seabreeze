@@ -109,7 +109,7 @@ OBPMessage::~OBPMessage() {
 }
 
 OBPMessage *OBPMessage::parseHeaderFromByteStream(vector<byte> *message)
-        throw (IllegalArgumentException) {
+        noexcept(false) {
     unsigned int i;
     OBPMessage *retval = new OBPMessage();
 
@@ -154,7 +154,7 @@ OBPMessage *OBPMessage::parseHeaderFromByteStream(vector<byte> *message)
 }
 
 OBPMessage *OBPMessage::parseByteStream(vector<byte> *message)
-        throw (IllegalArgumentException) {
+        noexcept(false) {
     int temp;
     int offset;
     unsigned int i;

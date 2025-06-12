@@ -58,25 +58,25 @@ namespace seabreeze {
 
         virtual void setPixelBinningFactor(const Protocol &protocol,
                 const Bus &bus, const unsigned char binningFactor)
-                throw (FeatureException);
+                noexcept(false);
         virtual unsigned char getPixelBinningFactor(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
         virtual void setDefaultPixelBinningFactor(const Protocol &protocol,
                 const Bus &bus, const unsigned char binningFactor)
-                throw (FeatureException);
+                noexcept(false);
         virtual void setDefaultPixelBinningFactor(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
         virtual unsigned char getDefaultPixelBinningFactor(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
         virtual unsigned char getMaxPixelBinningFactor(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
 
         /* Inherited from Feature */
         /* This is still abstract in case the device needs to do anything
          * special with regards to defaults when it is initialized.
          */
         virtual bool initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException);
+            noexcept(false);
 
 
         virtual FeatureFamily getFeatureFamily();

@@ -46,23 +46,23 @@ namespace seabreeze {
 
         /* Enable controls */
         virtual bool hasLightSourceEnable(const Protocol &protocol,
-            const Bus &bus, int lightSourceIndex) throw (FeatureException);
+            const Bus &bus, int lightSourceIndex) noexcept(false);
 
         virtual bool isLightSourceEnabled(const Protocol &protocol,
-            const Bus &bus, int lightSourceIndex) throw (FeatureException);
+            const Bus &bus, int lightSourceIndex) noexcept(false);
 
         virtual void setLightSourceEnable(const Protocol &protocol,
-            const Bus &bus, int lightSourceIndex, bool enable) throw (FeatureException);
+            const Bus &bus, int lightSourceIndex, bool enable) noexcept(false);
 
         /* Intensity controls */
         virtual bool hasVariableIntensity(const Protocol &protocol,
-            const Bus &bus, int lightSourceIndex) throw (FeatureException);
+            const Bus &bus, int lightSourceIndex) noexcept(false);
 
         virtual double getLightSourceIntensity(const Protocol &protocol,
-            const Bus &bus, int lightSourceIndex) throw (FeatureException);
+            const Bus &bus, int lightSourceIndex) noexcept(false);
 
         virtual void setLightSourceIntensity(const Protocol &protocol,
-            const Bus &bus, int lightSourceIndex, double intensity) throw (FeatureException);
+            const Bus &bus, int lightSourceIndex, double intensity) noexcept(false);
 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();

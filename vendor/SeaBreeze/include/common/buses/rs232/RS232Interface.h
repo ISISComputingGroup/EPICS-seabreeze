@@ -44,7 +44,7 @@ namespace seabreeze {
         virtual RS232 *getRS232Descriptor();
         virtual DeviceLocatorInterface *getLocation();
         virtual void setLocation(const DeviceLocatorInterface &location)
-                throw (IllegalArgumentException);
+                noexcept(false);
         virtual BusFamily getBusFamily() const;
         
         /* Pure virtual methods */

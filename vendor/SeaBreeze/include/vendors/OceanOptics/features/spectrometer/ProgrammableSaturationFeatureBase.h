@@ -41,11 +41,11 @@ namespace seabreeze {
         virtual ~ProgrammableSaturationFeatureBase();
         
         /* Inherited from ProgrammableSaturationFeature */
-        virtual unsigned int getSaturation() throw (FeatureException);
+        virtual unsigned int getSaturation() noexcept(false);
         
         /* Overriding from Feature */
         virtual bool initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException);
+            noexcept(false);
         
         virtual FeatureFamily getFeatureFamily();
         
@@ -54,7 +54,7 @@ namespace seabreeze {
          * to get the saturation level for the device.
          */
         virtual unsigned int getSaturation(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException) = 0;
+                const Bus &bus) noexcept(false) = 0;
         
     private:
         unsigned int saturation;

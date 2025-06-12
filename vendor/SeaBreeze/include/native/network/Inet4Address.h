@@ -45,7 +45,7 @@ namespace seabreeze {
     public:
         Inet4Address();
         Inet4Address(std::string ipAddressQuads)
-            throw (IllegalArgumentException);
+            noexcept(false);
         Inet4Address(struct in_addr *ipAddr);
         Inet4Address(const Inet4Address &that);
         ~Inet4Address();

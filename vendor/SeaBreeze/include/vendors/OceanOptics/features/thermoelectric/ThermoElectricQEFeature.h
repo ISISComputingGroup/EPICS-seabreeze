@@ -50,17 +50,17 @@ namespace seabreeze {
 
         /* Inherited from ThermoElectricFeatureBase where they are pure virtual */
         double getDefaultSetPointCelsius(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
         bool getDefaultThermoElectricEnable(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
 
         /* Override from Feature */
         virtual bool initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException);
+            noexcept(false);
 
     private:
         std::vector<byte> *readTECDefaults(const Protocol &protocol,
-                const Bus &bus) throw (FeatureException);
+                const Bus &bus) noexcept(false);
     };
 
 }

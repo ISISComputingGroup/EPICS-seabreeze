@@ -56,7 +56,7 @@ TemperatureFeature::~TemperatureFeature() {
 #pragma warning (disable: 4101) // unreferenced local variable
 #endif
 
-unsigned char TemperatureFeature::readTemperatureCount(const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+unsigned char TemperatureFeature::readTemperatureCount(const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     TemperatureProtocolInterface *temperaturePI = NULL;
 	unsigned char temperatureCount;
@@ -83,7 +83,7 @@ unsigned char TemperatureFeature::readTemperatureCount(const Protocol &protocol,
     }
 }
 
-double TemperatureFeature::readTemperature(const Protocol &protocol, const Bus &bus, int index) throw (FeatureException) {
+double TemperatureFeature::readTemperature(const Protocol &protocol, const Bus &bus, int index) noexcept(false) {
 
     TemperatureProtocolInterface *temperaturePI = NULL;
 	double temperature;
@@ -111,7 +111,7 @@ double TemperatureFeature::readTemperature(const Protocol &protocol, const Bus &
 }
 
 vector<double> *TemperatureFeature::readAllTemperatures(
-        const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+        const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     TemperatureProtocolInterface *temperaturePI = NULL;
     vector<double> *temperatures = NULL;

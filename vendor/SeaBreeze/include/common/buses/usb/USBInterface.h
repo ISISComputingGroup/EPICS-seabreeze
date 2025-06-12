@@ -49,7 +49,7 @@ namespace seabreeze {
         virtual ~USBInterface();
         virtual USB *getUSBDescriptor() const;
         virtual DeviceLocatorInterface *getLocation();
-        virtual void setLocation(const DeviceLocatorInterface &location) throw (IllegalArgumentException);
+        virtual void setLocation(const DeviceLocatorInterface &location) noexcept(false);
         virtual BusFamily getBusFamily() const;
         virtual bool open() = 0;
         virtual void close() = 0;

@@ -57,7 +57,7 @@ ContinuousStrobeFeature::~ContinuousStrobeFeature() {
 
 void ContinuousStrobeFeature::setContinuousStrobePeriodMicroseconds(const Protocol &protocol,
         const Bus &bus, unsigned short strobe_id, unsigned long period_usec)
-        throw (FeatureException) {
+        noexcept(false) {
     ContinuousStrobeProtocolInterface *contStrobe = NULL;
     ProtocolHelper *proto = NULL;
 
@@ -83,7 +83,7 @@ void ContinuousStrobeFeature::setContinuousStrobePeriodMicroseconds(const Protoc
 
 void ContinuousStrobeFeature::setContinuousStrobeEnable(const Protocol &protocol,
         const Bus &bus, unsigned short strobe_id, bool enable)
-        throw (FeatureException) {
+        noexcept(false) {
     ContinuousStrobeProtocolInterface *contStrobe = NULL;
     ProtocolHelper *proto = NULL;
 

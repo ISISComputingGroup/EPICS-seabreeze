@@ -43,7 +43,7 @@ namespace seabreeze {
 
         /* Inherited from Bus */
         virtual TransferHelper *getHelper(const std::vector<ProtocolHint *> &hints) const;
-        virtual void setLocation(const DeviceLocatorInterface &location) throw (IllegalArgumentException);
+        virtual void setLocation(const DeviceLocatorInterface &location) noexcept(false);
         virtual bool open();
         virtual void close();
 

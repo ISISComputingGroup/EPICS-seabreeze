@@ -56,7 +56,7 @@ BusFamily TCPIPv4SocketBus::getBusFamily() const {
 }
 
 void TCPIPv4SocketBus::setLocation(
-        const DeviceLocatorInterface &location) throw (IllegalArgumentException) {
+        const DeviceLocatorInterface &location) noexcept(false) {
     if(NULL != this->deviceLocator) {
         delete this->deviceLocator;
     }

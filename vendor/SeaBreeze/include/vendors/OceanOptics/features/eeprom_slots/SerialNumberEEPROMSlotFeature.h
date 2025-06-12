@@ -42,9 +42,9 @@ namespace seabreeze {
         SerialNumberEEPROMSlotFeature();
         virtual ~SerialNumberEEPROMSlotFeature();
         std::string *readSerialNumber(const Protocol &protocol, const Bus &bus)
-                throw (FeatureException);
+                noexcept(false);
         unsigned char readSerialNumberMaximumLength(const Protocol &protocol, const Bus &bus)
-                throw (FeatureException);
+                noexcept(false);
 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();

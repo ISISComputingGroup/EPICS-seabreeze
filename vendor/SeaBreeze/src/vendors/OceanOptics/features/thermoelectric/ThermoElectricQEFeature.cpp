@@ -63,7 +63,7 @@ ThermoElectricQEFeature::~ThermoElectricQEFeature() {
 }
 
 vector<byte> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol,
-        const Bus &bus) throw (FeatureException) {
+        const Bus &bus) noexcept(false) {
 
     /* TEC defaults are stored in EEPROM slot 0x11 (17) on the QE65000
      * and the NIRQuest256 and NIRQuest512.  Note that the NIRQuest stores
@@ -96,7 +96,7 @@ vector<byte> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol,
 }
 
 double ThermoElectricQEFeature::getDefaultSetPointCelsius(const Protocol &protocol,
-        const Bus &bus) throw (FeatureException) {
+        const Bus &bus) noexcept(false) {
 
     vector<byte> *defs = readTECDefaults(protocol, bus);
 
@@ -109,7 +109,7 @@ double ThermoElectricQEFeature::getDefaultSetPointCelsius(const Protocol &protoc
 }
 
 bool ThermoElectricQEFeature::getDefaultThermoElectricEnable(
-        const Protocol &protocol, const Bus &bus) throw (FeatureException) {
+        const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     vector<byte> *defs = readTECDefaults(protocol, bus);
 
@@ -125,7 +125,7 @@ bool ThermoElectricQEFeature::getDefaultThermoElectricEnable(
 #pragma warning (disable: 4101) // unreferenced local variable
 #endif
 bool ThermoElectricQEFeature::initialize(const Protocol &protocol, const Bus &bus)
-            throw (FeatureException) {
+            noexcept(false) {
 
     try {
         bool enable = getDefaultThermoElectricEnable(protocol, bus);

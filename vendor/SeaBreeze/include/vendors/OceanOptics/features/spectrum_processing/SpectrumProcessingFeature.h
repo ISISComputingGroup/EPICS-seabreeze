@@ -48,16 +48,16 @@ namespace seabreeze {
         virtual ~SpectrumProcessingFeature();
         virtual unsigned char readSpectrumProcessingBoxcarWidth(
         	const Protocol &protocol, const Bus &bus) 
-            throw (FeatureException);
+            noexcept(false);
         virtual unsigned short int readSpectrumProcessingScansToAverage(
         	const Protocol &protocol, const Bus &bus) 
-        	throw (FeatureException);
+        	noexcept(false);
         virtual void writeSpectrumProcessingBoxcarWidth(const Protocol &protocol,
         	const Bus &bus, unsigned char boxcarWidth) 
-        	throw (FeatureException, IllegalArgumentException);
+        	noexcept(false);
         virtual void writeSpectrumProcessingScansToAverage(const Protocol &protocol,
                 const Bus &bus, unsigned short int scansToAverage)
-                throw (FeatureException, IllegalArgumentException);
+                noexcept(false);
                 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();
