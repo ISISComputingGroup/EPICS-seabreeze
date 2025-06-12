@@ -101,7 +101,7 @@ vector<DeviceLocatorInterface *> *OOIUSBInterface::probeDevices() {
 }
 
 void OOIUSBInterface::setLocation(const DeviceLocatorInterface &location)
-        throw (IllegalArgumentException) {
+        noexcept(false) {
     USBDiscovery discovery;
 
     BusFamily family = location.getBusFamily();

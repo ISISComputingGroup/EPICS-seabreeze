@@ -44,7 +44,7 @@ Inet4Address::Inet4Address() {
 }
 
 Inet4Address::Inet4Address(std::string ipAddressQuads)
-        throw (IllegalArgumentException) {
+        noexcept(false) {
     
     const char *addrString = ipAddressQuads.c_str();
     

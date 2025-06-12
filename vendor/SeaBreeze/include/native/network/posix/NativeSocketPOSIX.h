@@ -56,9 +56,9 @@ namespace seabreeze {
         virtual void setReadTimeoutMillis(unsigned long timeout) throw (SocketException);
         
         virtual int read(unsigned char *buffer, unsigned long length)
-            throw (BusTransferException);
+            noexcept(false);
         virtual int write(const unsigned char *buffer, unsigned long length)
-            throw (BusTransferException);
+            noexcept(false);
         
     private:
         int sock;

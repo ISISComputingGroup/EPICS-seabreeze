@@ -234,7 +234,7 @@ void NativeSocketPOSIX::setReadTimeoutMillis(unsigned long timeoutMillis)
 }
 
 int NativeSocketPOSIX::read(unsigned char *buf, unsigned long count)
-            throw (BusTransferException) {
+            noexcept(false) {
     int result = ::read(this->sock, buf, count);
     
     if(result < 0) {
@@ -252,7 +252,7 @@ int NativeSocketPOSIX::read(unsigned char *buf, unsigned long count)
 }
 
 int NativeSocketPOSIX::write(const unsigned char *buf, unsigned long count)
-            throw (BusTransferException) {
+            noexcept(false) {
     int result = ::write(this->sock, buf, count);
     
     if(result < 0) {

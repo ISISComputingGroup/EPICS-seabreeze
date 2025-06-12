@@ -55,7 +55,7 @@ namespace seabreeze {
          * This MUST be done before open or close can be used.
          */
         virtual void setLocation(const DeviceLocatorInterface &location)
-                throw (IllegalArgumentException) = 0;
+                noexcept(false) = 0;
         virtual bool open() = 0;
         virtual void close() = 0;
         virtual DeviceLocatorInterface *getLocation() = 0;

@@ -53,7 +53,7 @@ DeviceLocatorInterface *RS232Interface::getLocation() {
 }
 
 void RS232Interface::setLocation(const DeviceLocatorInterface &location)
-        throw (IllegalArgumentException) {
+        noexcept(false) {
     if(NULL != this->deviceLocator) {
         delete this->deviceLocator;
     }

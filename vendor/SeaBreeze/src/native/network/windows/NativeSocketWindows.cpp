@@ -220,7 +220,7 @@ void NativeSocketWindows::setReadTimeoutMillis(unsigned long timeoutMillis)
 }
 
 int NativeSocketWindows::read(unsigned char *buf, unsigned long count)
-            throw (BusTransferException) {
+            noexcept(false) {
     int result = ::recv(this->sock, (char *)buf, count, 0);
     
     if(result < 0) {
@@ -239,7 +239,7 @@ int NativeSocketWindows::read(unsigned char *buf, unsigned long count)
 }
 
 int NativeSocketWindows::write(const unsigned char *buf, unsigned long count)
-            throw (BusTransferException) {
+            noexcept(false) {
     int result = ::send(this->sock, (char *)buf, count, 0);
     
     if(result < 0) {
