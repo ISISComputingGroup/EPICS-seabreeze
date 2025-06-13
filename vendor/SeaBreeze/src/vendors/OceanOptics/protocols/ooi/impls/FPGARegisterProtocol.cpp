@@ -28,7 +28,7 @@
  *******************************************************/
 
 #include "common/globals.h"
-#include "common/byte_Vector.h"
+#include "common/byteVector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 #include "vendors/OceanOptics/protocols/ooi/impls/FPGARegisterProtocol.h"
 #include "vendors/OceanOptics/protocols/ooi/exchanges/FPGARegisterReadExchange.h"

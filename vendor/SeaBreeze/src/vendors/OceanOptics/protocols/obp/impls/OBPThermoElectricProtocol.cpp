@@ -33,7 +33,7 @@
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetThermoElectricEnableExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetThermoElectricSetpointExchange.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OceanBinaryProtocol.h"
-#include "common/byte_Vector.h"
+#include "common/byteVector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;

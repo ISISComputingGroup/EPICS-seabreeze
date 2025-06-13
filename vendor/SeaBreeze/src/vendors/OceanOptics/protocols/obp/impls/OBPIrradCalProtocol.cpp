@@ -36,7 +36,7 @@
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetIrradCalExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPGetIrradCollectionAreaExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetIrradCollectionAreaExchange.h"
-#include "common/byte_Vector.h"
+#include "common/byteVector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;

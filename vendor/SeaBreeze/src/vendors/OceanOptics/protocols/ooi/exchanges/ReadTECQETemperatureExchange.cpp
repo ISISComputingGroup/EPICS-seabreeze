@@ -33,7 +33,7 @@
 #include "vendors/OceanOptics/protocols/ooi/constants/OpCodes.h"
 #include "vendors/OceanOptics/protocols/ooi/constants/QETECConstants.h"
 #include "common/DoubleVector.h"
-#include "common/byte_Vector.h"
+#include "common/byteVector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::ooiProtocol;

@@ -29,7 +29,7 @@
 
 #include "common/globals.h"
 #include "common/protocols/Transfer.h"
-#include "common/byte_Vector.h"
+#include "common/byteVector.h"
 #include <string>
 
 #ifdef _WINDOWS

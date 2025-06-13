@@ -35,7 +35,7 @@
 #include "common/UShortVector.h"
 #include "common/exceptions/ProtocolFormatException.h"
 #include "vendors/OceanOptics/protocols/ooi/constants/OpCodes.h"
-#include "common/byte_Vector.h"
+#include "common/byteVector.h"
 #include "common/protocols/Transfer.h"
 
 using namespace seabreeze;

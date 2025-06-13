@@ -33,7 +33,7 @@
 
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPReadSpectrum32AndMetadataExchange.h"
 #include "common/U32Vector.h"
-#include "common/byte_Vector.h"
+#include "common/byteVector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::oceanBinaryProtocol;
