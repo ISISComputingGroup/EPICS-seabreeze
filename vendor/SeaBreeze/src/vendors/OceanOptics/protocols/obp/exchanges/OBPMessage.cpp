@@ -276,7 +276,7 @@ unsigned int OBPMessage::getBytesRemaining() {
 }
 
 
-byte OBPMessage::getChecksumType() {
+unsigned char OBPMessage::getChecksumType() {
     return this->checksumType;
 }
 
