@@ -296,7 +296,7 @@ vector<unsigned char> *OBPMessage::getImmediateData() {
 }
 
 
-byte OBPMessage::getImmediateDataLength() {
+unsigned char OBPMessage::getImmediateDataLength() {
     return this->immediateDataLength;
 }
 
