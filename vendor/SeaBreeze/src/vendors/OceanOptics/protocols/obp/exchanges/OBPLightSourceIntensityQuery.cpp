@@ -60,11 +60,11 @@ float OBPLightSourceIntensityQuery::queryIntensity(TransferHelper *helper)
     vector<unsigned char>::iterator iter;
     float retval = 0;
     unsigned int i;
-    byte *cptr = NULL;
+    unsigned char *cptr = NULL;
     vector<unsigned char> *result;
 
-    this->payload[0] = (byte)this->moduleIndex;
-    this->payload[1] = (byte)this->lightSourceIndex;
+    this->payload[0] = (unsigned char)this->moduleIndex;
+    this->payload[1] = (unsigned char)this->lightSourceIndex;
 
     result = this->queryDevice(helper);
     if(NULL == result || result->size() < sizeof(float)) {
