@@ -33,7 +33,7 @@
 #include "vendors/OceanOptics/protocols/obp/constants/OBPMessageTypes.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPMessage.h"
 #include "common/UShortVector.h"
-#include "common/byteVector.h"
+#include "common/ByteVector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::oceanBinaryProtocol;

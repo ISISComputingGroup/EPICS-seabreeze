@@ -34,7 +34,7 @@
 #include "common/UShortVector.h"
 #include "common/exceptions/ProtocolFormatException.h"
 #include "vendors/OceanOptics/protocols/ooi/constants/OpCodes.h"
-#include "common/byteVector.h"
+#include "common/ByteVector.h"
 #include "common/protocols/Transfer.h"
 #include "native/system/System.h"
 

@@ -31,7 +31,7 @@
 #include <string>
 #include "vendors/OceanOptics/protocols/ooi/impls/OOISpectrometerProtocol.h"
 #include "vendors/OceanOptics/protocols/ooi/impls/OOIProtocol.h"
-#include "common/byteVector.h"
+#include "common/ByteVector.h"
 #include "common/Data.h"
 #include "common/UShortVector.h"
 #include "common/DoubleVector.h"

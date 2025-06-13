@@ -37,7 +37,7 @@
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPGetOpticalBenchFiberDiameterMicronsExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPGetOpticalBenchSlitWidthMicronsExchange.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OceanBinaryProtocol.h"
-#include "common/byteVector.h"
+#include "common/ByteVector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 #include "common/exceptions/ProtocolTransactionException.h"
 

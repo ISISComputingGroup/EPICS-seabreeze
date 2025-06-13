@@ -28,7 +28,7 @@
  *******************************************************/
 
 #include "common/globals.h"
-#include "common/byteVector.h"
+#include "common/ByteVector.h"
 #include <string.h>
 
 using namespace seabreeze;

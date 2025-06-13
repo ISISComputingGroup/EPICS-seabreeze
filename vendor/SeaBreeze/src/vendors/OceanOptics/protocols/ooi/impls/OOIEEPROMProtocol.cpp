@@ -35,7 +35,7 @@
 #include "vendors/OceanOptics/protocols/ooi/exchanges/ReadEEPROMSlotExchange.h"
 #include "vendors/OceanOptics/protocols/ooi/exchanges/WriteEEPROMSlotExchange.h"
 #include "vendors/OceanOptics/protocols/ooi/impls/OOIProtocol.h"
-#include "common/byteVector.h"
+#include "common/ByteVector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;

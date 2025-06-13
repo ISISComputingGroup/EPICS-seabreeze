@@ -30,7 +30,7 @@
 #include "common/globals.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OBPSpectrometerProtocol.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OceanBinaryProtocol.h"
-#include "common/byteVector.h"
+#include "common/ByteVector.h"
 #include "common/Data.h"
 #include "common/UShortVector.h"
 #include "common/U32Vector.h"
