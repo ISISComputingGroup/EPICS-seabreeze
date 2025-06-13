@@ -55,13 +55,13 @@ OBPLightSourceIntensityQuery::~OBPLightSourceIntensityQuery() {
 }
 
 float OBPLightSourceIntensityQuery::queryIntensity(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
 
-    vector<byte>::iterator iter;
+    vector<byte_>::iterator iter;
     float retval = 0;
     unsigned int i;
-    byte *cptr = NULL;
-    vector<byte> *result;
+    byte_ *cptr = NULL;
+    vector<byte_> *result;
 
     this->payload[0] = (byte)this->moduleIndex;
     this->payload[1] = (byte)this->lightSourceIndex;
