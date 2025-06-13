@@ -48,7 +48,7 @@ OBPGetSaturationExchange::~OBPGetSaturationExchange() {
 }
 
 unsigned int OBPGetSaturationExchange::querySaturationLevel(
-        TransferHelper *helper) throw (ProtocolException) {
+        TransferHelper *helper) noexcept(false) {
 
     unsigned int saturation;
     vector<unsigned char> *result;

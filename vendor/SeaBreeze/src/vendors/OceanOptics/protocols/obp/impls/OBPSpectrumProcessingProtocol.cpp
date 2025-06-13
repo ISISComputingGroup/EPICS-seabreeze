@@ -51,7 +51,7 @@ OBPSpectrumProcessingProtocol::~OBPSpectrumProcessingProtocol() {
 
 
 unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToAverage(const Bus &bus)
-                throw (ProtocolException) 
+                noexcept(false) 
 {
     vector<unsigned char> *result = NULL;
     unsigned short int scansToAverage;
@@ -86,7 +86,7 @@ unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToA
 }
 
 void OBPSpectrumProcessingProtocol::writeSpectrumProcessingScansToAverage(
-            const Bus &bus, unsigned short int scansToAverage) throw (ProtocolException) {
+            const Bus &bus, unsigned short int scansToAverage) noexcept(false) {
 
     OBPSetScansToAverageExchange xchange;
 
@@ -107,7 +107,7 @@ void OBPSpectrumProcessingProtocol::writeSpectrumProcessingScansToAverage(
     }
 }
 
-unsigned char OBPSpectrumProcessingProtocol::readSpectrumProcessingBoxcarWidth(const Bus &bus) throw (ProtocolException) 
+unsigned char OBPSpectrumProcessingProtocol::readSpectrumProcessingBoxcarWidth(const Bus &bus) noexcept(false) 
 {
     vector<unsigned char> *result = NULL;
     unsigned char boxcarWidth;
@@ -137,7 +137,7 @@ unsigned char OBPSpectrumProcessingProtocol::readSpectrumProcessingBoxcarWidth(c
 
 
 void OBPSpectrumProcessingProtocol::writeSpectrumProcessingBoxcarWidth(
-            const Bus &bus, unsigned char boxcarWidth) throw (ProtocolException) {
+            const Bus &bus, unsigned char boxcarWidth) noexcept(false) {
 
     OBPSetBoxcarWidthExchange xchange;
 

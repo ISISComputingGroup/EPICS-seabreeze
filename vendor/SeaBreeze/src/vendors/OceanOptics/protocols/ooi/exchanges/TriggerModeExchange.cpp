@@ -59,7 +59,7 @@ void TriggerModeExchange::setTriggerMode(SpectrometerTriggerMode &mode) {
 }
 
 Data *TriggerModeExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     /* Note that it might be cleaner to populate the buffer when the trigger
      * mode is first written in, but this guarantees that it only happens once
      * per transfer.

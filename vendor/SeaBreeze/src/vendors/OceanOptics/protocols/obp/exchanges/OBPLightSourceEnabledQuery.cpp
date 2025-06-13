@@ -54,7 +54,7 @@ OBPLightSourceEnabledQuery::~OBPLightSourceEnabledQuery() {
 }
 
 bool OBPLightSourceEnabledQuery::queryEnable(TransferHelper *helper)
-            throw (ProtocolException) {
+            noexcept(false) {
 
     bool retval;
     vector<unsigned char> *result;

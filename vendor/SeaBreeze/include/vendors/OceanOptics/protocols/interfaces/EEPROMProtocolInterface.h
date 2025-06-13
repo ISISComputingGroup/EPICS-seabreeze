@@ -53,9 +53,9 @@ namespace seabreeze {
         EEPROMProtocolInterface(Protocol *protocol);
         virtual ~EEPROMProtocolInterface();
         virtual std::vector<unsigned char> *readEEPROMSlot(const Bus &bus, int slot)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
         virtual int writeEEPROMSlot(const Bus &bus, int slot,
-                const std::vector<unsigned char> &data) throw (ProtocolException) = 0;
+                const std::vector<unsigned char> &data) noexcept(false) = 0;
     };
 
 }

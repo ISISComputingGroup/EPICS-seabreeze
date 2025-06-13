@@ -53,13 +53,13 @@ namespace seabreeze {
         SpectrumProcessingProtocolInterface(Protocol *protocol);
         virtual ~SpectrumProcessingProtocolInterface();
         virtual unsigned char readSpectrumProcessingBoxcarWidth(const Bus &bus)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
         virtual unsigned short int readSpectrumProcessingScansToAverage(const Bus &bus)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
         virtual void writeSpectrumProcessingBoxcarWidth(const Bus &bus, unsigned char boxcarWidth)
-        		throw (ProtocolException) = 0;
+        		noexcept(false) = 0;
         virtual void writeSpectrumProcessingScansToAverage(const Bus &bus, unsigned short int scansToAverage)
-        		throw (ProtocolException) = 0;
+        		noexcept(false) = 0;
     };
 
 }

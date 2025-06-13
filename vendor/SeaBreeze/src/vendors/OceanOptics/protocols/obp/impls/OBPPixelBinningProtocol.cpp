@@ -51,7 +51,7 @@ OBPPixelBinningProtocol::~OBPPixelBinningProtocol() {
 
 }
 
-unsigned char OBPPixelBinningProtocol::readPixelBinningFactor(const Bus &bus) throw (ProtocolException) {
+unsigned char OBPPixelBinningProtocol::readPixelBinningFactor(const Bus &bus) noexcept(false) {
 
 
     OBPGetPixelBinningExchange xchange;
@@ -78,7 +78,7 @@ unsigned char OBPPixelBinningProtocol::readPixelBinningFactor(const Bus &bus) th
 }
 
 
-void OBPPixelBinningProtocol::writePixelBinningFactor(const Bus &bus, const unsigned char binningFactor) throw (ProtocolException) {
+void OBPPixelBinningProtocol::writePixelBinningFactor(const Bus &bus, const unsigned char binningFactor) noexcept(false) {
 
     OBPSetPixelBinningExchange xchange;
 
@@ -99,7 +99,7 @@ void OBPPixelBinningProtocol::writePixelBinningFactor(const Bus &bus, const unsi
     }
 }
 
-unsigned char OBPPixelBinningProtocol::readDefaultPixelBinningFactor(const Bus &bus) throw (ProtocolException) {
+unsigned char OBPPixelBinningProtocol::readDefaultPixelBinningFactor(const Bus &bus) noexcept(false) {
 
 
     OBPGetDefaultPixelBinningExchange xchange;
@@ -125,7 +125,7 @@ unsigned char OBPPixelBinningProtocol::readDefaultPixelBinningFactor(const Bus &
     return binningFactor;
 }
 
-void OBPPixelBinningProtocol::writeDefaultPixelBinningFactor(const Bus &bus, const unsigned char binningFactor) throw (ProtocolException) {
+void OBPPixelBinningProtocol::writeDefaultPixelBinningFactor(const Bus &bus, const unsigned char binningFactor) noexcept(false) {
 
     OBPSetDefaultPixelBinningExchange xchange;
 
@@ -146,7 +146,7 @@ void OBPPixelBinningProtocol::writeDefaultPixelBinningFactor(const Bus &bus, con
     }
 }
 
-void OBPPixelBinningProtocol::writeDefaultPixelBinningFactor(const Bus &bus) throw (ProtocolException) {
+void OBPPixelBinningProtocol::writeDefaultPixelBinningFactor(const Bus &bus) noexcept(false) {
 
     OBPSetDefaultPixelBinningExchange xchange;
 
@@ -167,7 +167,7 @@ void OBPPixelBinningProtocol::writeDefaultPixelBinningFactor(const Bus &bus) thr
     }
 }
 
-unsigned char OBPPixelBinningProtocol::readMaxPixelBinningFactor(const Bus &bus) throw (ProtocolException) {
+unsigned char OBPPixelBinningProtocol::readMaxPixelBinningFactor(const Bus &bus) noexcept(false) {
 
 
     OBPGetMaxPixelBinningExchange xchange;

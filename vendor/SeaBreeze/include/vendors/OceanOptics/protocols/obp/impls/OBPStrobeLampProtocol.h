@@ -42,7 +42,7 @@ namespace seabreeze {
             virtual ~OBPStrobeLampProtocol();
 
             virtual void setStrobeLampEnable(const Bus &bus, bool enable)
-                    throw (ProtocolException);
+                    noexcept(false);
         };
     }
 }

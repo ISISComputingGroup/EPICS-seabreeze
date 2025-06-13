@@ -48,7 +48,7 @@ OBPNonlinearityCoeffsProtocol::~OBPNonlinearityCoeffsProtocol() {
 }
 
 vector<double> *OBPNonlinearityCoeffsProtocol::readNonlinearityCoeffs(const Bus &bus)
-                throw (ProtocolException) {
+                noexcept(false) {
     vector<unsigned char> *result = NULL;
     unsigned int i;
     vector<double> *retval;

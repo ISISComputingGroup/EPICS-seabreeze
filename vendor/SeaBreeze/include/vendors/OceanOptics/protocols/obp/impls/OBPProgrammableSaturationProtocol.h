@@ -44,7 +44,7 @@ namespace seabreeze {
             
             /* Inherited from ProgrammableSaturationProtocolInterface */
             virtual unsigned int getSaturation(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         };
     } /* end namespace oceanBinaryProtocol */
 } /* end namespace seabreeze */
