@@ -52,10 +52,10 @@ namespace seabreeze {
         virtual std::vector<UnitDescriptor *> *getUnits();
 
         /* Get the data associated with this instance */
-        std::vector<byte> &getByteVector();
+        std::vector<byte_> &getByteVector();
 
     private:
-        std::vector<byte> *data;
+        std::vector<byte_> *data;
     };
 
 }
