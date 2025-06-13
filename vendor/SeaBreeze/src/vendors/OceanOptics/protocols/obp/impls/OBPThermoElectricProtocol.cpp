@@ -33,7 +33,7 @@
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetThermoElectricEnableExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetThermoElectricSetpointExchange.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OceanBinaryProtocol.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;
@@ -52,10 +52,10 @@ OBPThermoElectricProtocol::~OBPThermoElectricProtocol() {
 double OBPThermoElectricProtocol::readThermoElectricTemperatureCelsius(
             const Bus &bus) throw (ProtocolException) {
 
-    vector<byte> *result;
+    vector<byte_> *result;
     float temp = 0;
     unsigned int i;
-    byte *cptr;
+    byte_ *cptr;
 
     OBPGetThermoElectricTemperatureExchange xchange;
 
@@ -73,8 +73,8 @@ double OBPThermoElectricProtocol::readThermoElectricTemperatureCelsius(
         throw ProtocolException(error);
     }
 
-    vector<byte>::iterator iter;
-    cptr = (byte *)&temp;
+    vector<byte_>::iterator iter;
+    cptr = (byte_ *)&temp;
     for(iter = result->begin(), i = 0;
                 iter != result->end() && i < sizeof(float); iter++, i++) {
         /* FIXME: this assumes the host is little-endian.  Is this safe? */

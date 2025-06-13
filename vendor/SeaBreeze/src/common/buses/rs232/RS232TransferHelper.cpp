@@ -43,18 +43,18 @@ RS232TransferHelper::~RS232TransferHelper() {
 
 }
 
-int RS232TransferHelper::receive(vector<byte> &buffer, unsigned int length)
+int RS232TransferHelper::receive(vector<byte_> &buffer, unsigned int length)
         noexcept(false) {
     int retval = 0;
-    unsigned int bytesRead = 0;
+    unsigned int byte_sRead = 0;
 
-    while(bytesRead < length) {
-        retval = this->rs232->read((void *)&(buffer[bytesRead]), length - bytesRead);
+    while(byte_sRead < length) {
+        retval = this->rs232->read((void *)&(buffer[byte_sRead]), length - byte_sRead);
         if(retval < 0) {
             string error("Failed to read any data from RS232.");
             throw BusTransferException(error);
         } else if(retval != 0) {
-            bytesRead += retval;
+            byte_sRead += retval;
         } else {
             /* Not enough data available to satisfy the request.  Wait for more
              * data to arrive.
@@ -63,28 +63,28 @@ int RS232TransferHelper::receive(vector<byte> &buffer, unsigned int length)
         }
     }
 
-    return bytesRead;
+    return byte_sRead;
 }
 
-int RS232TransferHelper::send(const vector<byte> &buffer, unsigned int length) const
+int RS232TransferHelper::send(const vector<byte_> &buffer, unsigned int length) const
         noexcept(false) {
     int retval = 0;
-    unsigned int bytesWritten = 0;
+    unsigned int byte_sWritten = 0;
 
-    while(bytesWritten < length) {
-        retval = this->rs232->write((void *)&(buffer[bytesWritten]), length - bytesWritten);
+    while(byte_sWritten < length) {
+        retval = this->rs232->write((void *)&(buffer[byte_sWritten]), length - byte_sWritten);
         if(retval < 0) {
             string error("Failed to write any data to RS232.");
             throw BusTransferException(error);
         } else if(retval != 0) {
-            bytesWritten += retval;
+            byte_sWritten += retval;
         } else {
-            /* Output buffer is probably full.  Wait for some of the bytes to
+            /* Output buffer is probably full.  Wait for some of the byte_s to
              * be transferred before trying again.
              */
             System::sleepMilliseconds(10);
         }
     }
 
-    return bytesWritten;
+    return byte_sWritten;
 }

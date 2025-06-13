@@ -32,7 +32,7 @@
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPGetSerialNumberExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPGetSerialNumberMaximumLengthExchange.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OceanBinaryProtocol.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;
@@ -51,7 +51,7 @@ OBPSerialNumberProtocol::~OBPSerialNumberProtocol() {
 string *OBPSerialNumberProtocol::readSerialNumber(const Bus &bus)
                 throw (ProtocolException) {
 
-    vector<byte> *result;
+    vector<byte_> *result;
     string *retval = NULL;
 
     OBPGetSerialNumberExchange xchange;
@@ -71,9 +71,9 @@ string *OBPSerialNumberProtocol::readSerialNumber(const Bus &bus)
     }
 
     retval = new string();
-    vector<byte>::iterator iter;
+    vector<byte_>::iterator iter;
     /* This is probably not the most efficient way to copy
-     * from a vector of bytes into a string, but at least
+     * from a vector of byte_s into a string, but at least
      * this way issues of string encoding should be
      * avoided (i.e. the sizeof a string element is not
      * assumed here).  Since this function will not be called
@@ -94,7 +94,7 @@ string *OBPSerialNumberProtocol::readSerialNumber(const Bus &bus)
 
 unsigned char OBPSerialNumberProtocol::readSerialNumberMaximumLength(const Bus &bus) throw (ProtocolException) 
 {
-    vector<byte> *result = NULL;
+    vector<byte_> *result = NULL;
     unsigned char length;
     
     OBPGetSerialNumberMaximumLengthExchange xchange;

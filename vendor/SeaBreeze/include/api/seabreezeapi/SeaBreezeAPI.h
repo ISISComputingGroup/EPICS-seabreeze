@@ -471,10 +471,10 @@ extern "C" {
      *      \li USB2000PLUS: Represents a USB2000+ spectrometer
      *      \li USB4000: Represents a USB4000 spectrometer
      *
-     * @param length (Input) Maximum number of bytes that may be written to the
+     * @param length (Input) Maximum number of byte_s that may be written to the
      *      buffer
      *
-     * @return integral number of bytes actually written to the user buffer
+     * @return integral number of byte_s actually written to the user buffer
      */
     DLL_DECL int
     sbapi_get_device_type(long id, int *error_code,
@@ -673,7 +673,7 @@ extern "C" {
      *      (this should be no larger than the number of chars allocated in
      *      the buffer)
      *
-     * @return the number of bytes written into the buffer
+     * @return the number of byte_s written into the buffer
      */
     DLL_DECL int
     sbapi_get_serial_number(long deviceID, long featureID, int *error_code,
@@ -690,7 +690,7 @@ extern "C" {
      * @param error_code (Output) pointer to an integer that can be used for
      *      storing error codes.
      *
-     * @return the length of the serial number in an unsigned character byte
+     * @return the length of the serial number in an unsigned character byte_
      */
     DLL_DECL unsigned char
     sbapi_get_serial_number_maximum_length(long deviceID, long featureID, int *error_code);
@@ -861,7 +861,7 @@ extern "C" {
 
     /**
      * This acquires a spectrum and returns the answer in raw,
-     * unformatted bytes.
+     * unformatted byte_s.
      *
      * @param deviceID (Input) The index of a device previously opened with
      *      open_spectrometer().
@@ -874,7 +874,7 @@ extern "C" {
      *      the spectral data
      * @param buffer_length (Input) The length of the buffer
      *
-     * @return the number of bytes read into the buffer
+     * @return the number of byte_s read into the buffer
      */
     DLL_DECL int
     sbapi_spectrometer_get_unformatted_spectrum(long deviceID,
@@ -898,7 +898,7 @@ extern "C" {
      *      (this should be no larger than the number of doubles allocated in the wavelengths
      *      array)
      *
-     * @return the number of bytes written into the wavelength buffer
+     * @return the number of byte_s written into the wavelength buffer
      */
     DLL_DECL int
     sbapi_spectrometer_get_wavelengths(long deviceID,
@@ -944,7 +944,7 @@ extern "C" {
      *      (this should be no larger than the number of ints allocated in the indices
      *      array)
      *
-     * @return the number of bytes written into the indices buffer
+     * @return the number of byte_s written into the indices buffer
      */
     DLL_DECL int
     sbapi_spectrometer_get_electric_dark_pixel_indices(long deviceID,
@@ -1534,7 +1534,7 @@ extern "C" {
      *      value read out of the EEPROM slot
      * @param buffer_length (Input) The length of the buffer
      *
-     * @return the number of bytes read from the EEPROM slot into the buffer
+     * @return the number of byte_s read from the EEPROM slot into the buffer
      */
     DLL_DECL int
     sbapi_eeprom_read_slot(long deviceID, long featureID,
@@ -2019,7 +2019,7 @@ extern "C" {
      * @param error_code (Output) A pointer to an integer that can be used for storing
      *      error codes.
      *
-     * @return the hardware revision as one unsigned char byte. (Note that both Ocean View and SpectraSuite display the hex value.)
+     * @return the hardware revision as one unsigned char byte_. (Note that both Ocean View and SpectraSuite display the hex value.)
      */
     DLL_DECL unsigned char sbapi_revision_hardware_get(long deviceID, long revisionFeatureID, int *error_code);
 
@@ -2034,7 +2034,7 @@ extern "C" {
      * @param error_code (Output) A pointer to an integer that can be used for storing
      *      error codes.
      *
-     * @return the firmware revision as two unsigned short int bytes (Note that both Ocean View and SpectraSuite display the hex value.)
+     * @return the firmware revision as two unsigned short int byte_s (Note that both Ocean View and SpectraSuite display the hex value.)
      */
     DLL_DECL unsigned short int sbapi_revision_firmware_get(long deviceID, long revisionFeatureID, int *error_code);
 
@@ -2113,7 +2113,7 @@ extern "C" {
      *      (this should be no larger than the number of chars allocated in
      *      the buffer)
      *
-     * @return the number of bytes written into the buffer
+     * @return the number of byte_s written into the buffer
      */
     DLL_DECL int
     sbapi_optical_bench_get_id(long deviceID, long featureID, int *error_code, char *buffer, int buffer_length);
@@ -2135,7 +2135,7 @@ extern "C" {
      *      (this should be no larger than the number of chars allocated in
      *      the buffer)
      *
-     * @return the number of bytes written into the buffer
+     * @return the number of byte_s written into the buffer
      */
     DLL_DECL int
     sbapi_optical_bench_get_serial_number(long deviceID, long featureID, int *error_code, char *buffer, int buffer_length);
@@ -2158,7 +2158,7 @@ extern "C" {
      *      (this should be no larger than the number of chars allocated in
      *      the buffer)
      *
-     * @return the number of bytes written into the buffer
+     * @return the number of byte_s written into the buffer
      */
     DLL_DECL int
     sbapi_optical_bench_get_coating(long deviceID, long featureID, int *error_code, char *buffer, int buffer_length);
@@ -2180,7 +2180,7 @@ extern "C" {
      *      (this should be no larger than the number of chars allocated in
      *      the buffer)
      *
-     * @return the number of bytes written into the buffer
+     * @return the number of byte_s written into the buffer
      */
     DLL_DECL int
     sbapi_optical_bench_get_filter(long deviceID, long featureID, int *error_code, char *buffer, int buffer_length);
@@ -2202,7 +2202,7 @@ extern "C" {
      *      (this should be no larger than the number of chars allocated in
      *      the buffer)
      *
-     * @return the number of bytes written into the buffer
+     * @return the number of byte_s written into the buffer
      */
     DLL_DECL int
     sbapi_optical_bench_get_grating(long deviceID, long featureID, int *error_code, char *buffer, int buffer_length);

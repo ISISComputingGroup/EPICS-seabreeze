@@ -53,7 +53,7 @@ FPGARegisterFeature::~FPGARegisterFeature() {
 
 }
 
-void FPGARegisterFeature::writeRegister(const Bus &bus, byte address,
+void FPGARegisterFeature::writeRegister(const Bus &bus, unsigned char address,
         unsigned int value) noexcept(false) {
 
     FPGARegisterProtocol protocol;
@@ -67,7 +67,7 @@ void FPGARegisterFeature::writeRegister(const Bus &bus, byte address,
     }
 }
 
-unsigned int FPGARegisterFeature::readRegister(const Bus &bus, byte address)
+unsigned int FPGARegisterFeature::readRegister(const Bus &bus, unsigned char address)
         noexcept(false) {
 
     unsigned int retval = 0;
@@ -93,7 +93,7 @@ unsigned char FPGARegisterFeature::getMajorVersion(const Bus &bus) noexcept(fals
     FPGARegisterProtocolInterface *fpga = &protocol;
 
     try {
-        // firmware version appears to be packed into two bytes as follows:
+        // firmware version appears to be packed into two byte_s as follows:
         //
         //    MSB       LSB
         //  01234567 01234567

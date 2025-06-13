@@ -48,7 +48,7 @@ namespace seabreeze {
     public:
         SpectrometerProtocolInterface(Protocol *protocol);
         virtual ~SpectrometerProtocolInterface();
-        virtual std::vector<byte> *readUnformattedSpectrum(const Bus &bus)
+        virtual std::vector<byte_> *readUnformattedSpectrum(const Bus &bus)
             throw (ProtocolException) = 0;
         virtual std::vector<double> *readSpectrum(const Bus &bus)
             throw (ProtocolException) = 0;

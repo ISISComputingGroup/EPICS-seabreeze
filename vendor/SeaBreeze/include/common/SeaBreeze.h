@@ -32,7 +32,7 @@
 #ifndef SEABREEZE_H
 #define SEABREEZE_H
 
-typedef uint8_t byte;
+typedef unsigned char byte__;
 
 #ifdef WINDOWS
 /* Visual studio does not implement declared exception

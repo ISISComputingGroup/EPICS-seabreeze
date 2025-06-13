@@ -41,9 +41,9 @@ void *RS232Open(char *device, int *errorCode);
 
 int RS232Close(void *handle);
 
-int RS232Write(void *handle, char *data, int numberOfBytes);
+int RS232Write(void *handle, char *data, int numberOfbyte_s);
 
-int RS232Read(void *handle, char *buffer, int numberOfBytes);
+int RS232Read(void *handle, char *buffer, int numberOfbyte_s);
 
 int RS232SetBaudRate(void *handle, int rate);
 

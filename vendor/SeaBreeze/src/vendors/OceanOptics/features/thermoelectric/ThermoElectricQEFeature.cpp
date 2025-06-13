@@ -62,7 +62,7 @@ ThermoElectricQEFeature::~ThermoElectricQEFeature() {
 
 }
 
-vector<byte> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol,
+vector<byte_> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol,
         const Bus &bus) noexcept(false) {
 
     /* TEC defaults are stored in EEPROM slot 0x11 (17) on the QE65000
@@ -76,21 +76,21 @@ vector<byte> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol,
     EEPROMSlotFeature eeprom(18);
 
     /* Note: this may throw a FeatureException. */
-    vector<byte> *data = eeprom.readEEPROMSlot(protocol, bus, 0x11);
+    vector<byte_> *data = eeprom.readEEPROMSlot(protocol, bus, 0x11);
 
     if((((*data)[0] & 0xFE) != 0) || (((*data)[1] & 0xFE) != 0)) {
-        /* If programmed, only one bit for each of the first two bytes will
+        /* If programmed, only one bit for each of the first two byte_s will
          * be used.  The rest should be cleared.  If the EEPROM is not programmed,
-         * it will tend to return 0xFF for those bytes.
+         * it will tend to return 0xFF for those byte_s.
          */
         string error("No default TEC settings found.");
         throw FeatureException(error);
     }
 
     /* This data will have the following format:
-     * Byte 0: TEC enable (0 or 1)
-     * Byte 1: Fan enable (0 or 1)
-     * Bytes 2, 3: temperature as signed short, LSB MSB
+     * byte_ 0: TEC enable (0 or 1)
+     * byte_ 1: Fan enable (0 or 1)
+     * byte_s 2, 3: temperature as signed short, LSB MSB
      */
     return data;
 }
@@ -98,7 +98,7 @@ vector<byte> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol,
 double ThermoElectricQEFeature::getDefaultSetPointCelsius(const Protocol &protocol,
         const Bus &bus) noexcept(false) {
 
-    vector<byte> *defs = readTECDefaults(protocol, bus);
+    vector<byte_> *defs = readTECDefaults(protocol, bus);
 
     signed short temp = (((*defs)[3] << 8) | (*defs)[2]);
 
@@ -111,7 +111,7 @@ double ThermoElectricQEFeature::getDefaultSetPointCelsius(const Protocol &protoc
 bool ThermoElectricQEFeature::getDefaultThermoElectricEnable(
         const Protocol &protocol, const Bus &bus) noexcept(false) {
 
-    vector<byte> *defs = readTECDefaults(protocol, bus);
+    vector<byte_> *defs = readTECDefaults(protocol, bus);
 
     bool retval;
     retval = ((0 == (*defs)[0]) ? false : true);

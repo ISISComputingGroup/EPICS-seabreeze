@@ -4,8 +4,8 @@
  * @author  Ocean Optics, Inc.
  *
  * All messages in the Ocean Binary Protocol begin with
- * a standard 64-byte header.  It is always safe to read
- * 64 bytes for the start of a new transfer from a device
+ * a standard 64-byte_ header.  It is always safe to read
+ * 64 byte_s for the start of a new transfer from a device
  * that supports this protocol, which works nicely with
  * the USB minimum packet size.
  *
@@ -50,19 +50,19 @@ namespace seabreeze {
         OBPMessage();
         ~OBPMessage();
 
-        static OBPMessage *parseHeaderFromByteStream(std::vector<byte> *stream) noexcept(false);
-        static OBPMessage *parseByteStream(std::vector<byte> *stream) noexcept(false);
+        static OBPMessage *parseHeaderFrombyte_Stream(std::vector<byte_> *stream) noexcept(false);
+        static OBPMessage *parsebyte_Stream(std::vector<byte_> *stream) noexcept(false);
 
-        std::vector<byte> *toByteStream();
-        std::vector<byte> *getData();
-        unsigned int getBytesRemaining();
-        byte getChecksumType();
+        std::vector<byte_> *tobyte_Stream();
+        std::vector<byte_> *getData();
+        unsigned int getbyte_sRemaining();
+        byte_ getChecksumType();
         unsigned short getErrno();
         unsigned short getFlags();
-        std::vector<byte> *getImmediateData();
-        byte getImmediateDataLength();
+        std::vector<byte_> *getImmediateData();
+        byte_ getImmediateDataLength();
         unsigned int getMessageType();
-        std::vector<byte> *getPayload();
+        std::vector<byte_> *getPayload();
         unsigned short getProtocolVersion();
         unsigned int getRegarding();
 
@@ -70,33 +70,33 @@ namespace seabreeze {
         bool isNackFlagSet();
 
         void setAckRequestedFlag();
-        void setBytesRemaining(unsigned int bytesRemaining);
-        void setChecksumType(byte checksumType);
-        void setData(std::vector<byte> *data);
+        void setbyte_sRemaining(unsigned int byte_sRemaining);
+        void setChecksumType(byte_ checksumType);
+        void setData(std::vector<byte_> *data);
         void setErrorNumber(unsigned short errorNumber);
         void setFlags(unsigned short flags);
-        void setImmediateData(std::vector<byte> *immediateData);
-        void setImmediateDataLength(byte immediateDataLength);
+        void setImmediateData(std::vector<byte_> *immediateData);
+        void setImmediateDataLength(byte_ immediateDataLength);
         void setMessageType(unsigned int messageType);
-        void setPayload(std::vector<byte> *payload);
+        void setPayload(std::vector<byte_> *payload);
         void setProtocolVersion(unsigned short protocolVersion);
         void setRegarding(unsigned int regarding);
 
     protected:
         void setupMessage();
-        std::vector<byte> *header;
+        std::vector<byte_> *header;
         unsigned short protocolVersion;
         unsigned short flags;
         unsigned short errorNumber;
         unsigned int messageType;
         unsigned int regarding;
-        byte checksumType;
-        byte immediateDataLength;
-        std::vector<byte> *immediateData;
-        unsigned int bytesRemaining;
-        std::vector<byte> *payload;
-        std::vector<byte> *checksum;
-        std::vector<byte> *footer;
+        byte_ checksumType;
+        byte_ immediateDataLength;
+        std::vector<byte_> *immediateData;
+        unsigned int byte_sRemaining;
+        std::vector<byte_> *payload;
+        std::vector<byte_> *checksum;
+        std::vector<byte_> *footer;
     };
 
   }

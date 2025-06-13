@@ -28,7 +28,7 @@
  *******************************************************/
 
 #include "common/globals.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 #include "vendors/OceanOptics/protocols/ooi/impls/FPGARegisterProtocol.h"
 #include "vendors/OceanOptics/protocols/ooi/exchanges/FPGARegisterReadExchange.h"
@@ -49,7 +49,7 @@ FPGARegisterProtocol::~FPGARegisterProtocol() {
 
 }
 
-unsigned int FPGARegisterProtocol::readRegister(const Bus &bus, byte address)
+unsigned int FPGARegisterProtocol::readRegister(const Bus &bus, byte_ address)
         throw (ProtocolException) {
 
     unsigned int retval = 0;
@@ -68,26 +68,26 @@ unsigned int FPGARegisterProtocol::readRegister(const Bus &bus, byte address)
         throw ProtocolException(error);
     }
 
-    ByteVector *bv = dynamic_cast<ByteVector *>(result);
+    byte_Vector *bv = dynamic_cast<byte_Vector *>(result);
     if(NULL == bv) {
-        throw ProtocolException(string("Expected ByteVector from FPGARegisterReadExchange"));
+        throw ProtocolException(string("Expected byte_Vector from FPGARegisterReadExchange"));
     }
 
-    vector<byte> byteVec = bv->getByteVector();
-    if(3 != byteVec.size()) {
-        throw ProtocolException(string("Expected 3 bytes from FPGARegisterReadExchange"));
+    vector<byte_> byte_Vec = bv->getbyte_Vector();
+    if(3 != byte_Vec.size()) {
+        throw ProtocolException(string("Expected 3 byte_s from FPGARegisterReadExchange"));
     }
 
-    // Response is 3 bytes (address echo, LSB, MSB)
+    // Response is 3 byte_s (address echo, LSB, MSB)
     // TODO: this will need to be updated when we have devices with 32-bit registers
-    retval = (unsigned int) (byteVec[1] | ((unsigned int) byteVec[2] << 8));
+    retval = (unsigned int) (byte_Vec[1] | ((unsigned int) byte_Vec[2] << 8));
 
     delete result;
 
     return retval;
 }
 
-void FPGARegisterProtocol::writeRegister(const Bus &bus, byte address,
+void FPGARegisterProtocol::writeRegister(const Bus &bus, byte_ address,
         unsigned int value) throw (ProtocolException) {
 
     FPGARegisterWriteExchange exchange(address, value);

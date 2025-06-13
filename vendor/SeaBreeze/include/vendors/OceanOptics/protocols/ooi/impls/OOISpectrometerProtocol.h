@@ -53,7 +53,7 @@ namespace seabreeze {
         /* FIXME: instead of returning primitive vectors, should this return Data* so that
          * metadata (units, etc.) can also be attached?
          */
-        virtual std::vector<byte> *readUnformattedSpectrum(const Bus &bus)
+        virtual std::vector<byte_> *readUnformattedSpectrum(const Bus &bus)
                 throw (ProtocolException);
         virtual std::vector<double> *readSpectrum(const Bus &bus)
                 throw (ProtocolException);

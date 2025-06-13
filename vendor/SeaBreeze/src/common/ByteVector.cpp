@@ -1,5 +1,5 @@
 /***************************************************//**
- * @file    ByteVector.cpp
+ * @file    byte_Vector.cpp
  * @date    February 2009
  * @author  Ocean Optics, Inc.
  *
@@ -28,35 +28,35 @@
  *******************************************************/
 
 #include "common/globals.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include <string.h>
 
 using namespace seabreeze;
 using namespace std;
 
-ByteVector::ByteVector() {
-    this->data = new vector<byte>;
+byte_Vector::byte_Vector() {
+    this->data = new vector<byte_>;
 }
 
-ByteVector::ByteVector(const vector<byte> &that) {
-    this->data = new vector<byte > (that);
+byte_Vector::byte_Vector(const vector<byte_> &that) {
+    this->data = new vector<byte_ > (that);
 }
 
-ByteVector::~ByteVector() {
+byte_Vector::~byte_Vector() {
     delete this->data;
 }
 
-int ByteVector::getNumberOfDimensions() {
+int byte_Vector::getNumberOfDimensions() {
     return 1;
 }
 
-vector<UnitDescriptor *> *ByteVector::getUnits() {
+vector<UnitDescriptor *> *byte_Vector::getUnits() {
     /* This base class represents null data -- derived classes
      * must do something more interesting here.
      */
     return NULL;
 }
 
-vector<byte> &ByteVector::getByteVector() {
+vector<byte_> &byte_Vector::getbyte_Vector() {
     return *(this->data);
 }

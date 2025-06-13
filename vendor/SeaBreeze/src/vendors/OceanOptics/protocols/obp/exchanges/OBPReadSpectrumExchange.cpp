@@ -33,7 +33,7 @@
 #include "vendors/OceanOptics/protocols/obp/constants/OBPMessageTypes.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPMessage.h"
 #include "common/UShortVector.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::oceanBinaryProtocol;
@@ -52,8 +52,8 @@ OBPReadSpectrumExchange::~OBPReadSpectrumExchange() {
 Data *OBPReadSpectrumExchange::transfer(TransferHelper *helper)
         throw (ProtocolException) {
     Data *xfer;
-    byte lsb;
-    byte msb;
+    byte_ lsb;
+    byte_ msb;
 
     /* This will use the superclass to transfer data from the device, and will
      * then strip off the message header and footer so that only the
@@ -66,19 +66,19 @@ Data *OBPReadSpectrumExchange::transfer(TransferHelper *helper)
                         "possible to generate a valid formatted spectrum.");
         throw ProtocolException(error);
     }
-    /* xfer should contain a ByteVector */
+    /* xfer should contain a byte_Vector */
 
-    /* Extract the pixel data from the byte vector */
-    ByteVector *bv = static_cast<ByteVector *>(xfer);
-    vector<byte> bytes = bv->getByteVector();
+    /* Extract the pixel data from the byte_ vector */
+    byte_Vector *bv = static_cast<byte_Vector *>(xfer);
+    vector<byte_> byte_s = bv->getbyte_Vector();
 
     vector<unsigned short> formatted(this->numberOfPixels);
     for(unsigned int i = 0; i < this->numberOfPixels; i++) {
-        lsb = bytes[i * 2];
-        msb = bytes[(i * 2) + 1];
+        lsb = byte_s[i * 2];
+        msb = byte_s[(i * 2) + 1];
         formatted[i] = ((msb & 0x00FF) << 8) | (lsb & 0x00FF);
     }
-    delete xfer;  /* Equivalent to deleting bv and bytes */
+    delete xfer;  /* Equivalent to deleting bv and byte_s */
 
     UShortVector *retval = new UShortVector(formatted);
 

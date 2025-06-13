@@ -32,7 +32,7 @@
 #include "vendors/OceanOptics/protocols/obp/hints/OBPSpectrumHint.h"
 #include "vendors/OceanOptics/protocols/obp/constants/OBPMessageTypes.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPMessage.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::oceanBinaryProtocol;
@@ -80,7 +80,7 @@ Data *OBPReadRawSpectrumExchange::transfer(TransferHelper *helper)
         throw (ProtocolException) {
     Data *xfer;
     OBPMessage *message = NULL;
-    vector<byte> *bytes;
+    vector<byte_> *byte_s;
 
     /* This will use the superclass to transfer data from the device
      */
@@ -99,7 +99,7 @@ Data *OBPReadRawSpectrumExchange::transfer(TransferHelper *helper)
      * if the message is badly formed.
      */
     try {
-        message = OBPMessage::parseByteStream(this->buffer);
+        message = OBPMessage::parsebyte_Stream(this->buffer);
     } catch (IllegalArgumentException &iae) {
         string error("Failed to parse message transferred from device");
         throw ProtocolException(error);
@@ -112,14 +112,14 @@ Data *OBPReadRawSpectrumExchange::transfer(TransferHelper *helper)
     }
 
     /* Extract the pixel data from the message */
-    bytes = message->getData();
-    if(bytes->size() < 2*this->numberOfPixels) {
+    byte_s = message->getData();
+    if(byte_s->size() < 2*this->numberOfPixels) {
         string error("Spectrum response does not have enough data.");
         delete message;
         throw ProtocolException(error);
     }
     /* This incurs a copy of the buffer so it is safe to delete the message. */
-    ByteVector *retval = new ByteVector(*bytes);
+    byte_Vector *retval = new byte_Vector(*byte_s);
     delete message;
 
     return retval;

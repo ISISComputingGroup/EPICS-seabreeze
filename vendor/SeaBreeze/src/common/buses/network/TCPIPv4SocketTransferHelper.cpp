@@ -42,11 +42,11 @@ TCPIPv4SocketTransferHelper::~TCPIPv4SocketTransferHelper() {
      */
 }
 
-int TCPIPv4SocketTransferHelper::receive(vector<byte> &buffer,
+int TCPIPv4SocketTransferHelper::receive(vector<byte_> &buffer,
         unsigned int length) noexcept(false) {
     
     unsigned char *rawBuffer = (unsigned char *)&buffer[0];
-    unsigned int bytesRead = 0;
+    unsigned int byte_sRead = 0;
     
     /* TODO: There should be a couple alternatives for this.  One should
      * poll more or less indefinitely.  The other should do a single read
@@ -54,11 +54,11 @@ int TCPIPv4SocketTransferHelper::receive(vector<byte> &buffer,
      * to do next.
      */
     try {
-        while(bytesRead < length) {
-            int result = this->socket->read(&rawBuffer[bytesRead],
-                    length - bytesRead);
+        while(byte_sRead < length) {
+            int result = this->socket->read(&rawBuffer[byte_sRead],
+                    length - byte_sRead);
             if(result > 0) {
-                bytesRead += result;
+                byte_sRead += result;
             } else {
                 /* This should only be possible if a timeout was set for the
                  * socket.
@@ -67,14 +67,14 @@ int TCPIPv4SocketTransferHelper::receive(vector<byte> &buffer,
             }
         }
     } catch (BusTransferException &bte) {
-        if(0 == bytesRead) {
+        if(0 == byte_sRead) {
             throw bte;
         }
     }
-    return bytesRead;
+    return byte_sRead;
 }
 
-int TCPIPv4SocketTransferHelper::send(const vector<byte> &buffer,
+int TCPIPv4SocketTransferHelper::send(const vector<byte_> &buffer,
         unsigned int length) const noexcept(false) {
     
     unsigned char *rawBuffer = (unsigned char *)&buffer[0];

@@ -30,7 +30,7 @@
 #include "common/globals.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OBPSpectrometerProtocol.h"
 #include "vendors/OceanOptics/protocols/obp/impls/OceanBinaryProtocol.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/Data.h"
 #include "common/UShortVector.h"
 #include "common/U32Vector.h"
@@ -63,7 +63,7 @@ OBPSpectrometerProtocol::~OBPSpectrometerProtocol() {
     delete this->triggerModeExchange;
 }
 
-vector<byte> *OBPSpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
+vector<byte_> *OBPSpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
         throw (ProtocolException) {
     Data *result;
     TransferHelper *helper;
@@ -82,9 +82,9 @@ vector<byte> *OBPSpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
         throw ProtocolException(error);
     }
 
-    ByteVector *bv = static_cast<ByteVector *>(result);
+    byte_Vector *bv = static_cast<byte_Vector *>(result);
 
-    vector<byte> *retval = new vector<byte > (bv->getByteVector());
+    vector<byte_> *retval = new vector<byte_ > (bv->getbyte_Vector());
 
     delete result;
 

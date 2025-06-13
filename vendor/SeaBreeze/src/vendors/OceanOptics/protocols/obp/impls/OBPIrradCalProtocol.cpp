@@ -36,7 +36,7 @@
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetIrradCalExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPGetIrradCollectionAreaExchange.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPSetIrradCollectionAreaExchange.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;
@@ -66,7 +66,7 @@ vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
     }
 
     /* This transfer() may cause a ProtocolException to be thrown. */
-    vector<byte> *raw = request.queryDevice(helper);
+    vector<byte_> *raw = request.queryDevice(helper);
     if (NULL == raw) {
         string error("Expected queryDevice to produce a non-null result "
             "containing calibration data.  Without this data, it is not possible to "
@@ -74,7 +74,7 @@ vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
         throw ProtocolException(error);
     }
 
-    vector<byte> result = *raw;
+    vector<byte_> result = *raw;
 
     vector<float> *retval = new vector<float>;
 
@@ -149,7 +149,7 @@ float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
     }
 
     /* This transfer() may cause a ProtocolException to be thrown. */
-    vector<byte> *raw = request.queryDevice(helper);
+    vector<byte_> *raw = request.queryDevice(helper);
     if (NULL == raw) {
         string error("Expected queryDevice to produce a non-null result "
             "containing calibration data.  Without this data, it is not possible to "
@@ -158,7 +158,7 @@ float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
     }
 
     if(raw->size() < sizeof(float)) {
-        string error("Failed to get back expected number of bytes that should"
+        string error("Failed to get back expected number of byte_s that should"
             " have held collection area.");
         delete raw;
         throw ProtocolException(error);

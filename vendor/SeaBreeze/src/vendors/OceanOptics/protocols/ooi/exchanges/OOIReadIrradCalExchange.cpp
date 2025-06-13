@@ -35,7 +35,7 @@
 #include "common/UShortVector.h"
 #include "common/exceptions/ProtocolFormatException.h"
 #include "vendors/OceanOptics/protocols/ooi/constants/OpCodes.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/protocols/Transfer.h"
 
 using namespace seabreeze;
@@ -49,25 +49,25 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
 
     /* EEPROM Address from which we shall read, start at zero. */
     unsigned int addr;
-    /* Number of calibration bytes that will be read */
-    int bytesLeft = this->numberOfPixels * sizeof(float);
+    /* Number of calibration byte_s that will be read */
+    int byte_sLeft = this->numberOfPixels * sizeof(float);
 
-    for(addr = 0; bytesLeft > 0 && addr < 65536-BLOCK_TRANSFER_SIZE;
-                addr += BLOCK_TRANSFER_SIZE, bytesLeft -= BLOCK_TRANSFER_SIZE) {
+    for(addr = 0; byte_sLeft > 0 && addr < 65536-BLOCK_TRANSFER_SIZE;
+                addr += BLOCK_TRANSFER_SIZE, byte_sLeft -= BLOCK_TRANSFER_SIZE) {
         /* create vector of ProtocolHints for requests */
         vector<ProtocolHint *> *requestHints = new vector<ProtocolHint *>;
 
         /* create vector of ProtocolHints for responses */
         vector<ProtocolHint *> *responseHints = new vector<ProtocolHint *>;
 
-        /* create buffer for bytes of response */
-        vector<byte> *responseBuffer = new vector<byte>;
+        /* create buffer for byte_s of response */
+        vector<byte_> *responseBuffer = new vector<byte_>;
 
-        /* resize the response buffer to hold 60 bytes */
+        /* resize the response buffer to hold 60 byte_s */
         responseBuffer->resize(BLOCK_TRANSFER_SIZE);
 
-        /* create buffer for holding the bytes of the request */
-        vector<byte> *requestBuffer = new vector<byte>;
+        /* create buffer for holding the byte_s of the request */
+        vector<byte_> *requestBuffer = new vector<byte_>;
 
         /* resize the request buffer to hold a request */
         requestBuffer->resize(3);
@@ -79,8 +79,8 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
         responseHints->push_back(new ControlHint());
 
         (*(requestBuffer))[0] = OpCodes::OP_READ_IRRAD_CAL;
-        (*(requestBuffer))[1] = (byte)( (addr) & 0x00FF);
-        (*(requestBuffer))[2] = (byte)((addr>>8) & 0x00FF);
+        (*(requestBuffer))[1] = (byte_)( (addr) & 0x00FF);
+        (*(requestBuffer))[2] = (byte_)((addr>>8) & 0x00FF);
 
         Transfer *request = new Transfer(requestHints,
             requestBuffer, Transfer::TO_DEVICE, 3);
@@ -96,10 +96,10 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
 Data *OOIReadIrradCalExchange::transfer(TransferHelper *helper)
         throw (ProtocolException) {
     Data *xfer;
-    ByteVector *output = new ByteVector();
+    byte_Vector *output = new byte_Vector();
     vector<Transfer *>::iterator iter = this->transfers.begin();
-    /* Number of calibration bytes that will be read */
-    int bytesLeft = this->numberOfPixels * sizeof(float);
+    /* Number of calibration byte_s that will be read */
+    int byte_sLeft = this->numberOfPixels * sizeof(float);
 
     /* Iterate over all stored transfers and delegate to the helper to
      * move the data.
@@ -108,25 +108,25 @@ Data *OOIReadIrradCalExchange::transfer(TransferHelper *helper)
         /* Note that this may throw a ProtocolException which will not be caught here. */
         /* Either send request for data, or obtain data.
          * xfer will be NULL if request being issued.
-         * data is returned as ByteVector type object if data being returned.
+         * data is returned as byte_Vector type object if data being returned.
          */
         xfer = (*iter)->transfer(helper);
 
         if(NULL != xfer) {
-            /* transfer block of 60 bytes from xfer to output */
+            /* transfer block of 60 byte_s from xfer to output */
             for(    unsigned int i = 0;
-                    i < ((ByteVector*)xfer)->getByteVector().size()
-                        && bytesLeft > 0;
-                    i++, bytesLeft--) {
+                    i < ((byte_Vector*)xfer)->getbyte_Vector().size()
+                        && byte_sLeft > 0;
+                    i++, byte_sLeft--) {
                 /* FIXME: can this be done more efficiently using a memcpy()? */
-                output->getByteVector().push_back(
-                    ((ByteVector*)xfer)->getByteVector()[i]);
+                output->getbyte_Vector().push_back(
+                    ((byte_Vector*)xfer)->getbyte_Vector()[i]);
             }
             delete xfer; /* clear for next iteration */
         }
     }
 
-    /* return concatenated data as ByteVector */
+    /* return concatenated data as byte_Vector */
     return output;
 }
 

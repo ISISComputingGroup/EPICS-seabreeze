@@ -32,8 +32,8 @@
 #include <string.h> /* for memcpy() */
 
 /* Note that in this mode, the primary high speed endpoint will
- * generally read 5633 bytes, and the secondary will read
- * 2048 bytes.  Note that the primary in this case is
+ * generally read 5633 byte_s, and the secondary will read
+ * 2048 byte_s.  Note that the primary in this case is
  * defined as being the single endpoint that is
  * used in the USB 1.1 case for the HR4000 and USB4000.
  */
@@ -56,10 +56,10 @@ OOIUSB4KSpectrumTransferHelper::~OOIUSB4KSpectrumTransferHelper() {
 
 }
 
-int OOIUSB4KSpectrumTransferHelper::receive(vector<byte> &buffer,
+int OOIUSB4KSpectrumTransferHelper::receive(vector<unsigned char> &buffer,
         unsigned int length) noexcept(false) {
-    size_t bytesRead = 0;
-    size_t bytesToCopy;
+    size_t byte_sRead = 0;
+    size_t byte_sToCopy;
     int flag;
     int retval;
     int primaryReadLength;
@@ -72,45 +72,45 @@ int OOIUSB4KSpectrumTransferHelper::receive(vector<byte> &buffer,
         this->primaryReadBuffer.resize(primaryReadLength);
     }
 
-    /* Read the first 2048 bytes from the secondary high speed endpoint. */
+    /* Read the first 2048 byte_s from the secondary high speed endpoint. */
     /* This may throw a BusTransferException. */
     flag = this->usb->read(this->secondaryHighSpeedEP, &(this->secondaryReadBuffer[0]), SECONDARY_READ_LENGTH);
     if(flag >= 0) {
-        bytesRead = flag;
+        byte_sRead = flag;
     }
     /* Read the remainder from the primary high speed endpoint. */
     /* This may throw a BusTransferException. */
     flag = this->usb->read(this->receiveEndpoint, &(primaryReadBuffer[0]), primaryReadLength);
     if(flag >= 0) {
-        bytesRead += flag;
+        byte_sRead += flag;
     }
 
-    /* Compute the number of bytes to copy as the minimum
-     * of the bytes read, the specified read length, and the
+    /* Compute the number of byte_s to copy as the minimum
+     * of the byte_s read, the specified read length, and the
      * size of the destination buffer.  This will let us keep
      * track of how much data has been copied from each buffer
      * and hopefully prevent overruns.
      */
-    bytesToCopy = (bytesRead < length) ? bytesRead : length;
-    bytesToCopy = (length < buffer.size()) ? length : buffer.size();
+    byte_sToCopy = (byte_sRead < length) ? byte_sRead : length;
+    byte_sToCopy = (length < buffer.size()) ? length : buffer.size();
 
-    retval = (int) bytesToCopy; /* Hold a copy for later */
+    retval = (int) byte_sToCopy; /* Hold a copy for later */
 
     /* Copy the data from the secondary endpoint into the
      * caller's buffer.
      */
     memcpy(&(buffer[0]), &(this->secondaryReadBuffer[0]),
-            (this->secondaryReadBuffer.size() <= bytesToCopy) ? this->secondaryReadBuffer.size() : bytesToCopy);
-    bytesToCopy -= this->secondaryReadBuffer.size();
+            (this->secondaryReadBuffer.size() <= byte_sToCopy) ? this->secondaryReadBuffer.size() : byte_sToCopy);
+    byte_sToCopy -= this->secondaryReadBuffer.size();
 
-    // if(bytesToCopy < 0) { // size_t doesn't need this
-    //    bytesToCopy = 0;
+    // if(byte_sToCopy < 0) { // size_t doesn't need this
+    //    byte_sToCopy = 0;
     // }
 
     /* Copy the remaining data from the primary buffer */
-    memcpy(&(buffer[this->secondaryReadBuffer.size() * sizeof (byte)]),
+    memcpy(&(buffer[this->secondaryReadBuffer.size() * sizeof (unsigned char)]),
             &(this->primaryReadBuffer[0]),
-            (this->primaryReadBuffer.size() < bytesToCopy) ? this->primaryReadBuffer.size() : bytesToCopy);
+            (this->primaryReadBuffer.size() < byte_sToCopy) ? this->primaryReadBuffer.size() : byte_sToCopy);
 
     return retval;
 }

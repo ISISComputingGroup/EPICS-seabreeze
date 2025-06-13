@@ -51,7 +51,7 @@ FlameNIRSpectrumExchange::FlameNIRSpectrumExchange(
 FlameNIRSpectrumExchange::~FlameNIRSpectrumExchange() { }
 
 Data *FlameNIRSpectrumExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
 
     LOG(__FUNCTION__);
 
@@ -59,8 +59,8 @@ Data *FlameNIRSpectrumExchange::transfer(TransferHelper *helper)
     Data *xfer;
     double maxIntensity;
     double saturationLevel;
-    byte lsb;
-    byte msb;
+    unsigned char lsb;
+    unsigned char msb;
 
     // Use the superclass to move the data into a local buffer. 
     // This transfer() may cause a ProtocolException to be thrown. 
@@ -76,7 +76,7 @@ Data *FlameNIRSpectrumExchange::transfer(TransferHelper *helper)
 
     // At this point, this->buffer should have the raw spectrum data. 
 
-    // We would normally check for synchronization byte here, but Flame-NIR 
+    // We would normally check for synchronization byte_ here, but Flame-NIR 
     // does not send one.
 
     // Get a local variable by reference to point to that buffer 

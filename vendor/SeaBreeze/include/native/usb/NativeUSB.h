@@ -164,34 +164,34 @@ USBClose(void *handle);
 // PARAMETERS:
 // handle: The device handle obtained via the open() function.
 // endpoint: The endpoint on the device to write the data to.
-// data: A pointer to the dynamically allocated byte array of data to be written
-// size: The number of bytes to be written
+// data: A pointer to the dynamically allocated byte_ array of data to be written
+// size: The number of byte_s to be written
 //
 // RETURN VALUE:
 // Returns an integer which will be equal to either:
-//  - The number of bytes written to the endpoint if the write was successful
+//  - The number of byte_s written to the endpoint if the write was successful
 //  - WRITE_FAILED if the data was not written to the device
 //------------------------------------------------------------------------------
 int
-USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfBytes);
+USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfbyte_s);
 
 //------------------------------------------------------------------------------
 // This function reads data from the device attached to the given handle into
-// the specified byte array.
+// the specified byte_ array.
 //
 // PARAMETERS:
 // handle: The device handle obtained via the open() function.
 // endpoint: The endpoint on the device to read the data from.
-// data: A pointer to the dynamically allocated byte array to store the data.
-// size: The number of bytes to be read.
+// data: A pointer to the dynamically allocated byte_ array to store the data.
+// size: The number of byte_s to be read.
 //
 // RETURN VALUE:
 // Returns an integer which will be equal to either:
-//  - The number of bytes read from the endpoint if the read was successful
+//  - The number of byte_s read from the endpoint if the read was successful
 //  - READ_FAILED if the data was not successfully read from the device
 //------------------------------------------------------------------------------
 int
-USBRead(void *handle, unsigned char endpoint, char * data, int numberOfBytes);
+USBRead(void *handle, unsigned char endpoint, char * data, int numberOfbyte_s);
 
 //------------------------------------------------------------------------------
 // This function attempts to clear any stall on the given endpoint.

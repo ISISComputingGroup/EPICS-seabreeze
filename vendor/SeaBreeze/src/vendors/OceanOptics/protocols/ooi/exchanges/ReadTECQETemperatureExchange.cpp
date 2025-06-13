@@ -33,7 +33,7 @@
 #include "vendors/OceanOptics/protocols/ooi/constants/OpCodes.h"
 #include "vendors/OceanOptics/protocols/ooi/constants/QETECConstants.h"
 #include "common/DoubleVector.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::ooiProtocol;
@@ -46,7 +46,7 @@ ReadTECQETemperatureExchange::ReadTECQETemperatureExchange() {
     vector<ProtocolHint *> *requestHints = new vector<ProtocolHint *>;
     requestHints->push_back(new ControlHint());
 
-    vector<byte> *requestBuffer = new vector<byte>;
+    vector<byte_> *requestBuffer = new vector<byte_>;
     requestBuffer->resize(1);
     (*(requestBuffer))[0] = OpCodes::OP_READTEC_QE;
 
@@ -55,7 +55,7 @@ ReadTECQETemperatureExchange::ReadTECQETemperatureExchange() {
     vector<ProtocolHint *> *responseHints = new vector<ProtocolHint *>;
     responseHints->push_back(new ControlHint());
 
-    vector<byte> *responseBuffer = new vector<byte>;
+    vector<byte_> *responseBuffer = new vector<byte_>;
     responseBuffer->resize(2);
 
     Transfer *response = new Transfer(responseHints, responseBuffer, Transfer::FROM_DEVICE, 2);
@@ -88,8 +88,8 @@ throw (ProtocolException) {
     /* FIXME: this is known to be safe for now, but should really do an explicit
      * check for type safety.
      */
-    ByteVector *resp = (ByteVector *)xfer;
-    vector<byte> raw = resp->getByteVector();
+    byte_Vector *resp = (byte_Vector *)xfer;
+    vector<byte_> raw = resp->getbyte_Vector();
 
     /* Need to put this into a short to preserve the sign bit */
     counts = ((raw[1] << 8) & 0xFF00) | (raw[0] & 0x00FF);

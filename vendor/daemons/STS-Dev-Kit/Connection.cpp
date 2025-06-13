@@ -55,7 +55,7 @@ void Connection::Close() {
 /* Read a command/request over the socket and return it as as a command/arguments pair expected by the request handlers.
 */
 std::pair<unsigned short, std::string> Connection::GetRequest() {
-    // Read from the socket. The first 2 bytes are the command, the next 2 the size of any following
+    // Read from the socket. The first 2 byte_s are the command, the next 2 the size of any following
     // parameters. If there are parameters, read them too. Put the command and parameters into a pair
     // and return.
     m_buffer.resize(ms_requestSize);

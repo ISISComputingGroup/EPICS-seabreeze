@@ -9,7 +9,7 @@
  * A Device is intended to represent a single discrete
  * piece of equipment that may have several capabilities
  * (features) inside.  The device may communicate to the
- * outside world via seqences of bytes (a protocol) that
+ * outside world via seqences of byte_s (a protocol) that
  * are transferred across a physical medium (the bus).
  *
  * LICENSE:

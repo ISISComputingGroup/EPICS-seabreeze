@@ -123,7 +123,7 @@ typedef enum _USB_CONTROLLER_FLAVOR {
 #define USB_DEFAULT_ENDPOINT_ADDRESS   0
 
 //
-// max packet size (bytes) for default endpoint
+// max packet size (byte_s) for default endpoint
 // until SET_ADDRESS command is received.
 //
 
@@ -600,7 +600,7 @@ typedef struct _USBD_PIPE_INFORMATION {
     // These fields are filled in by the client driver
     //
     ULONG MaximumTransferSize; // Maximum size for a single request
-                               // in bytes.
+                               // in byte_s.
     ULONG PipeFlags;
 } USBD_PIPE_INFORMATION, *PUSBD_PIPE_INFORMATION;
 
@@ -887,8 +887,8 @@ struct _URB_OS_FEATURE_DESCRIPTOR_REQUEST {
     UCHAR   Recipient:5;                // Recipient {Device,Interface,Endpoint}
     UCHAR   Reserved1:3;
     UCHAR   Reserved2;
-    UCHAR   InterfaceNumber;            // wValue - high byte
-    UCHAR   MS_PageIndex;               // wValue - low byte
+    UCHAR   InterfaceNumber;            // wValue - high byte_
+    UCHAR   MS_PageIndex;               // wValue - low byte_
     USHORT  MS_FeatureDescriptorIndex;  // wIndex field
     USHORT  Reserved3;
 };

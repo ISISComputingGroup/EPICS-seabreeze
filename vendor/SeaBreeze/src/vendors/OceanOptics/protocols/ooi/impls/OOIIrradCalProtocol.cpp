@@ -35,7 +35,7 @@
 #include "vendors/OceanOptics/protocols/ooi/impls/OOIIrradCalProtocol.h"
 #include "vendors/OceanOptics/protocols/ooi/exchanges/OOIReadIrradCalExchange.h"
 #include "vendors/OceanOptics/protocols/ooi/impls/OOIProtocol.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;
@@ -75,8 +75,8 @@ vector<float> *OOIIrradCalProtocol::readIrradCal(const Bus &bus)
     /* FIXME: this cast is known to be safe for now, but this needs
      * to do some sort of check to make sure the cast is valid.
      */
-    ByteVector *bv = static_cast<ByteVector *>(result);
-    vector<byte> raw = bv->getByteVector();
+    byte_Vector *bv = static_cast<byte_Vector *>(result);
+    vector<byte_> raw = bv->getbyte_Vector();
     vector<float> *retval = new vector<float>;
 
     for(unsigned int i = 0; i < raw.size(); i += 4) {

@@ -35,7 +35,7 @@
 #include "vendors/OceanOptics/protocols/ooi/exchanges/ReadEEPROMSlotExchange.h"
 #include "vendors/OceanOptics/protocols/ooi/exchanges/WriteEEPROMSlotExchange.h"
 #include "vendors/OceanOptics/protocols/ooi/impls/OOIProtocol.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/exceptions/ProtocolBusMismatchException.h"
 
 using namespace seabreeze;
@@ -50,10 +50,10 @@ OOIEEPROMProtocol::~OOIEEPROMProtocol() {
 
 }
 
-vector<byte> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
+vector<byte_> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
         throw (ProtocolException) {
 
-    ByteVector *bv = NULL;
+    byte_Vector *bv = NULL;
     Data *result = NULL;
 
     ReadEEPROMSlotExchange xchange(slot);
@@ -72,11 +72,11 @@ vector<byte> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
         throw ProtocolException(error);
     }
 
-    bv = static_cast<ByteVector *>(result);
+    bv = static_cast<byte_Vector *>(result);
 
-    // strip off leading two bytes (echoed request)
-    vector<byte> raw = bv->getByteVector();
-    vector<byte> *retval = new vector<byte>(raw.size() - 2);
+    // strip off leading two byte_s (echoed request)
+    vector<byte_> raw = bv->getbyte_Vector();
+    vector<byte_> *retval = new vector<byte_>(raw.size() - 2);
     memcpy(&((*retval)[0]), &(raw[2]), retval->size());
 
     delete result; /* a.k.a. bv */
@@ -84,7 +84,7 @@ vector<byte> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
     return retval;
 }
 
-int OOIEEPROMProtocol::writeEEPROMSlot(const Bus &bus, int slot, const vector<byte> &data)
+int OOIEEPROMProtocol::writeEEPROMSlot(const Bus &bus, int slot, const vector<byte_> &data)
         throw (ProtocolException) {
 
     WriteEEPROMSlotExchange xchange(slot, data);

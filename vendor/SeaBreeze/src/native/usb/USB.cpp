@@ -100,13 +100,13 @@ bool USB::close() {
     return retval;
 }
 
-int USB::write(int endpoint, void *data, unsigned int length_bytes) {
+int USB::write(int endpoint, void *data, unsigned int length_byte_s) {
 
     int flag = 0;
 
     if(true == this->verbose) {
-        // set 'true' for hexdump of output bytes BEFORE actual USB transfer
-        this->describeTransfer(">>", length_bytes, data, endpoint, false); 
+        // set 'true' for hexdump of output byte_s BEFORE actual USB transfer
+        this->describeTransfer(">>", length_byte_s, data, endpoint, false); 
     }
 
     if(NULL == this->descriptor || false == this->opened) {
@@ -117,29 +117,29 @@ int USB::write(int endpoint, void *data, unsigned int length_bytes) {
         return -1;
     }
 
-    flag = USBWrite(this->descriptor, (unsigned char)endpoint, (char *)data, (int)length_bytes);
+    flag = USBWrite(this->descriptor, (unsigned char)endpoint, (char *)data, (int)length_byte_s);
 
     if(flag < 0) {
         /* FIXME: throw an exception here */
         if(true == this->verbose) {
-            fprintf(stderr, "Warning: got error %d while trying to write %d bytes over USB endpoint %d\n",
-                    flag, length_bytes, endpoint);
+            fprintf(stderr, "Warning: got error %d while trying to write %d byte_s over USB endpoint %d\n",
+                    flag, length_byte_s, endpoint);
         }
         return -1;
     }
 
     if(true == this->verbose) {
-        this->usbHexDump(data, length_bytes, endpoint);
+        this->usbHexDump(data, length_byte_s, endpoint);
     }
 
     return flag;
 }
 
-int USB::read(int endpoint, void *data, unsigned int length_bytes) {
+int USB::read(int endpoint, void *data, unsigned int length_byte_s) {
     int flag = 0;
 
     if(true == this->verbose) {
-        this->describeTransfer("<<", length_bytes, data, endpoint, false);
+        this->describeTransfer("<<", length_byte_s, data, endpoint, false);
     }
 
     if(NULL == this->descriptor || false == this->opened) {
@@ -150,19 +150,19 @@ int USB::read(int endpoint, void *data, unsigned int length_bytes) {
         return -1;
     }
 
-    flag = USBRead(this->descriptor, (unsigned char)endpoint, (char *)data, (int)length_bytes);
+    flag = USBRead(this->descriptor, (unsigned char)endpoint, (char *)data, (int)length_byte_s);
 
     if(flag < 0) {
         /* FIXME: throw an exception here */
         if(true == this->verbose) {
-            fprintf(stderr, "Warning: got error %d while trying to read %d bytes over USB endpoint %d\n",
-                    flag, length_bytes, endpoint);
+            fprintf(stderr, "Warning: got error %d while trying to read %d byte_s over USB endpoint %d\n",
+                    flag, length_byte_s, endpoint);
         }
         return -1;
     }
 
     if(true == this->verbose) {
-        this->usbHexDump(data, length_bytes, endpoint);
+        this->usbHexDump(data, length_byte_s, endpoint);
     }
 
     return flag;
@@ -301,7 +301,7 @@ int USB::getMaxPacketSize() {
 /* Debugging methods */
 void USB::usbHexDump(void *x, int length, int endpoint) {
     /* FIXME: put in a system-independent timestamp here with usec resolution */
-    fprintf(stderr, "Endpoint 0x%02X transferred %d bytes %s:\n",
+    fprintf(stderr, "Endpoint 0x%02X transferred %d byte_s %s:\n",
             endpoint, length, endpoint & 0x80 ? "in" : "out");
 
     this->hexDump(x, length);
@@ -337,7 +337,7 @@ void USB::hexDump(void *x, int length) {
 
 void USB::describeTransfer(const char *label, int length, void *data, int endpoint, bool hexdump) {
     /* FIXME: put in a system-independent timestamp here with usec resolution */
-    fprintf(stderr, "%s Transferring %d bytes via endpoint 0x%02X:",
+    fprintf(stderr, "%s Transferring %d byte_s via endpoint 0x%02X:",
             label, length, endpoint);
     if (hexdump)
     {

@@ -50,29 +50,29 @@ namespace seabreeze {
             */
             class Base {
             public:
-                static const byte FIRMWARE_VERSION;
-                static const byte SINGLE_STROBE_HIGH_CLOCK_TRANSITION_DELAY_COUNT;
-                static const byte SINGLE_STROBE_LOW_CLOCK_TRANSITION_DELAY_COUNT;
-                static const byte LAMP_ENABLE;
-                static const byte GPIO_MUX_REGISTER;
-                static const byte GPIO_OUTPUT_ENABLE;
-                static const byte GPIO_DATA_REGISTER;
-                static const byte OFFSET_VALUE;
-                static const byte OFFSET_CONTROL;
-                static const byte MAXIMUM_SATURATION_LEVEL;
+                static const byte_ FIRMWARE_VERSION;
+                static const byte_ SINGLE_STROBE_HIGH_CLOCK_TRANSITION_DELAY_COUNT;
+                static const byte_ SINGLE_STROBE_LOW_CLOCK_TRANSITION_DELAY_COUNT;
+                static const byte_ LAMP_ENABLE;
+                static const byte_ GPIO_MUX_REGISTER;
+                static const byte_ GPIO_OUTPUT_ENABLE;
+                static const byte_ GPIO_DATA_REGISTER;
+                static const byte_ OFFSET_VALUE;
+                static const byte_ OFFSET_CONTROL;
+                static const byte_ MAXIMUM_SATURATION_LEVEL;
 
             };
 
             class V1 : public Base {
             public:
-                static const byte CONTINUOUS_STROBE_TIMER_INTERVAL_DIVISOR;
-                static const byte CONTINUOUS_STROBE_BASE_CLOCK_DIVISOR;
+                static const byte_ CONTINUOUS_STROBE_TIMER_INTERVAL_DIVISOR;
+                static const byte_ CONTINUOUS_STROBE_BASE_CLOCK_DIVISOR;
             };
 
             class V3 : public Base {
             public:
-                static const byte CONTINUOUS_STROBE_TIMER_MSB;
-                static const byte CONTINUOUS_STROBE_TIMER_LSB;
+                static const byte_ CONTINUOUS_STROBE_TIMER_MSB;
+                static const byte_ CONTINUOUS_STROBE_TIMER_LSB;
             };
         }
     }

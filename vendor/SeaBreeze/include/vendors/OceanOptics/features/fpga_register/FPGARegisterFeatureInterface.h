@@ -39,9 +39,9 @@ namespace seabreeze {
     class FPGARegisterFeatureInterface {
     public:
         virtual ~FPGARegisterFeatureInterface() = 0;
-        virtual unsigned int readRegister(const Bus &bus, byte address)
+        virtual unsigned int readRegister(const Bus &bus, byte_ address)
                 noexcept(false) = 0;
-        virtual void writeRegister(const Bus &bus, byte address, unsigned int value)
+        virtual void writeRegister(const Bus &bus, byte_ address, unsigned int value)
                 noexcept(false) = 0;
         virtual unsigned char getMajorVersion(const Bus &bus)
                 noexcept(false) = 0;

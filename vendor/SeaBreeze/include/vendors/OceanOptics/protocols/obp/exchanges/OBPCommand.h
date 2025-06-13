@@ -45,7 +45,7 @@ namespace seabreeze {
 
         protected:
             int messageType;
-            std::vector<byte> payload;
+            std::vector<byte_> payload;
         };
     }
 }

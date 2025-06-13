@@ -4,8 +4,8 @@
  * @author  Ocean Optics, Inc.
  *
  * All messages in the Ocean Binary Protocol begin with
- * a standard 64-byte header.  It is always safe to read
- * 64 bytes for the start of a new transfer from a device
+ * a standard 64-byte_ header.  It is always safe to read
+ * 64 byte_s for the start of a new transfer from a device
  * that supports this protocol, which works nicely with
  * the USB minimum packet size.
  *
@@ -67,12 +67,12 @@ const vector<ProtocolHint *> &OBPTransaction::getHints() {
     return *(this->hints);
 }
 
-vector<byte> *OBPTransaction::queryDevice(TransferHelper *helper,
+vector<byte_> *OBPTransaction::queryDevice(TransferHelper *helper,
                     unsigned int messageType,
-                    vector<byte> &data) throw (ProtocolException) {
+                    vector<byte_> &data) throw (ProtocolException) {
     int flag = 0;
-    vector<byte> *bytes = NULL;
-    vector<byte> *fullVector = NULL;
+    vector<byte_> *byte_s = NULL;
+    vector<byte_> *fullVector = NULL;
     OBPMessage *message = new OBPMessage();
     OBPMessage *response = NULL;
 
@@ -80,17 +80,17 @@ vector<byte> *OBPTransaction::queryDevice(TransferHelper *helper,
 
     /* Need a copy of the input data that can be given to the message. */
     /* Note: copy will be deleted by message when appropriate. */
-    message->setData(new vector<byte>(data));
+    message->setData(new vector<byte_>(data));
 
     try {
-        bytes = message->toByteStream();
-        flag = helper->send(*bytes, (unsigned) bytes->size());
-        if(((unsigned int)flag) != bytes->size()) {
+        byte_s = message->tobyte_Stream();
+        flag = helper->send(*byte_s, (unsigned) byte_s->size());
+        if(((unsigned int)flag) != byte_s->size()) {
             /* FIXME: retry, throw exception, something here */
         }
     } catch (BusException &be) {
-        if(NULL != bytes) {
-            delete bytes;
+        if(NULL != byte_s) {
+            delete byte_s;
         }
         delete message;
         string error("Failed to write to bus.");
@@ -100,29 +100,29 @@ vector<byte> *OBPTransaction::queryDevice(TransferHelper *helper,
     }
 
     delete message;
-    delete bytes;
-    bytes = NULL;
+    delete byte_s;
+    byte_s = NULL;
 
     try {
-        /* Read the 64-byte OBP header.  This may indicate that more data
+        /* Read the 64-byte_ OBP header.  This may indicate that more data
          * must be absorbed afterwards.
          */
-        bytes = new vector<byte>(64);
-        flag = helper->receive(*bytes, (unsigned) bytes->size());
-        if(((unsigned int)flag) != bytes->size()) {
+        byte_s = new vector<byte_>(64);
+        flag = helper->receive(*byte_s, (unsigned) byte_s->size());
+        if(((unsigned int)flag) != byte_s->size()) {
             /* FIXME: retry, throw exception, something here */
         }
 
         /* Parse out the header and see if there is an extended payload. */
         try {
-            response = OBPMessage::parseHeaderFromByteStream(bytes);
+            response = OBPMessage::parseHeaderFrombyte_Stream(byte_s);
         } catch (IllegalArgumentException &iae) {
             response = NULL;
         }
         if(NULL == response || true == response->isNackFlagSet()
                 || response->getMessageType() != messageType) {
-            if(NULL != bytes) {
-                delete bytes;
+            if(NULL != byte_s) {
+                delete byte_s;
             }
 
             if(NULL != response) {
@@ -135,39 +135,39 @@ vector<byte> *OBPTransaction::queryDevice(TransferHelper *helper,
              */
             return NULL;
         }
-        unsigned int bytesToRead = response->getBytesRemaining() - 20; /* omit footer and checksum */
-        if(bytesToRead > 0) {
-            fullVector = new vector<byte>(bytesToRead + bytes->size());
+        unsigned int byte_sToRead = response->getbyte_sRemaining() - 20; /* omit footer and checksum */
+        if(byte_sToRead > 0) {
+            fullVector = new vector<byte_>(byte_sToRead + byte_s->size());
             /* Safely stl::copy() the header into a full-sized block and
              * delete the existing buffer
              */
-            vector<byte>::iterator iter = copy(bytes->begin(), bytes->end(), fullVector->begin());
-            delete bytes;
-            bytes = NULL;
+            vector<byte_>::iterator iter = copy(byte_s->begin(), byte_s->end(), fullVector->begin());
+            delete byte_s;
+            byte_s = NULL;
             /* TransferHelper expects a vector, so create a new one for it */
-            vector<byte> *remainder = new vector<byte>(bytesToRead);
+            vector<byte_> *remainder = new vector<byte_>(byte_sToRead);
             flag = helper->receive(*remainder, (unsigned) remainder->size());
-            if(((unsigned int)flag) != bytesToRead) {
+            if(((unsigned int)flag) != byte_sToRead) {
                 /* FIXME: retry, throw exception, something here */
             }
             copy(remainder->begin(), remainder->end(), iter);
             delete remainder;
         } else {
-            fullVector = bytes;
-            bytes = NULL;  /* To prevent double deletion */
+            fullVector = byte_s;
+            byte_s = NULL;  /* To prevent double deletion */
         }
         /* Delete and recreate response using the full message */
         delete response;
         try {
-            response = OBPMessage::parseByteStream(fullVector);
+            response = OBPMessage::parsebyte_Stream(fullVector);
         } catch (IllegalArgumentException &iae) {
             response = NULL;
         }
         delete fullVector;
         fullVector = NULL;
     } catch (BusException &be) {
-        if(NULL != bytes) {
-            delete bytes;
+        if(NULL != byte_s) {
+            delete byte_s;
         }
         if(NULL != fullVector) {
             delete fullVector;
@@ -188,20 +188,20 @@ vector<byte> *OBPTransaction::queryDevice(TransferHelper *helper,
     }
 
     /* Make a copy of the response buffer so response can be deleted */
-    bytes = new vector<byte>(*response->getData());
+    byte_s = new vector<byte_>(*response->getData());
     
     delete response;
-    return bytes;
+    return byte_s;
 }
 
 
 bool OBPTransaction::sendCommandToDevice(TransferHelper *helper,
                     unsigned int messageType,
-                    vector<byte> &data) throw (ProtocolException) {
+                    vector<byte_> &data) throw (ProtocolException) {
 
     bool retval = false;
     int flag = 0;
-    vector<byte> *bytes = NULL;
+    vector<byte_> *byte_s = NULL;
     OBPMessage *message = new OBPMessage();
     OBPMessage *response = NULL;
 
@@ -210,17 +210,17 @@ bool OBPTransaction::sendCommandToDevice(TransferHelper *helper,
 
     /* Need a copy of the input data that can be given to the message. */
     /* Note: copy will be deleted by message when appropriate. */
-    message->setData(new vector<byte>(data));
+    message->setData(new vector<byte_>(data));
 
     try {
-        bytes = message->toByteStream();
-        flag = helper->send(*bytes, (unsigned) bytes->size());
-        if(((unsigned int)flag) != bytes->size()) {
+        byte_s = message->tobyte_Stream();
+        flag = helper->send(*byte_s, (unsigned) byte_s->size());
+        if(((unsigned int)flag) != byte_s->size()) {
             /* FIXME: retry, throw exception, something here */
         }
     } catch (BusException &be) {
-        if(NULL != bytes) {
-            delete bytes;
+        if(NULL != byte_s) {
+            delete byte_s;
         }
         delete message;
         string error("Failed to write to bus.");
@@ -230,26 +230,26 @@ bool OBPTransaction::sendCommandToDevice(TransferHelper *helper,
     }
 
     delete message;
-    delete bytes;
-    bytes = NULL;
+    delete byte_s;
+    byte_s = NULL;
 
     try {
-        /* Read the 64-byte OBP header. */
-        bytes = new vector<byte>(64);
-        flag = helper->receive(*bytes, (unsigned) bytes->size());
-        if(((unsigned int)flag) != bytes->size()) {
+        /* Read the 64-byte_ OBP header. */
+        byte_s = new vector<byte_>(64);
+        flag = helper->receive(*byte_s, (unsigned) byte_s->size());
+        if(((unsigned int)flag) != byte_s->size()) {
             /* FIXME: retry, throw exception, something here */
         }
 
         /* Parse out the header. */
         try {
-            response = OBPMessage::parseHeaderFromByteStream(bytes);
+            response = OBPMessage::parseHeaderFrombyte_Stream(byte_s);
         } catch (IllegalArgumentException &iae) {
             response = NULL;
         }
     } catch (BusException &be) {
-        if(NULL != bytes) {
-            delete bytes;
+        if(NULL != byte_s) {
+            delete byte_s;
         }
         string error("Failed to read from bus.");
         /* FIXME: previous exception should probably be bundled up into the new exception */
@@ -257,7 +257,7 @@ bool OBPTransaction::sendCommandToDevice(TransferHelper *helper,
         throw ProtocolException(error);
     }
 
-    delete bytes;
+    delete byte_s;
 
     if(NULL == response || true == response->isNackFlagSet()
             || response->getMessageType() != messageType) {

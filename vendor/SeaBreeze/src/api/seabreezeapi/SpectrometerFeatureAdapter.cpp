@@ -61,7 +61,7 @@ SpectrometerFeatureAdapter::~SpectrometerFeatureAdapter() {
 int SpectrometerFeatureAdapter::getUnformattedSpectrum(int *errorCode,
                     unsigned char *buffer, int bufferLength) {
     vector<unsigned char> *spectrum;
-    int bytesCopied = 0;
+    int byte_sCopied = 0;
 
     if(NULL == buffer) {
         SET_ERROR_CODE(ERROR_BAD_USER_BUFFER);
@@ -71,9 +71,9 @@ int SpectrometerFeatureAdapter::getUnformattedSpectrum(int *errorCode,
     try {
         spectrum = this->feature->getUnformattedSpectrum(*this->protocol,
             *this->bus);
-        int bytes = (int) spectrum->size();
-        bytesCopied = (bytes < bufferLength) ? bytes : bufferLength;
-        memcpy(buffer, &((*spectrum)[0]), bytesCopied * sizeof (unsigned char));
+        int byte_s = (int) spectrum->size();
+        byte_sCopied = (byte_s < bufferLength) ? byte_s : bufferLength;
+        memcpy(buffer, &((*spectrum)[0]), byte_sCopied * sizeof (unsigned char));
         delete spectrum;
         SET_ERROR_CODE(ERROR_SUCCESS);
     } catch (FeatureException &fe) {
@@ -81,7 +81,7 @@ int SpectrometerFeatureAdapter::getUnformattedSpectrum(int *errorCode,
         return 0;
     }
 
-    return bytesCopied;
+    return byte_sCopied;
 }
 
 

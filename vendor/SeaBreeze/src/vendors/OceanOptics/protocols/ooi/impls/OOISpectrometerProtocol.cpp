@@ -31,7 +31,7 @@
 #include <string>
 #include "vendors/OceanOptics/protocols/ooi/impls/OOISpectrometerProtocol.h"
 #include "vendors/OceanOptics/protocols/ooi/impls/OOIProtocol.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include "common/Data.h"
 #include "common/UShortVector.h"
 #include "common/DoubleVector.h"
@@ -64,7 +64,7 @@ OOISpectrometerProtocol::~OOISpectrometerProtocol() {
     delete this->triggerModeExchange;
 }
 
-vector<byte> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
+vector<byte_> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
         throw (ProtocolException) {
     LOG(__FUNCTION__);
 
@@ -87,9 +87,9 @@ vector<byte> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
         throw ProtocolException(error);
     }
 
-    ByteVector *bv = static_cast<ByteVector *>(result);
+    byte_Vector *bv = static_cast<byte_Vector *>(result);
 
-    vector<byte> *retval = new vector<byte > (bv->getByteVector());
+    vector<byte_> *retval = new vector<byte_ > (bv->getbyte_Vector());
 
     delete result;
 

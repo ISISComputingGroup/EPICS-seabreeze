@@ -47,13 +47,13 @@ namespace seabreeze {
         virtual ~BlazeUSBTransferHelper();
 
         /* Inherited */
-        virtual int receive(std::vector<byte> &buffer, unsigned int length)
+        virtual int receive(std::vector<byte_> &buffer, unsigned int length)
             noexcept(false);
-        virtual int send(const std::vector<byte> &buffer, unsigned int length) const
+        virtual int send(const std::vector<byte_> &buffer, unsigned int length) const
             noexcept(false);
         
     private:
-        static const int WORD_SIZE_BYTES;
+        static const int WORD_SIZE_byte_S;
     };
 
 }

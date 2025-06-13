@@ -8,7 +8,7 @@ Module Name:
 
 Abstract:
 
-    This file turns 1 byte packing of structures on.  (That is, it disables
+    This file turns 1 byte_ packing of structures on.  (That is, it disables
     automatic alignment of structure fields.)  An include file is needed
     because various compilers do this in different ways.  For Microsoft
     compatible compilers, this files uses the push option to the pack pragma

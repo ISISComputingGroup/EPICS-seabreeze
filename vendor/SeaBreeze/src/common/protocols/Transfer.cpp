@@ -29,7 +29,7 @@
 
 #include "common/globals.h"
 #include "common/protocols/Transfer.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 #include <string>
 
 #ifdef _WINDOWS
@@ -42,7 +42,7 @@ using namespace std;
 const direction_t Transfer::TO_DEVICE = 1;
 const direction_t Transfer::FROM_DEVICE = 2;
 
-Transfer::Transfer(vector<ProtocolHint *> *hints, vector<byte> *buffer,
+Transfer::Transfer(vector<ProtocolHint *> *hints, vector<byte_> *buffer,
         direction_t direction, unsigned int length) : Exchange(hints) {
     this->buffer = buffer;
     this->direction = direction;
@@ -57,7 +57,7 @@ Transfer::Transfer(vector<ProtocolHint *> *hints, vector<byte> *buffer,
  * they can be used, they are not really suitable for the initializer list.
  */
 Transfer::Transfer() {
-    this->buffer = new vector<byte>;
+    this->buffer = new vector<byte_>;
     this->length = 0;
 
     checkBufferSize();
@@ -108,7 +108,7 @@ Data *Transfer::transfer(TransferHelper *helper) throw (ProtocolException) {
          * method then expects the buffer to be filled in with
          * something useful).  Yes, this incurs overhead, but not much.
          */
-        ByteVector *retval = new ByteVector(*(this->buffer));
+        byte_Vector *retval = new byte_Vector(*(this->buffer));
         return retval;
     } else {
         string error("Invalid transfer direction specified.");

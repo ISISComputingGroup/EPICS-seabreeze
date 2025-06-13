@@ -126,12 +126,12 @@ bool RS232::close() {
     return retval;
 }
 
-int RS232::write(void *data, unsigned int length_bytes) {
+int RS232::write(void *data, unsigned int length_byte_s) {
 
     int flag = 0;
 
     if(true == this->verbose) {
-        this->describeTransfer(length_bytes, true);
+        this->describeTransfer(length_byte_s, true);
     }
 
     if(NULL == this->descriptor || false == this->opened) {
@@ -142,29 +142,29 @@ int RS232::write(void *data, unsigned int length_bytes) {
         return -1;
     }
 
-    flag = RS232Write(this->descriptor, (char *)data, (int)length_bytes);
+    flag = RS232Write(this->descriptor, (char *)data, (int)length_byte_s);
 
     if(flag < 0) {
         /* FIXME: throw an exception here */
         if(true == this->verbose) {
-            fprintf(stderr, "Warning: got error %d while trying to write %d bytes via RS232\n",
-                    flag, length_bytes);
+            fprintf(stderr, "Warning: got error %d while trying to write %d byte_s via RS232\n",
+                    flag, length_byte_s);
         }
         return -1;
     }
 
     if(true == this->verbose) {
-        this->rs232HexDump(data, length_bytes, true);
+        this->rs232HexDump(data, length_byte_s, true);
     }
 
     return flag;
 }
 
-int RS232::read(void *data, unsigned int length_bytes) {
+int RS232::read(void *data, unsigned int length_byte_s) {
     int flag = 0;
 
     if(true == this->verbose) {
-        this->describeTransfer(length_bytes, false);
+        this->describeTransfer(length_byte_s, false);
     }
 
     if(NULL == this->descriptor || false == this->opened) {
@@ -175,19 +175,19 @@ int RS232::read(void *data, unsigned int length_bytes) {
         return -1;
     }
 
-    flag = RS232Read(this->descriptor, (char *)data, (int)length_bytes);
+    flag = RS232Read(this->descriptor, (char *)data, (int)length_byte_s);
 
     if(flag < 0) {
         /* FIXME: throw an exception here */
         if(true == this->verbose) {
-            fprintf(stderr, "Warning: got error %d while trying to read %d bytes via RS232\n",
-                    flag, length_bytes);
+            fprintf(stderr, "Warning: got error %d while trying to read %d byte_s via RS232\n",
+                    flag, length_byte_s);
         }
         return -1;
     }
 
     if(true == this->verbose) {
-        this->rs232HexDump(data, length_bytes, false);
+        this->rs232HexDump(data, length_byte_s, false);
     }
 
     return flag;
@@ -201,7 +201,7 @@ bool RS232::isOpened() {
 /* Debugging methods */
 void RS232::rs232HexDump(void *x, int length, bool out) {
     /* FIXME: put in a system-independent timestamp here with usec resolution */
-    fprintf(stderr, "RS232 transferred %d bytes %s:\n",
+    fprintf(stderr, "RS232 transferred %d byte_s %s:\n",
                 length, out ? "out" : "in");
 
     this->hexDump(x, length);
@@ -237,7 +237,7 @@ void RS232::hexDump(void *x, int length) {
 
 void RS232::describeTransfer(int length, bool out) {
     /* FIXME: put in a system-independent timestamp here with usec resolution */
-    fprintf(stderr, "Transferring %d bytes %s\n",
+    fprintf(stderr, "Transferring %d byte_s %s\n",
             length, out ? "out" : "in");
     fflush(stderr);
 }

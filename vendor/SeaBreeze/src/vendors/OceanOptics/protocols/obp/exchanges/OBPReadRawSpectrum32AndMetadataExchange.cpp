@@ -32,7 +32,7 @@
 #include "vendors/OceanOptics/protocols/obp/hints/OBPSpectrumHint.h"
 #include "vendors/OceanOptics/protocols/obp/constants/OBPMessageTypes.h"
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPMessage.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::oceanBinaryProtocol;
@@ -87,7 +87,7 @@ Data *OBPReadRawSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
         throw (ProtocolException) {
     Data *xfer;
     OBPMessage *message = NULL;
-    vector<byte> *bytes;
+    vector<byte_> *byte_s;
 
     /* This will use the superclass to transfer data from the device
      */
@@ -106,7 +106,7 @@ Data *OBPReadRawSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
      * if the message is badly formed.
      */
     try {
-        message = OBPMessage::parseByteStream(this->buffer);
+        message = OBPMessage::parsebyte_Stream(this->buffer);
     } catch (IllegalArgumentException &iae) {
         string error("Failed to parse message transferred from device");
         throw ProtocolException(error);
@@ -122,14 +122,14 @@ Data *OBPReadRawSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
      * off the metadata.  It might be desirable to stuff the metadata into the
      * resulting Data instance for later use.
      */
-    bytes = message->getData();
-    if(bytes->size() < (this->numberOfPixels * 4) + METADATA_LENGTH) {
+    byte_s = message->getData();
+    if(byte_s->size() < (this->numberOfPixels * 4) + METADATA_LENGTH) {
         string error("Spectrum response does not have enough data.");
         delete message;
         throw ProtocolException(error);
     }
     /* This incurs a copy of the buffer so it is safe to delete the message. */
-    ByteVector *retval = new ByteVector(*bytes);
+    byte_Vector *retval = new byte_Vector(*byte_s);
     delete message;
 
     return retval;

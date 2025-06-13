@@ -39,7 +39,7 @@ using namespace std;
 
 OBPRequestBufferedSpectrum32AndMetadataExchange::OBPRequestBufferedSpectrum32AndMetadataExchange() {
     OBPMessage message;
-    vector<byte> *stream;
+    vector<byte_> *stream;
     unsigned int i;
 
     this->hints->push_back(new OBPSpectrumHint());
@@ -47,7 +47,7 @@ OBPRequestBufferedSpectrum32AndMetadataExchange::OBPRequestBufferedSpectrum32And
     this->direction = Transfer::TO_DEVICE;
 
     message.setMessageType(OBPMessageTypes::OBP_GET_BUF_SPEC32_META);
-    stream = message.toByteStream();
+    stream = message.tobyte_Stream();
 
     this->length = (unsigned) stream->size();
     this->buffer->resize(stream->size());

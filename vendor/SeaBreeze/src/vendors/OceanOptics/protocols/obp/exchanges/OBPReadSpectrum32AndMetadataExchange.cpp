@@ -33,7 +33,7 @@
 
 #include "vendors/OceanOptics/protocols/obp/exchanges/OBPReadSpectrum32AndMetadataExchange.h"
 #include "common/U32Vector.h"
-#include "common/ByteVector.h"
+#include "common/byte_Vector.h"
 
 using namespace seabreeze;
 using namespace seabreeze::oceanBinaryProtocol;
@@ -51,10 +51,10 @@ OBPReadSpectrum32AndMetadataExchange::~OBPReadSpectrum32AndMetadataExchange() {
 Data *OBPReadSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
         throw (ProtocolException) {
     Data *xfer;
-    byte lswlsb;
-    byte lswmsb;
-    byte mswlsb;
-    byte mswmsb;
+    byte_ lswlsb;
+    byte_ lswmsb;
+    byte_ mswlsb;
+    byte_ mswmsb;
 
     /* This will use the superclass to transfer data from the device, and will
      * then strip off the message header and footer so that only the
@@ -67,24 +67,24 @@ Data *OBPReadSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
                         "possible to generate a valid formatted spectrum.");
         throw ProtocolException(error);
     }
-    /* xfer should contain a ByteVector */
+    /* xfer should contain a byte_Vector */
 
-    /* Extract the pixel data from the byte vector */
-    ByteVector *bv = static_cast<ByteVector *>(xfer);
-    vector<byte> bytes = bv->getByteVector();
+    /* Extract the pixel data from the byte_ vector */
+    byte_Vector *bv = static_cast<byte_Vector *>(xfer);
+    vector<byte_> byte_s = bv->getbyte_Vector();
 
     vector<uint32_t> formatted(this->numberOfPixels);
     for(unsigned int i = 0; i < this->numberOfPixels; i++) {
-        lswlsb = bytes[i * 4 + this->metadataLength];
-        lswmsb = bytes[(i * 4) + 1 + this->metadataLength];
-        mswlsb = bytes[(i * 4) + 2 + this->metadataLength];
-        mswmsb = bytes[(i * 4) + 3 + this->metadataLength];
+        lswlsb = byte_s[i * 4 + this->metadataLength];
+        lswmsb = byte_s[(i * 4) + 1 + this->metadataLength];
+        mswlsb = byte_s[(i * 4) + 2 + this->metadataLength];
+        mswmsb = byte_s[(i * 4) + 3 + this->metadataLength];
         formatted[i] =    ((mswmsb & 0x00FF) << 24)
                         | ((mswlsb & 0x00FF) << 16)
                         | ((lswmsb & 0x00FF) << 8)
                         |  (lswlsb & 0x00FF);
     }
-    delete xfer;  /* Equivalent to deleting bv and bytes */
+    delete xfer;  /* Equivalent to deleting bv and byte_s */
 
     U32Vector *retval = new U32Vector(formatted);
 

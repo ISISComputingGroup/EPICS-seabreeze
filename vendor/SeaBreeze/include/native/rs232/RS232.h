@@ -41,8 +41,8 @@ namespace seabreeze {
 
         bool open();
         bool close();
-        int write(void *data, unsigned int length_bytes);
-        int read(void *data, unsigned int length_bytes);
+        int write(void *data, unsigned int length_byte_s);
+        int read(void *data, unsigned int length_byte_s);
 
         void setVerbose(bool v);
         bool isOpened();
