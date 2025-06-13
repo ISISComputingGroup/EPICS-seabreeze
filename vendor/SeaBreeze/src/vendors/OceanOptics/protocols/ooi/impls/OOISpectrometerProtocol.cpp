@@ -89,7 +89,7 @@ vector<unsigned char> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bu
 
     ByteVector *bv = static_cast<ByteVector *>(result);
 
-    vector<unsigned char> *retval = new vector<byte > (bv->getByteVector());
+    vector<unsigned char> *retval = new vector<unsigned char> (bv->getByteVector());
 
     delete result;
 

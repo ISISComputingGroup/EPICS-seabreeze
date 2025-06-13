@@ -39,7 +39,7 @@ ByteVector::ByteVector() {
 }
 
 ByteVector::ByteVector(const vector<unsigned char> &that) {
-    this->data = new vector<byte > (that);
+    this->data = new vector<unsigned char> (that);
 }
 
 ByteVector::~ByteVector() {
