@@ -58,7 +58,7 @@ bool FeatureImpl::initialize(const Protocol &protocol, const Bus &bus)
 }
 
 ProtocolHelper *FeatureImpl::lookupProtocolImpl(const Protocol &protocol)
-        throw (FeatureProtocolNotFoundException) {
+        noexcept(false) {
 
     vector<ProtocolHelper *>::iterator iter;
     ProtocolHelper *retval = NULL;
