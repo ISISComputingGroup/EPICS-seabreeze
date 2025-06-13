@@ -35,10 +35,10 @@ using namespace seabreeze;
 using namespace std;
 
 ByteVector::ByteVector() {
-    this->data = new vector<byte>;
+    this->data = new vector<unsigned char>;
 }
 
-ByteVector::ByteVector(const vector<byte> &that) {
+ByteVector::ByteVector(const vector<unsigned char> &that) {
     this->data = new vector<byte > (that);
 }
 
@@ -57,6 +57,6 @@ vector<UnitDescriptor *> *ByteVector::getUnits() {
     return NULL;
 }
 
-vector<byte> &ByteVector::getByteVector() {
+vector<unsigned char> &ByteVector::getByteVector() {
     return *(this->data);
 }

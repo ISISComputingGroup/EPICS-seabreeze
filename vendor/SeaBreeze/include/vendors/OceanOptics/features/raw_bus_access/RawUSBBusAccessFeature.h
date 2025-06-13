@@ -42,10 +42,10 @@ namespace seabreeze {
     public:
         RawUSBBusAccessFeature();
         virtual ~RawUSBBusAccessFeature();
-        virtual std::vector<byte> readUSB(const USBInterface *bus, int endpoint,
+        virtual std::vector<unsigned char> readUSB(const USBInterface *bus, int endpoint,
             unsigned int length) noexcept(false);
         virtual int writeUSB(const USBInterface *bus, int endpoint,
-            const std::vector<byte> &data) noexcept(false);
+            const std::vector<unsigned char> &data) noexcept(false);
 
         /* Overriding from Feature */
         virtual FeatureFamily getFeatureFamily();

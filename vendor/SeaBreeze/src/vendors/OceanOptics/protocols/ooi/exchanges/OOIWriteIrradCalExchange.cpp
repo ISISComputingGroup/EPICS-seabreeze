@@ -75,7 +75,7 @@ int OOIWriteIrradCalExchange::setCalibration(const vector<float> &cal) {
         vector<ProtocolHint *> *requestHints = new vector<ProtocolHint *>;
 
         /* create buffer for holding the bytes of the request */
-        vector<byte> *requestBuffer = new vector<byte>;
+        vector<unsigned char> *requestBuffer = new vector<unsigned char>;
 
         /* resize the request buffer to hold a request */
         requestBuffer->resize(BLOCK_TRANSFER_SIZE + 3);

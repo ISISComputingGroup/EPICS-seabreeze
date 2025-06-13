@@ -80,7 +80,7 @@ Data *OBPReadRawSpectrumExchange::transfer(TransferHelper *helper)
         throw (ProtocolException) {
     Data *xfer;
     OBPMessage *message = NULL;
-    vector<byte> *bytes;
+    vector<unsigned char> *bytes;
 
     /* This will use the superclass to transfer data from the device
      */

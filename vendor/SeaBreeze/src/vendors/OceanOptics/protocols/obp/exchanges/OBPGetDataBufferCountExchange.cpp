@@ -50,7 +50,7 @@ unsigned long OBPGetDataBufferElementCountExchange::queryNumberOfElements(
         TransferHelper *helper) throw (ProtocolException) {
 
     unsigned long elementCount;
-    vector<byte> *result;
+    vector<unsigned char> *result;
 
     result = this->queryDevice(helper);
     if(NULL == result || result->size() < 4) {

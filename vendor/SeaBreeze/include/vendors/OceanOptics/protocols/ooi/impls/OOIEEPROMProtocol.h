@@ -42,10 +42,10 @@ namespace seabreeze {
     public:
         OOIEEPROMProtocol();
         virtual ~OOIEEPROMProtocol();
-        virtual std::vector<byte> *readEEPROMSlot(const Bus &bus, int slot)
+        virtual std::vector<unsigned char> *readEEPROMSlot(const Bus &bus, int slot)
                 throw (ProtocolException);
         virtual int writeEEPROMSlot(const Bus &bus, int slot,
-                const std::vector<byte> &data) throw (ProtocolException);
+                const std::vector<unsigned char> &data) throw (ProtocolException);
     };
   }
 }

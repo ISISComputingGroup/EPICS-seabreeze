@@ -51,9 +51,9 @@ namespace seabreeze {
         RS232TransferHelper(RS232 *rs232Descriptor);
         virtual ~RS232TransferHelper();
 
-        virtual int receive(std::vector<byte> &buffer, unsigned int length)
+        virtual int receive(std::vector<unsigned char> &buffer, unsigned int length)
             noexcept(false);
-        virtual int send(const std::vector<byte> &buffer, unsigned int length) const
+        virtual int send(const std::vector<unsigned char> &buffer, unsigned int length) const
             noexcept(false);
 
     protected:

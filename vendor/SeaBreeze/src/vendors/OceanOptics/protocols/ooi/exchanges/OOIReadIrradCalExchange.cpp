@@ -61,13 +61,13 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
         vector<ProtocolHint *> *responseHints = new vector<ProtocolHint *>;
 
         /* create buffer for bytes of response */
-        vector<byte> *responseBuffer = new vector<byte>;
+        vector<unsigned char> *responseBuffer = new vector<unsigned char>;
 
         /* resize the response buffer to hold 60 bytes */
         responseBuffer->resize(BLOCK_TRANSFER_SIZE);
 
         /* create buffer for holding the bytes of the request */
-        vector<byte> *requestBuffer = new vector<byte>;
+        vector<unsigned char> *requestBuffer = new vector<unsigned char>;
 
         /* resize the request buffer to hold a request */
         requestBuffer->resize(3);

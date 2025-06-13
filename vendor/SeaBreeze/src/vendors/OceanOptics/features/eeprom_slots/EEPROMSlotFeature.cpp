@@ -46,11 +46,11 @@ EEPROMSlotFeature::~EEPROMSlotFeature() {
 #ifdef _WINDOWS
 #pragma warning (disable: 4101) // unreferenced local variable
 #endif
-vector< vector<byte> * > *EEPROMSlotFeature::readAllEEPROMSlots(
+vector< vector<unsigned char> * > *EEPROMSlotFeature::readAllEEPROMSlots(
         const Protocol &protocol, const Bus &bus) noexcept(false) {
 
     unsigned int i;
-    vector< vector<byte> * > *retval = new vector< vector<byte> * >();
+    vector< vector<unsigned char> * > *retval = new vector< vector<unsigned char> * >();
 
     for(i = 0; i < this->numberOfSlots; i++) {
         try {
@@ -67,7 +67,7 @@ vector< vector<byte> * > *EEPROMSlotFeature::readAllEEPROMSlots(
     return retval;
 }
 
-vector<byte> *EEPROMSlotFeature::readEEPROMSlot(const Protocol &protocol,
+vector<unsigned char> *EEPROMSlotFeature::readEEPROMSlot(const Protocol &protocol,
         const Bus &bus, unsigned int slot)
         noexcept(false) {
 
@@ -81,7 +81,7 @@ vector<byte> *EEPROMSlotFeature::readEEPROMSlot(const Protocol &protocol,
 }
 
 int EEPROMSlotFeature::writeEEPROMSlot(const Protocol &protocol,
-        const Bus &bus, unsigned int slot, const vector<byte> &data)
+        const Bus &bus, unsigned int slot, const vector<unsigned char> &data)
         noexcept(false) {
 
     if(slot >= this->numberOfSlots) {

@@ -49,7 +49,7 @@ USBTransferHelper::~USBTransferHelper() {
 
 }
 
-int USBTransferHelper::receive(vector<byte> &buffer, unsigned int length)
+int USBTransferHelper::receive(vector<unsigned char> &buffer, unsigned int length)
         noexcept(false) {
     int retval = 0;
 
@@ -63,7 +63,7 @@ int USBTransferHelper::receive(vector<byte> &buffer, unsigned int length)
     return retval;
 }
 
-int USBTransferHelper::send(const vector<byte> &buffer, unsigned int length) const
+int USBTransferHelper::send(const vector<unsigned char> &buffer, unsigned int length) const
         noexcept(false) {
     int retval = 0;
 

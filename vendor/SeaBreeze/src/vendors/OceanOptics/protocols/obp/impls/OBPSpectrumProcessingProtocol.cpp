@@ -53,7 +53,7 @@ OBPSpectrumProcessingProtocol::~OBPSpectrumProcessingProtocol() {
 unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToAverage(const Bus &bus)
                 throw (ProtocolException) 
 {
-    vector<byte> *result = NULL;
+    vector<unsigned char> *result = NULL;
     unsigned short int scansToAverage;
     byte *bptr;
         
@@ -109,7 +109,7 @@ void OBPSpectrumProcessingProtocol::writeSpectrumProcessingScansToAverage(
 
 unsigned char OBPSpectrumProcessingProtocol::readSpectrumProcessingBoxcarWidth(const Bus &bus) throw (ProtocolException) 
 {
-    vector<byte> *result = NULL;
+    vector<unsigned char> *result = NULL;
     unsigned char boxcarWidth;
     
     OBPGetBoxcarWidthExchange xchange;

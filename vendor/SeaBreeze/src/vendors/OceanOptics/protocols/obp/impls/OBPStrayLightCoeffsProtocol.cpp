@@ -49,13 +49,13 @@ OBPStrayLightCoeffsProtocol::~OBPStrayLightCoeffsProtocol() {
 
 vector<double> *OBPStrayLightCoeffsProtocol::readStrayLightCoeffs(const Bus &bus)
                 throw (ProtocolException) {
-    vector<byte> *result = NULL;
+    vector<unsigned char> *result = NULL;
     unsigned int i;
     vector<double> *retval;
     float coeff;
     byte *bptr;
     int count = 0;
-    vector<byte> *countResult;
+    vector<unsigned char> *countResult;
 
     OBPGetStrayLightCoeffExchange xchange;
     OBPGetStrayLightCoeffsCountExchange countExchange;

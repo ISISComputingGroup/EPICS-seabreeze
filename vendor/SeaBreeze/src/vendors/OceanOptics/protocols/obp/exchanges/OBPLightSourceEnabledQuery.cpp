@@ -57,7 +57,7 @@ bool OBPLightSourceEnabledQuery::queryEnable(TransferHelper *helper)
             throw (ProtocolException) {
 
     bool retval;
-    vector<byte> *result;
+    vector<unsigned char> *result;
 
     this->payload[0] = (byte)this->moduleIndex;
     this->payload[1] = (byte)this->lightSourceIndex;

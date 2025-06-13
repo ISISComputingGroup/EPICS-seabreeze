@@ -71,7 +71,7 @@ Data *OBPReadSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
 
     /* Extract the pixel data from the byte vector */
     ByteVector *bv = static_cast<ByteVector *>(xfer);
-    vector<byte> bytes = bv->getByteVector();
+    vector<unsigned char> bytes = bv->getByteVector();
 
     vector<uint32_t> formatted(this->numberOfPixels);
     for(unsigned int i = 0; i < this->numberOfPixels; i++) {

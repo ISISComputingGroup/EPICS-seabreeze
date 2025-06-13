@@ -50,7 +50,7 @@ OBPRevisionProtocol::~OBPRevisionProtocol() {
 
 unsigned char OBPRevisionProtocol::readHardwareRevision(const Bus &bus) throw (ProtocolException) 
 {
-    vector<byte> *result = NULL;
+    vector<unsigned char> *result = NULL;
     unsigned char hardwareRevision;
     
     OBPGetHardwareRevisionExchange xchange;
@@ -79,7 +79,7 @@ unsigned char OBPRevisionProtocol::readHardwareRevision(const Bus &bus) throw (P
 
 unsigned short int OBPRevisionProtocol::readFirmwareRevision(const Bus &bus) throw (ProtocolException) 
 {
-    vector<byte> *result = NULL;
+    vector<unsigned char> *result = NULL;
     unsigned short int firmwareRevision;
     byte *bptr;
     
