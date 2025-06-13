@@ -381,7 +381,7 @@ void OBPMessage::setImmediateData(vector<unsigned char> *data) {
 }
 
 
-void OBPMessage::setImmediateDataLength(byte len) {
+void OBPMessage::setImmediateDataLength(unsigned char len) {
     this->immediateDataLength = len;
 }
 
