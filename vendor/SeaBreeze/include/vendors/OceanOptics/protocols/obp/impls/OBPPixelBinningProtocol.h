@@ -46,37 +46,37 @@ namespace seabreeze {
          * Get the pixel binning factor of the device.
          */
         virtual unsigned char readPixelBinningFactor(const Bus &bus)
-            throw (ProtocolException);
+            noexcept(false);
 
         /**
          * Set the pixel binning factor on the device.
          */
         virtual void writePixelBinningFactor(const Bus &bus, const unsigned char binningFactor)
-            throw (ProtocolException);
+            noexcept(false);
 
         /**
          * Get the default pixel binning factor of the device.
          */
         virtual unsigned char readDefaultPixelBinningFactor(const Bus &bus)
-            throw (ProtocolException);
+            noexcept(false);
 
         /**
          * Set the default pixel binning factor on the device.
          */
         virtual void writeDefaultPixelBinningFactor(const Bus &bus, const unsigned char binningFactor)
-            throw (ProtocolException);
+            noexcept(false);
 
         /**
          * Reset the default pixel binning factor on the device. This will reinstate the factory default of 0.
          */
         virtual void writeDefaultPixelBinningFactor(const Bus &bus)
-            throw (ProtocolException);
+            noexcept(false);
 
         /**
          * Get the maximum pixel binning factor of the device.
          */
         virtual unsigned char readMaxPixelBinningFactor(const Bus &bus)
-            throw (ProtocolException);
+            noexcept(false);
     };
   }
 }

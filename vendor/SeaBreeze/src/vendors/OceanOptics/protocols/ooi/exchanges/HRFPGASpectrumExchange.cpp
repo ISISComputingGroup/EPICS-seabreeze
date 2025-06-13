@@ -48,7 +48,7 @@ HRFPGASpectrumExchange::~HRFPGASpectrumExchange() {
 }
 
 Data *HRFPGASpectrumExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     unsigned int i;
     Data *xfer;
     byte_ lsb;

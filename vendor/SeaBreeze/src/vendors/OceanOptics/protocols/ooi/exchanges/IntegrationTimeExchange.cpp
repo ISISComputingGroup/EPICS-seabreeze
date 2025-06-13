@@ -68,7 +68,7 @@ void IntegrationTimeExchange::setIntegrationTimeMicros(
 }
 
 Data *IntegrationTimeExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     /* Note that it might be cleaner to populate the buffer when the integration
      * time is first written in, but this guarantees that it only happens once
      * per transfer.

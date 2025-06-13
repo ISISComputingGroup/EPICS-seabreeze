@@ -55,7 +55,7 @@ OBPIrradCalProtocol::~OBPIrradCalProtocol() {
 }
 
 vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPGetIrradCalExchange request;
 
@@ -95,7 +95,7 @@ vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
 
 
 int OBPIrradCalProtocol::writeIrradCal(const Bus &bus, const vector<float> &cal)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPSetIrradCalExchange command(this->pixelCountMaximum);
 
@@ -136,7 +136,7 @@ int OBPIrradCalProtocol::hasCollectionArea(const Bus &bus) {
 }
 
 float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPGetIrradCollectionAreaExchange request;
     float retval = 1.0;
@@ -178,7 +178,7 @@ float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
 
 
 void OBPIrradCalProtocol::writeCollectionArea(const Bus &bus, float area)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPSetIrradCollectionAreaExchange command;
 

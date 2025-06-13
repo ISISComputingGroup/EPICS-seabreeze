@@ -41,7 +41,7 @@ namespace seabreeze {
             virtual ~OBPQuery();
 
             using OBPTransaction::queryDevice;
-            virtual std::vector<byte_> *queryDevice(TransferHelper *helper) throw (ProtocolException) ;
+            virtual std::vector<byte_> *queryDevice(TransferHelper *helper) noexcept(false) ;
 
         protected:
             int messageType;

@@ -47,10 +47,10 @@ namespace seabreeze {
         virtual ~ContinuousStrobeProtocolInterface();
         virtual void setContinuousStrobePeriodMicroseconds(const Bus &bus,
             unsigned short strobe_id, unsigned long period_usec)
-            throw (ProtocolException) = 0;
+            noexcept(false) = 0;
         virtual void setContinuousStrobeEnable(const Bus &bus,
             unsigned short strobe_id, bool enable)
-            throw (ProtocolException) = 0;
+            noexcept(false) = 0;
     };
 
 }

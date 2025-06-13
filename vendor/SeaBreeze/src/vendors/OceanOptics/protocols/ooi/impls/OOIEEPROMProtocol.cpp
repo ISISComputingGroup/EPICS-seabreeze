@@ -51,7 +51,7 @@ OOIEEPROMProtocol::~OOIEEPROMProtocol() {
 }
 
 vector<byte_> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
-        throw (ProtocolException) {
+        noexcept(false) {
 
     byte_Vector *bv = NULL;
     Data *result = NULL;
@@ -85,7 +85,7 @@ vector<byte_> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
 }
 
 int OOIEEPROMProtocol::writeEEPROMSlot(const Bus &bus, int slot, const vector<byte_> &data)
-        throw (ProtocolException) {
+        noexcept(false) {
 
     WriteEEPROMSlotExchange xchange(slot, data);
 

@@ -94,7 +94,7 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
 }
 
 Data *OOIReadIrradCalExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     Data *xfer;
     byte_Vector *output = new byte_Vector();
     vector<Transfer *>::iterator iter = this->transfers.begin();

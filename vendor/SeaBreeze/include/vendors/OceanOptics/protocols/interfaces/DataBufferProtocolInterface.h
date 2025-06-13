@@ -47,28 +47,28 @@ namespace seabreeze {
         virtual ~DataBufferProtocolInterface();
 
         virtual void clearBuffer(const Bus &bus, unsigned char bufferIndex)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
 
         virtual unsigned long getNumberOfElements(const Bus &bus,
                 unsigned char bufferIndex)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
 
         virtual unsigned long getBufferCapacity(const Bus &bus,
                 unsigned char bufferIndex)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
 
         virtual unsigned long getBufferCapacityMinimum(const Bus &bus,
                 unsigned char bufferIndex)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
 
         virtual unsigned long getBufferCapacityMaximum(const Bus &bus,
                 unsigned char bufferIndex)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
 
         virtual void setBufferCapacity(const Bus &bus,
                 unsigned char bufferIndex,
                 const unsigned long capacity)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
     };
 
 } /* end namespace */

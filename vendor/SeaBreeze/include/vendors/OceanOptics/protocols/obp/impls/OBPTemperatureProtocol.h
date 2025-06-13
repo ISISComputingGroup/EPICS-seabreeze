@@ -43,12 +43,12 @@ namespace seabreeze {
         virtual ~OBPTemperatureProtocol();
 
 		virtual unsigned char readTemperatureCount(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         virtual double readTemperature(const Bus &bus, int index)
-                throw (ProtocolException);
+                noexcept(false);
                 
         virtual std::vector<double> *readAllTemperatures(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
     };
   }
 }

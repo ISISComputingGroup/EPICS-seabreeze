@@ -54,10 +54,10 @@ namespace seabreeze {
         virtual ~RevisionProtocolInterface();
 
         virtual unsigned char readHardwareRevision(const Bus &bus)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
         
         virtual unsigned short int readFirmwareRevision(const Bus &bus)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
     };
 
 }

@@ -58,7 +58,7 @@ OBPOpticalBenchProtocol::~OBPOpticalBenchProtocol() {
 
 
 string *OBPOpticalBenchProtocol::readOpticalBenchID(const Bus &bus)
-                throw (ProtocolException) {
+                noexcept(false) {
 
     vector<byte_> *result;
     string *retval = NULL;
@@ -100,7 +100,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchID(const Bus &bus)
 }
 
 string *OBPOpticalBenchProtocol::readOpticalBenchSerialNumber(const Bus &bus)
-                throw (ProtocolException) {
+                noexcept(false) {
 
     vector<byte_> *result;
     string *retval = NULL;
@@ -143,7 +143,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchSerialNumber(const Bus &bus)
 }
 
 string *OBPOpticalBenchProtocol::readOpticalBenchCoating(const Bus &bus)
-                throw (ProtocolException) {
+                noexcept(false) {
 
     vector<byte_> *result;
     string *retval = NULL;
@@ -186,7 +186,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchCoating(const Bus &bus)
 }
 
 string *OBPOpticalBenchProtocol::readOpticalBenchFilter(const Bus &bus)
-                throw (ProtocolException) {
+                noexcept(false) {
 
     vector<byte_> *result;
     string *retval = NULL;
@@ -229,7 +229,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchFilter(const Bus &bus)
 }
 
 string *OBPOpticalBenchProtocol::readOpticalBenchGrating(const Bus &bus)
-                throw (ProtocolException) {
+                noexcept(false) {
 
     vector<byte_> *result;
     string *retval = NULL;
@@ -273,7 +273,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchGrating(const Bus &bus)
 
 
 unsigned short int OBPOpticalBenchProtocol::readOpticalBenchSlitWidthMicrons(const Bus &bus)
-                throw (ProtocolException) 
+                noexcept(false) 
 {
     vector<byte_> *result = NULL;
     unsigned short int slitWidth;
@@ -308,7 +308,7 @@ unsigned short int OBPOpticalBenchProtocol::readOpticalBenchSlitWidthMicrons(con
 }
 
 unsigned short int OBPOpticalBenchProtocol::readOpticalBenchFiberDiameterMicrons(const Bus &bus)
-                throw (ProtocolException) 
+                noexcept(false) 
 {
     vector<byte_> *result = NULL;
     unsigned short int fiberDiameter;

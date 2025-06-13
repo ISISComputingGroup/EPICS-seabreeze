@@ -52,9 +52,9 @@ namespace seabreeze {
         FPGARegisterProtocolInterface(Protocol *protocol);
         virtual ~FPGARegisterProtocolInterface();
         virtual unsigned int readRegister(const Bus &bus, byte_ address)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
         virtual void writeRegister(const Bus &bus, byte_ address,
-                unsigned int value) throw (ProtocolException) = 0;
+                unsigned int value) noexcept(false) = 0;
     };
 
 }

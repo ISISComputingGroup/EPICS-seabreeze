@@ -43,7 +43,7 @@ namespace seabreeze {
         virtual ~OBPShutterProtocol();
 
         virtual void setShutterOpen(const Bus &bus, bool opened)
-                throw (ProtocolException);
+                noexcept(false);
 
     protected:
         OBPShutterExchange *shutterExchange;
