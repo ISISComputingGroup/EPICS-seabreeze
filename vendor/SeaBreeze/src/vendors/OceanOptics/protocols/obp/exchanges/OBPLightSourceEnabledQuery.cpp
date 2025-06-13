@@ -54,13 +54,13 @@ OBPLightSourceEnabledQuery::~OBPLightSourceEnabledQuery() {
 }
 
 bool OBPLightSourceEnabledQuery::queryEnable(TransferHelper *helper)
-            throw (ProtocolException) {
+            noexcept(false) {
 
     bool retval;
-    vector<byte> *result;
+    vector<byte_> *result;
 
-    this->payload[0] = (byte)this->moduleIndex;
-    this->payload[1] = (byte)this->lightSourceIndex;
+    this->payload[0] = (byte_)this->moduleIndex;
+    this->payload[1] = (byte_)this->lightSourceIndex;
 
     result = this->queryDevice(helper);
     if(NULL == result || result->size() < 1) {

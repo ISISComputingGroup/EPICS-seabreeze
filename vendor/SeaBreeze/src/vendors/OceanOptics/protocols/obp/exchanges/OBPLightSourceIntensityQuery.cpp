@@ -63,8 +63,8 @@ float OBPLightSourceIntensityQuery::queryIntensity(TransferHelper *helper)
     byte_ *cptr = NULL;
     vector<byte_> *result;
 
-    this->payload[0] = (byte)this->moduleIndex;
-    this->payload[1] = (byte)this->lightSourceIndex;
+    this->payload[0] = (byte_)this->moduleIndex;
+    this->payload[1] = (byte_)this->lightSourceIndex;
 
     result = this->queryDevice(helper);
     if(NULL == result || result->size() < sizeof(float)) {
