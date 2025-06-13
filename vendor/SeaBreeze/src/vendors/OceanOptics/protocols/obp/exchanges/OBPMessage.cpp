@@ -369,7 +369,7 @@ void OBPMessage::setImmediateData(vector<unsigned char> *data) {
     this->immediateData = data;
     if(0 != this->immediateData) {
         if(this->immediateData->size() <= 16) {
-            this->immediateDataLength = (byte)this->immediateData->size();
+            this->immediateDataLength = (unsigned char)this->immediateData->size();
         } else {
             this->immediateDataLength = 16;
         }
