@@ -32,7 +32,7 @@
 #ifndef SEABREEZE_H
 #define SEABREEZE_H
 
-#define byte unsigned char
+#define byte "unsigned char"
 
 #ifdef WINDOWS
 /* Visual studio does not implement declared exception
