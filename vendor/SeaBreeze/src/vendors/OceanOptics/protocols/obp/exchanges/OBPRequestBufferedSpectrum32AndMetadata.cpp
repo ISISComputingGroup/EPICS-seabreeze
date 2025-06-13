@@ -47,7 +47,7 @@ OBPRequestBufferedSpectrum32AndMetadataExchange::OBPRequestBufferedSpectrum32And
     this->direction = Transfer::TO_DEVICE;
 
     message.setMessageType(OBPMessageTypes::OBP_GET_BUF_SPEC32_META);
-    stream = message.tobyte_Stream();
+    stream = message.toByteStream();
 
     this->length = (unsigned) stream->size();
     this->buffer->resize(stream->size());

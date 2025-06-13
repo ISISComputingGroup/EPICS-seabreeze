@@ -34,7 +34,7 @@
 using namespace seabreeze;
 using namespace std;
 
-const int BlazeUSBTransferHelper::WORD_SIZE_byte_S = 4;
+const int BlazeUSBTransferHelper::WORD_SIZE_BYTES = 4;
 
 BlazeUSBTransferHelper::BlazeUSBTransferHelper(USB *usb,
         const OOIUSBBidrectionalEndpointMap &map) : USBTransferHelper(usb) {
@@ -48,11 +48,11 @@ BlazeUSBTransferHelper::~BlazeUSBTransferHelper() {
 
 int BlazeUSBTransferHelper::receive(vector<byte_> &buffer,
         unsigned int length) noexcept(false) {
-    if(0 != (length % WORD_SIZE_byte_S)) {
+    if(0 != (length % WORD_SIZE_BYTES)) {
         vector<byte_> *inBuffer;
         int paddedLength;
         
-        paddedLength = length + (WORD_SIZE_byte_S - (length % WORD_SIZE_byte_S));
+        paddedLength = length + (WORD_SIZE_BYTES - (length % WORD_SIZE_BYTES));
         inBuffer = new vector<byte_>(paddedLength);
         
         int result = USBTransferHelper::receive(*inBuffer, paddedLength);
@@ -74,9 +74,9 @@ int BlazeUSBTransferHelper::receive(vector<byte_> &buffer,
 int BlazeUSBTransferHelper::send(const std::vector<byte_> &buffer,
         unsigned int length) const noexcept(false) {
     
-    if(0 != (length % WORD_SIZE_byte_S)) {
+    if(0 != (length % WORD_SIZE_BYTES)) {
         /* Pad up to a multiple of the word size */
-        int paddedLength = length + (WORD_SIZE_byte_S - (length % WORD_SIZE_byte_S));
+        int paddedLength = length + (WORD_SIZE_BYTES - (length % WORD_SIZE_BYTES));
         vector<byte_> *outBuffer = new vector<byte_>(paddedLength);
         memcpy(&outBuffer[0], &buffer[0], length);
         int result = USBTransferHelper::send(*outBuffer, paddedLength);

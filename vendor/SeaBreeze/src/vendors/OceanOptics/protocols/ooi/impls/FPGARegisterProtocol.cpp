@@ -73,14 +73,14 @@ unsigned int FPGARegisterProtocol::readRegister(const Bus &bus, byte_ address)
         throw ProtocolException(string("Expected ByteVector from FPGARegisterReadExchange"));
     }
 
-    vector<byte_> byte_Vec = bv->getByteVector();
-    if(3 != byte_Vec.size()) {
+    vector<byte_> byteVec = bv->getByteVector();
+    if(3 != byteVec.size()) {
         throw ProtocolException(string("Expected 3 bytes from FPGARegisterReadExchange"));
     }
 
     // Response is 3 bytes (address echo, LSB, MSB)
     // TODO: this will need to be updated when we have devices with 32-bit registers
-    retval = (unsigned int) (byte_Vec[1] | ((unsigned int) byte_Vec[2] << 8));
+    retval = (unsigned int) (byteVec[1] | ((unsigned int) byteVec[2] << 8));
 
     delete result;
 

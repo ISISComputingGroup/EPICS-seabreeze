@@ -99,7 +99,7 @@ Data *OBPReadRawSpectrumExchange::transfer(TransferHelper *helper)
      * if the message is badly formed.
      */
     try {
-        message = OBPMessage::parsebyte_Stream(this->buffer);
+        message = OBPMessage::parseByteStream(this->buffer);
     } catch (IllegalArgumentException &iae) {
         string error("Failed to parse message transferred from device");
         throw ProtocolException(error);

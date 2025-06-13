@@ -108,7 +108,7 @@ OBPMessage::~OBPMessage() {
     }
 }
 
-OBPMessage *OBPMessage::parseHeaderFrombyte_Stream(vector<unsigned char> *message)
+OBPMessage *OBPMessage::parseHeaderFromByteStream(vector<unsigned char> *message)
         noexcept(false) {
     unsigned int i;
     OBPMessage *retval = new OBPMessage();
@@ -153,13 +153,13 @@ OBPMessage *OBPMessage::parseHeaderFrombyte_Stream(vector<unsigned char> *messag
     return retval;
 }
 
-OBPMessage *OBPMessage::parsebyte_Stream(vector<unsigned char> *message)
+OBPMessage *OBPMessage::parseByteStream(vector<unsigned char> *message)
         noexcept(false) {
     int temp;
     int offset;
     unsigned int i;
 
-    OBPMessage *retval = parseHeaderFrombyte_Stream(message);
+    OBPMessage *retval = parseHeaderFromByteStream(message);
 
     /* Compute the payload length.  This may be zero. */
     temp = retval->bytesRemaining - (unsigned) retval->checksum->size()
@@ -184,7 +184,7 @@ OBPMessage *OBPMessage::parsebyte_Stream(vector<unsigned char> *message)
     return retval;
 }
 
-vector<unsigned char> *OBPMessage::tobyte_Stream() {
+vector<unsigned char> *OBPMessage::toByteStream() {
     vector<unsigned char> *retval = new vector<unsigned char>;
     int length = 64;
     unsigned int i;

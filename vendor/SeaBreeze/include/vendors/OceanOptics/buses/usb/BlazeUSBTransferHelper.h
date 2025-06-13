@@ -53,7 +53,7 @@ namespace seabreeze {
             noexcept(false);
         
     private:
-        static const int WORD_SIZE_byte_S;
+        static const int WORD_SIZE_BYTES;
     };
 
 }

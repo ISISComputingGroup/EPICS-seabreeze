@@ -173,7 +173,7 @@ USBClose(void *handle);
 //  - WRITE_FAILED if the data was not written to the device
 //------------------------------------------------------------------------------
 int
-USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfbytes);
+USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfBytes);
 
 //------------------------------------------------------------------------------
 // This function reads data from the device attached to the given handle into
@@ -191,7 +191,7 @@ USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfbytes);
 //  - READ_FAILED if the data was not successfully read from the device
 //------------------------------------------------------------------------------
 int
-USBRead(void *handle, unsigned char endpoint, char * data, int numberOfbytes);
+USBRead(void *handle, unsigned char endpoint, char * data, int numberOfBytes);
 
 //------------------------------------------------------------------------------
 // This function attempts to clear any stall on the given endpoint.

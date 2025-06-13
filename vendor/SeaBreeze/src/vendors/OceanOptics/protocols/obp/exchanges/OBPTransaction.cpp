@@ -83,7 +83,7 @@ vector<byte_> *OBPTransaction::queryDevice(TransferHelper *helper,
     message->setData(new vector<byte_>(data));
 
     try {
-        bytes = message->tobyte_Stream();
+        bytes = message->toByteStream();
         flag = helper->send(*bytes, (unsigned) bytes->size());
         if(((unsigned int)flag) != bytes->size()) {
             /* FIXME: retry, throw exception, something here */
@@ -115,7 +115,7 @@ vector<byte_> *OBPTransaction::queryDevice(TransferHelper *helper,
 
         /* Parse out the header and see if there is an extended payload. */
         try {
-            response = OBPMessage::parseHeaderFrombyte_Stream(bytes);
+            response = OBPMessage::parseHeaderFromByteStream(bytes);
         } catch (IllegalArgumentException &iae) {
             response = NULL;
         }
@@ -159,7 +159,7 @@ vector<byte_> *OBPTransaction::queryDevice(TransferHelper *helper,
         /* Delete and recreate response using the full message */
         delete response;
         try {
-            response = OBPMessage::parsebyte_Stream(fullVector);
+            response = OBPMessage::parseByteStream(fullVector);
         } catch (IllegalArgumentException &iae) {
             response = NULL;
         }
@@ -213,7 +213,7 @@ bool OBPTransaction::sendCommandToDevice(TransferHelper *helper,
     message->setData(new vector<byte_>(data));
 
     try {
-        bytes = message->tobyte_Stream();
+        bytes = message->toByteStream();
         flag = helper->send(*bytes, (unsigned) bytes->size());
         if(((unsigned int)flag) != bytes->size()) {
             /* FIXME: retry, throw exception, something here */
@@ -243,7 +243,7 @@ bool OBPTransaction::sendCommandToDevice(TransferHelper *helper,
 
         /* Parse out the header. */
         try {
-            response = OBPMessage::parseHeaderFrombyte_Stream(bytes);
+            response = OBPMessage::parseHeaderFromByteStream(bytes);
         } catch (IllegalArgumentException &iae) {
             response = NULL;
         }

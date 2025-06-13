@@ -50,10 +50,10 @@ namespace seabreeze {
         OBPMessage();
         ~OBPMessage();
 
-        static OBPMessage *parseHeaderFrombyte_Stream(std::vector<byte_> *stream) noexcept(false);
-        static OBPMessage *parsebyte_Stream(std::vector<byte_> *stream) noexcept(false);
+        static OBPMessage *parseHeaderFromByteStream(std::vector<byte_> *stream) noexcept(false);
+        static OBPMessage *parseByteStream(std::vector<byte_> *stream) noexcept(false);
 
-        std::vector<byte_> *tobyte_Stream();
+        std::vector<byte_> *toByteStream();
         std::vector<byte_> *getData();
         unsigned int getbytesRemaining();
         byte_ getChecksumType();

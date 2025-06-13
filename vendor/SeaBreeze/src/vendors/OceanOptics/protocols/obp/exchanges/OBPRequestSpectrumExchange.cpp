@@ -47,7 +47,7 @@ OBPRequestSpectrumExchange::OBPRequestSpectrumExchange() {
     this->direction = Transfer::TO_DEVICE;
 
     message.setMessageType(OBPMessageTypes::OBP_GET_CORRECTED_SPECTRUM_NOW);
-    stream = message.tobyte_Stream();
+    stream = message.toByteStream();
 
     this->length = (unsigned) stream->size();
     this->buffer->resize(stream->size());
