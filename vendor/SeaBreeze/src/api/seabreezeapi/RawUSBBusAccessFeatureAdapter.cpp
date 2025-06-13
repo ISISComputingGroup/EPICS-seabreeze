@@ -61,7 +61,7 @@ int RawUSBBusAccessFeatureAdapter::readUSB(int *errorCode, unsigned char *buffer
 {
     int charactersCopied = 0;
 
-    std::vector<std::byte> data(bufferLength);
+    std::vector<unsigned char> data(bufferLength);
 
     try 
     {
