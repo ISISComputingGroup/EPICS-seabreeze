@@ -50,7 +50,7 @@ NativeSocketWindows::~NativeSocketWindows() {
 }
 
 void NativeSocketWindows::connect(Inet4Address &addr, int port)
-        throw (UnknownHostException, BusConnectException) {
+        noexcept(false) {
     struct in_addr in;
     struct sockaddr_in sockaddr;
     int addrlen;
@@ -80,7 +80,7 @@ void NativeSocketWindows::connect(Inet4Address &addr, int port)
 }
 
 void NativeSocketWindows::connect(const string hostname, int port)
-        throw (UnknownHostException, BusConnectException) {
+        noexcept(false) {
     
     struct hostent *host_info;
     struct in_addr in;
@@ -101,7 +101,7 @@ void NativeSocketWindows::connect(const string hostname, int port)
     connect(inet4addr, port);
 }
 
-void NativeSocketWindows::close() throw (BusException) {
+void NativeSocketWindows::close() noexcept(false) {
     int result;
     
     if(this->sock >= 0 && false == this->closed) {
@@ -127,7 +127,7 @@ bool NativeSocketWindows::isBound() {
     return this->bound;
 }
 
-int NativeSocketWindows::getSOLinger() throw (SocketException) {
+int NativeSocketWindows::getSOLinger() noexcept(false) {
     linger so_linger;
     int length;
     int result;
@@ -155,7 +155,7 @@ int NativeSocketWindows::getSOLinger() throw (SocketException) {
 }
 
 void NativeSocketWindows::setSOLinger(bool enable, int linger)
-        throw (SocketException) {
+        noexcept(false) {
     struct linger so_linger;
     int result;
     
@@ -177,7 +177,7 @@ void NativeSocketWindows::setSOLinger(bool enable, int linger)
     }
 }
 
-unsigned long NativeSocketWindows::getReadTimeoutMillis() throw (SocketException) {
+unsigned long NativeSocketWindows::getReadTimeoutMillis() noexcept(false) {
     unsigned long timeoutMillis;
     int result;
     unsigned int length;
@@ -201,7 +201,7 @@ unsigned long NativeSocketWindows::getReadTimeoutMillis() throw (SocketException
 }
 
 void NativeSocketWindows::setReadTimeoutMillis(unsigned long timeoutMillis)
-        throw (SocketException) {
+        noexcept(false) {
     int result;
     
     if(this->sock < 0) {
