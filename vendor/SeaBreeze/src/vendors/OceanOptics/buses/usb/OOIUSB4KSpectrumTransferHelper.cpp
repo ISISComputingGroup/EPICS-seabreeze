@@ -108,7 +108,7 @@ int OOIUSB4KSpectrumTransferHelper::receive(vector<unsigned char> &buffer,
     // }
 
     /* Copy the remaining data from the primary buffer */
-    memcpy(&(buffer[this->secondaryReadBuffer.size() * sizeof (byte)]),
+    memcpy(&(buffer[this->secondaryReadBuffer.size() * sizeof (unsigned char)]),
             &(this->primaryReadBuffer[0]),
             (this->primaryReadBuffer.size() < bytesToCopy) ? this->primaryReadBuffer.size() : bytesToCopy);
 
