@@ -124,7 +124,7 @@ int EEPROMSlotFeatureBase::writeEEPROMSlot(const Protocol &protocol,
 }
 
 double EEPROMSlotFeatureBase::readDouble(const Protocol &protocol, const Bus &bus,
-        unsigned int slotNumber) throw (FeatureException, NumberFormatException) {
+        unsigned int slotNumber) noexcept(false) {
     LOG(__FUNCTION__);
 
     char buffer[20];
@@ -165,7 +165,7 @@ double EEPROMSlotFeatureBase::readDouble(const Protocol &protocol, const Bus &bu
 
 
 long EEPROMSlotFeatureBase::readLong(const Protocol &protocol, const Bus &bus,
-            unsigned int slotNumber) throw (FeatureException, NumberFormatException) {
+            unsigned int slotNumber) noexcept(false) {
     LOG(__FUNCTION__)
 
     char buffer[20];

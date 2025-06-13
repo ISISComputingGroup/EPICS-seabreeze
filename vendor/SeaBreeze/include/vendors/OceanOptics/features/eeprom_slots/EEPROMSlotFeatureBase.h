@@ -62,11 +62,11 @@ namespace seabreeze {
          * this will throw a NumberFormatException.
          */
         double readDouble(const Protocol &protocol, const Bus &bus,
-                unsigned int slot) throw (FeatureException, NumberFormatException);
+                unsigned int slot) noexcept(false);
 
         /* As with readDouble(), this will read a slot and parse into an integer */
         long readLong(const Protocol &protocol, const Bus &bus,
-                unsigned int slot) throw (FeatureException, NumberFormatException);
+                unsigned int slot) noexcept(false);
 
     };
 
