@@ -87,7 +87,7 @@ int RawUSBBusAccessFeatureAdapter::writeUSB(int *errorCode, unsigned char *buffe
 {
     int charactersCopied = 0;
 
-    vector<std::byte> *charVector = new vector<unsigned char>;
+    vector<unsigned char> *charVector = new vector<unsigned char>;
     charVector->resize(bufferLength);
     memcpy(&((*charVector)[0]), buffer, bufferLength * sizeof(unsigned char));
 
