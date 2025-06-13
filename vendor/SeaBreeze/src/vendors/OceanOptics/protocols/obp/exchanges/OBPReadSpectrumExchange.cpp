@@ -66,11 +66,11 @@ Data *OBPReadSpectrumExchange::transfer(TransferHelper *helper)
                         "possible to generate a valid formatted spectrum.");
         throw ProtocolException(error);
     }
-    /* xfer should contain a byte_Vector */
+    /* xfer should contain a ByteVector */
 
     /* Extract the pixel data from the byte_ vector */
-    byte_Vector *bv = static_cast<byte_Vector *>(xfer);
-    vector<byte_> byte_s = bv->getbyte_Vector();
+    ByteVector *bv = static_cast<ByteVector *>(xfer);
+    vector<byte_> byte_s = bv->getByteVector();
 
     vector<unsigned short> formatted(this->numberOfPixels);
     for(unsigned int i = 0; i < this->numberOfPixels; i++) {

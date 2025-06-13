@@ -1,5 +1,5 @@
 /***************************************************//**
- * @file    byte_Vector.cpp
+ * @file    ByteVector.cpp
  * @date    February 2009
  * @author  Ocean Optics, Inc.
  *
@@ -34,29 +34,29 @@
 using namespace seabreeze;
 using namespace std;
 
-byte_Vector::byte_Vector() {
+ByteVector::ByteVector() {
     this->data = new vector<byte_>;
 }
 
-byte_Vector::byte_Vector(const vector<byte_> &that) {
+ByteVector::ByteVector(const vector<byte_> &that) {
     this->data = new vector<byte_ > (that);
 }
 
-byte_Vector::~byte_Vector() {
+ByteVector::~ByteVector() {
     delete this->data;
 }
 
-int byte_Vector::getNumberOfDimensions() {
+int ByteVector::getNumberOfDimensions() {
     return 1;
 }
 
-vector<UnitDescriptor *> *byte_Vector::getUnits() {
+vector<UnitDescriptor *> *ByteVector::getUnits() {
     /* This base class represents null data -- derived classes
      * must do something more interesting here.
      */
     return NULL;
 }
 
-vector<byte_> &byte_Vector::getbyte_Vector() {
+vector<byte_> &ByteVector::getByteVector() {
     return *(this->data);
 }

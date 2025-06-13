@@ -108,7 +108,7 @@ Data *Transfer::transfer(TransferHelper *helper) noexcept(false) {
          * method then expects the buffer to be filled in with
          * something useful).  Yes, this incurs overhead, but not much.
          */
-        byte_Vector *retval = new byte_Vector(*(this->buffer));
+        ByteVector *retval = new ByteVector(*(this->buffer));
         return retval;
     } else {
         string error("Invalid transfer direction specified.");

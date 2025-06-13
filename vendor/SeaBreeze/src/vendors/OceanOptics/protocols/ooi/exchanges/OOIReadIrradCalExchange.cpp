@@ -96,7 +96,7 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
 Data *OOIReadIrradCalExchange::transfer(TransferHelper *helper)
         noexcept(false) {
     Data *xfer;
-    byte_Vector *output = new byte_Vector();
+    ByteVector *output = new ByteVector();
     vector<Transfer *>::iterator iter = this->transfers.begin();
     /* Number of calibration byte_s that will be read */
     int byte_sLeft = this->numberOfPixels * sizeof(float);
@@ -108,25 +108,25 @@ Data *OOIReadIrradCalExchange::transfer(TransferHelper *helper)
         /* Note that this may throw a ProtocolException which will not be caught here. */
         /* Either send request for data, or obtain data.
          * xfer will be NULL if request being issued.
-         * data is returned as byte_Vector type object if data being returned.
+         * data is returned as ByteVector type object if data being returned.
          */
         xfer = (*iter)->transfer(helper);
 
         if(NULL != xfer) {
             /* transfer block of 60 byte_s from xfer to output */
             for(    unsigned int i = 0;
-                    i < ((byte_Vector*)xfer)->getbyte_Vector().size()
+                    i < ((ByteVector*)xfer)->getByteVector().size()
                         && byte_sLeft > 0;
                     i++, byte_sLeft--) {
                 /* FIXME: can this be done more efficiently using a memcpy()? */
-                output->getbyte_Vector().push_back(
-                    ((byte_Vector*)xfer)->getbyte_Vector()[i]);
+                output->getByteVector().push_back(
+                    ((ByteVector*)xfer)->getByteVector()[i]);
             }
             delete xfer; /* clear for next iteration */
         }
     }
 
-    /* return concatenated data as byte_Vector */
+    /* return concatenated data as ByteVector */
     return output;
 }
 

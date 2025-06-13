@@ -121,7 +121,7 @@ Data *OOIWriteIrradCalExchange::transfer(TransferHelper *helper)
         System::sleepMilliseconds(200);
     }
 
-    /* return concatenated data as byte_Vector */
+    /* return concatenated data as ByteVector */
     return NULL;
 }
 

@@ -129,7 +129,7 @@ Data *OBPReadRawSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
         throw ProtocolException(error);
     }
     /* This incurs a copy of the buffer so it is safe to delete the message. */
-    byte_Vector *retval = new byte_Vector(*byte_s);
+    ByteVector *retval = new ByteVector(*byte_s);
     delete message;
 
     return retval;

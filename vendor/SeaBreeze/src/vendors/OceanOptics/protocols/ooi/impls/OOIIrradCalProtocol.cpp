@@ -75,8 +75,8 @@ vector<float> *OOIIrradCalProtocol::readIrradCal(const Bus &bus)
     /* FIXME: this cast is known to be safe for now, but this needs
      * to do some sort of check to make sure the cast is valid.
      */
-    byte_Vector *bv = static_cast<byte_Vector *>(result);
-    vector<byte_> raw = bv->getbyte_Vector();
+    ByteVector *bv = static_cast<ByteVector *>(result);
+    vector<byte_> raw = bv->getByteVector();
     vector<float> *retval = new vector<float>;
 
     for(unsigned int i = 0; i < raw.size(); i += 4) {

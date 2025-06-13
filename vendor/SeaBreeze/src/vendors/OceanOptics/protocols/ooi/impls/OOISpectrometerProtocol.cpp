@@ -87,9 +87,9 @@ vector<byte_> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
         throw ProtocolException(error);
     }
 
-    byte_Vector *bv = static_cast<byte_Vector *>(result);
+    ByteVector *bv = static_cast<ByteVector *>(result);
 
-    vector<byte_> *retval = new vector<byte_ > (bv->getbyte_Vector());
+    vector<byte_> *retval = new vector<byte_ > (bv->getByteVector());
 
     delete result;
 

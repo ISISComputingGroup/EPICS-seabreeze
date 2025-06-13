@@ -53,7 +53,7 @@ OOIEEPROMProtocol::~OOIEEPROMProtocol() {
 vector<byte_> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
         noexcept(false) {
 
-    byte_Vector *bv = NULL;
+    ByteVector *bv = NULL;
     Data *result = NULL;
 
     ReadEEPROMSlotExchange xchange(slot);
@@ -72,10 +72,10 @@ vector<byte_> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
         throw ProtocolException(error);
     }
 
-    bv = static_cast<byte_Vector *>(result);
+    bv = static_cast<ByteVector *>(result);
 
     // strip off leading two byte_s (echoed request)
-    vector<byte_> raw = bv->getbyte_Vector();
+    vector<byte_> raw = bv->getByteVector();
     vector<byte_> *retval = new vector<byte_>(raw.size() - 2);
     memcpy(&((*retval)[0]), &(raw[2]), retval->size());
 

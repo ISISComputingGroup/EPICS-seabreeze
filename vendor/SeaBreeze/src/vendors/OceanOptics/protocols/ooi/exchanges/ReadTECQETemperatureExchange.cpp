@@ -88,8 +88,8 @@ noexcept(false) {
     /* FIXME: this is known to be safe for now, but should really do an explicit
      * check for type safety.
      */
-    byte_Vector *resp = (byte_Vector *)xfer;
-    vector<byte_> raw = resp->getbyte_Vector();
+    ByteVector *resp = (ByteVector *)xfer;
+    vector<byte_> raw = resp->getByteVector();
 
     /* Need to put this into a short to preserve the sign bit */
     counts = ((raw[1] << 8) & 0xFF00) | (raw[0] & 0x00FF);

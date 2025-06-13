@@ -68,12 +68,12 @@ unsigned int FPGARegisterProtocol::readRegister(const Bus &bus, byte_ address)
         throw ProtocolException(error);
     }
 
-    byte_Vector *bv = dynamic_cast<byte_Vector *>(result);
+    ByteVector *bv = dynamic_cast<ByteVector *>(result);
     if(NULL == bv) {
-        throw ProtocolException(string("Expected byte_Vector from FPGARegisterReadExchange"));
+        throw ProtocolException(string("Expected ByteVector from FPGARegisterReadExchange"));
     }
 
-    vector<byte_> byte_Vec = bv->getbyte_Vector();
+    vector<byte_> byte_Vec = bv->getByteVector();
     if(3 != byte_Vec.size()) {
         throw ProtocolException(string("Expected 3 byte_s from FPGARegisterReadExchange"));
     }
