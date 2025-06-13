@@ -51,10 +51,10 @@ namespace seabreeze {
 
         EEPROMSlotFeatureBase();
         virtual ~EEPROMSlotFeatureBase();
-        virtual std::vector<byte> *readEEPROMSlot(const Protocol &protocol,
+        virtual std::vector<byte_> *readEEPROMSlot(const Protocol &protocol,
                 const Bus &bus, unsigned int slot) noexcept(false);
         virtual int writeEEPROMSlot(const Protocol &protocol,
-                const Bus &bus, unsigned int slot, const std::vector<byte> &data)
+                const Bus &bus, unsigned int slot, const std::vector<byte_> &data)
                 noexcept(false);
 
         /* This is a utility function that reads out the given EEPROM slot and
@@ -62,11 +62,11 @@ namespace seabreeze {
          * this will throw a NumberFormatException.
          */
         double readDouble(const Protocol &protocol, const Bus &bus,
-                unsigned int slot) throw (FeatureException, NumberFormatException);
+                unsigned int slot) noexcept(false);
 
         /* As with readDouble(), this will read a slot and parse into an integer */
         long readLong(const Protocol &protocol, const Bus &bus,
-                unsigned int slot) throw (FeatureException, NumberFormatException);
+                unsigned int slot) noexcept(false);
 
     };
 

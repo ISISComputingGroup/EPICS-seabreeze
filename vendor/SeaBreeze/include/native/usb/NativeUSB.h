@@ -164,7 +164,7 @@ USBClose(void *handle);
 // PARAMETERS:
 // handle: The device handle obtained via the open() function.
 // endpoint: The endpoint on the device to write the data to.
-// data: A pointer to the dynamically allocated byte array of data to be written
+// data: A pointer to the dynamically allocated byte_ array of data to be written
 // size: The number of bytes to be written
 //
 // RETURN VALUE:
@@ -177,12 +177,12 @@ USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfBytes);
 
 //------------------------------------------------------------------------------
 // This function reads data from the device attached to the given handle into
-// the specified byte array.
+// the specified byte_ array.
 //
 // PARAMETERS:
 // handle: The device handle obtained via the open() function.
 // endpoint: The endpoint on the device to read the data from.
-// data: A pointer to the dynamically allocated byte array to store the data.
+// data: A pointer to the dynamically allocated byte_ array to store the data.
 // size: The number of bytes to be read.
 //
 // RETURN VALUE:

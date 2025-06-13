@@ -545,7 +545,7 @@ extern "C" {
      * @return int: The number of floats read into the buffer
      *
      * A formatted spectrum returns exactly one double-precision floating-point IEEE value 
-     * per pixel, as opposed to a raw byte stream.  It has also had autonulling (gain control) 
+     * per pixel, as opposed to a raw byte_ stream.  It has also had autonulling (gain control) 
      * applied, meaning it has been scaled up to the spectrometer's full dynamic range using 
      * the gain setting recorded in that spectrometer’s EEPROM.
      */
@@ -694,7 +694,7 @@ extern "C" {
     * (<tt>USB2+H01416</tt> ASCII, skipping the two command bytes)
     *
     * A C or C++ program could use the data as-is, but a C# program could
-    * append to a string, each byte, cast as char, stopping on the first null
+    * append to a string, each byte_, cast as char, stopping on the first null
     * character:
     *
     * \code

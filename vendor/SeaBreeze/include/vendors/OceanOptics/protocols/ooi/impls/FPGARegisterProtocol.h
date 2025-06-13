@@ -41,10 +41,10 @@ namespace seabreeze {
     public:
         FPGARegisterProtocol();
         virtual ~FPGARegisterProtocol();
-        virtual unsigned int readRegister(const Bus &bus, byte address)
-                throw (ProtocolException);
-        virtual void writeRegister(const Bus &bus, byte address,
-                unsigned int value) throw (ProtocolException);
+        virtual unsigned int readRegister(const Bus &bus, byte_ address)
+                noexcept(false);
+        virtual void writeRegister(const Bus &bus, byte_ address,
+                unsigned int value) noexcept(false);
     };
   }
 }

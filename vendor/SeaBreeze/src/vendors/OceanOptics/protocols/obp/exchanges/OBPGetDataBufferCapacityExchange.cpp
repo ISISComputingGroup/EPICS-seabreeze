@@ -47,10 +47,10 @@ OBPGetDataBufferCapacityExchange::~OBPGetDataBufferCapacityExchange() {
 }
 
 unsigned long OBPGetDataBufferCapacityExchange::queryBufferCapacity(
-        TransferHelper *helper) throw (ProtocolException) {
+        TransferHelper *helper) noexcept(false) {
 
     unsigned long capacity;
-    vector<byte> *result;
+    vector<byte_> *result;
 
     result = this->queryDevice(helper);
     if(NULL == result || result->size() < 4) {

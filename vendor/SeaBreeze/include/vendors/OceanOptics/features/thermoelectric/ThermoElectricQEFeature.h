@@ -59,7 +59,7 @@ namespace seabreeze {
             noexcept(false);
 
     private:
-        std::vector<byte> *readTECDefaults(const Protocol &protocol,
+        std::vector<byte_> *readTECDefaults(const Protocol &protocol,
                 const Bus &bus) noexcept(false);
     };
 

@@ -54,7 +54,7 @@ OOITECProtocol::~OOITECProtocol() {
 }
 
 double OOITECProtocol::readThermoElectricTemperatureCelsius(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
 
     helper = bus.getHelper(this->tecReadTemperature->getHints());
@@ -86,7 +86,7 @@ double OOITECProtocol::readThermoElectricTemperatureCelsius(const Bus &bus)
 }
 
 void OOITECProtocol::writeThermoElectricEnable(const Bus &bus, bool enable)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
 
     helper = bus.getHelper(this->tecEnable->getHints());
@@ -101,7 +101,7 @@ void OOITECProtocol::writeThermoElectricEnable(const Bus &bus, bool enable)
 }
 
 void OOITECProtocol::writeThermoElectricSetPointCelsius(const Bus &bus, double degreesC)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
 
     helper = bus.getHelper(this->tecWriteSetPoint->getHints());

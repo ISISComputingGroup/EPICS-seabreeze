@@ -48,22 +48,22 @@ namespace seabreeze {
         virtual ~Socket();
         
         virtual void connect(Inet4Address &addr, int port)
-                throw (UnknownHostException, BusConnectException) = 0;
+                noexcept(false) = 0;
         virtual void connect(const std::string host, int port)
-                throw (UnknownHostException, BusConnectException) = 0;
+                noexcept(false) = 0;
         
-        virtual void close() throw (BusException) = 0;
+        virtual void close() noexcept(false) = 0;
         virtual bool isClosed() = 0;
         virtual bool isBound() = 0;
         
         /* Socket options */
-        virtual int getSOLinger() throw (SocketException) = 0;
+        virtual int getSOLinger() noexcept(false) = 0;
         virtual void setSOLinger(bool enable, int linger)
-            throw (SocketException) = 0;
+            noexcept(false) = 0;
         virtual unsigned long getReadTimeoutMillis()
-            throw (SocketException) = 0;
+            noexcept(false) = 0;
         virtual void setReadTimeoutMillis(unsigned long timeout)
-            throw (SocketException) = 0;
+            noexcept(false) = 0;
         
         /* Data transfer */
         virtual int read(unsigned char *buffer, unsigned long length)

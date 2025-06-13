@@ -43,7 +43,7 @@ namespace seabreeze {
         virtual ~OOIStrobeLampProtocol();
 
         virtual void setStrobeLampEnable(const Bus &bus, bool enable)
-                throw (ProtocolException);
+                noexcept(false);
 
     private:
         StrobeEnableExchange *strobeEnableExchange;

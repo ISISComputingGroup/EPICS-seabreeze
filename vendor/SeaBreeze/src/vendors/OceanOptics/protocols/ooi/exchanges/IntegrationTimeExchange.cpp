@@ -68,7 +68,7 @@ void IntegrationTimeExchange::setIntegrationTimeMicros(
 }
 
 Data *IntegrationTimeExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     /* Note that it might be cleaner to populate the buffer when the integration
      * time is first written in, but this guarantees that it only happens once
      * per transfer.
@@ -78,10 +78,10 @@ Data *IntegrationTimeExchange::transfer(TransferHelper *helper)
     (*(this->buffer))[0] = OpCodes::OP_ITIME;
 
     /* Then fill in the integration time, 4 bytes, LSB first. */
-    (*(this->buffer))[1] = (byte)(this->integrationTime_usec & 0x00000000FF);
-    (*(this->buffer))[2] = (byte)((this->integrationTime_usec & 0x000000FF00) >> 8);
-    (*(this->buffer))[3] = (byte)((this->integrationTime_usec & 0x0000FF0000) >> 16);
-    (*(this->buffer))[4] = (byte)((this->integrationTime_usec & 0x00FF000000) >> 24);
+    (*(this->buffer))[1] = (byte_)(this->integrationTime_usec & 0x00000000FF);
+    (*(this->buffer))[2] = (byte_)((this->integrationTime_usec & 0x000000FF00) >> 8);
+    (*(this->buffer))[3] = (byte_)((this->integrationTime_usec & 0x0000FF0000) >> 16);
+    (*(this->buffer))[4] = (byte_)((this->integrationTime_usec & 0x00FF000000) >> 24);
 
     /* Now delegate to the superclass to move the buffer. */
     return Transfer::transfer(helper);

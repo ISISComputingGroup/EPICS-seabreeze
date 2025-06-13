@@ -55,7 +55,7 @@ OBPIrradCalProtocol::~OBPIrradCalProtocol() {
 }
 
 vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPGetIrradCalExchange request;
 
@@ -66,7 +66,7 @@ vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
     }
 
     /* This transfer() may cause a ProtocolException to be thrown. */
-    vector<byte> *raw = request.queryDevice(helper);
+    vector<byte_> *raw = request.queryDevice(helper);
     if (NULL == raw) {
         string error("Expected queryDevice to produce a non-null result "
             "containing calibration data.  Without this data, it is not possible to "
@@ -74,7 +74,7 @@ vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
         throw ProtocolException(error);
     }
 
-    vector<byte> result = *raw;
+    vector<byte_> result = *raw;
 
     vector<float> *retval = new vector<float>;
 
@@ -95,7 +95,7 @@ vector<float> *OBPIrradCalProtocol::readIrradCal(const Bus &bus)
 
 
 int OBPIrradCalProtocol::writeIrradCal(const Bus &bus, const vector<float> &cal)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPSetIrradCalExchange command(this->pixelCountMaximum);
 
@@ -136,7 +136,7 @@ int OBPIrradCalProtocol::hasCollectionArea(const Bus &bus) {
 }
 
 float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPGetIrradCollectionAreaExchange request;
     float retval = 1.0;
@@ -149,7 +149,7 @@ float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
     }
 
     /* This transfer() may cause a ProtocolException to be thrown. */
-    vector<byte> *raw = request.queryDevice(helper);
+    vector<byte_> *raw = request.queryDevice(helper);
     if (NULL == raw) {
         string error("Expected queryDevice to produce a non-null result "
             "containing calibration data.  Without this data, it is not possible to "
@@ -178,7 +178,7 @@ float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
 
 
 void OBPIrradCalProtocol::writeCollectionArea(const Bus &bus, float area)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OBPSetIrradCollectionAreaExchange command;
 

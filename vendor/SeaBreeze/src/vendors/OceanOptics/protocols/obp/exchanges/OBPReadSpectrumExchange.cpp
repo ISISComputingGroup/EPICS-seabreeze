@@ -50,10 +50,10 @@ OBPReadSpectrumExchange::~OBPReadSpectrumExchange() {
 }
 
 Data *OBPReadSpectrumExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     Data *xfer;
-    byte lsb;
-    byte msb;
+    byte_ lsb;
+    byte_ msb;
 
     /* This will use the superclass to transfer data from the device, and will
      * then strip off the message header and footer so that only the
@@ -68,9 +68,9 @@ Data *OBPReadSpectrumExchange::transfer(TransferHelper *helper)
     }
     /* xfer should contain a ByteVector */
 
-    /* Extract the pixel data from the byte vector */
+    /* Extract the pixel data from the byte_ vector */
     ByteVector *bv = static_cast<ByteVector *>(xfer);
-    vector<byte> bytes = bv->getByteVector();
+    vector<byte_> bytes = bv->getByteVector();
 
     vector<unsigned short> formatted(this->numberOfPixels);
     for(unsigned int i = 0; i < this->numberOfPixels; i++) {

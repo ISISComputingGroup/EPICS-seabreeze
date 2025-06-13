@@ -59,7 +59,7 @@ void TriggerModeExchange::setTriggerMode(SpectrometerTriggerMode &mode) {
 }
 
 Data *TriggerModeExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     /* Note that it might be cleaner to populate the buffer when the trigger
      * mode is first written in, but this guarantees that it only happens once
      * per transfer.
@@ -69,8 +69,8 @@ Data *TriggerModeExchange::transfer(TransferHelper *helper)
     (*(this->buffer))[0] = OpCodes::OP_SETTRIGMODE;
 
     /* Then fill in the trigger mode, LSB first. */
-    (*(this->buffer))[1] = (byte)(this->triggerMode & 0x00000000FF);
-    (*(this->buffer))[2] = (byte)((this->triggerMode & 0x000000FF00) >> 8);
+    (*(this->buffer))[1] = (byte_)(this->triggerMode & 0x00000000FF);
+    (*(this->buffer))[2] = (byte_)((this->triggerMode & 0x000000FF00) >> 8);
 
     /* Now delegate to the superclass to move the buffer. */
     return Transfer::transfer(helper);

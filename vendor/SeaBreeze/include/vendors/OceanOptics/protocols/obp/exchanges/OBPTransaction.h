@@ -4,7 +4,7 @@
  * @author  Ocean Optics, Inc.
  *
  * All messages in the Ocean Binary Protocol begin with
- * a standard 64-byte header.  It is always safe to read
+ * a standard 64-byte_ header.  It is always safe to read
  * 64 bytes for the start of a new transfer from a device
  * that supports this protocol, which works nicely with
  * the USB minimum packet size.
@@ -57,12 +57,12 @@ namespace seabreeze {
 
         protected:
             /* This creates a message of the given type and payload and sends it
-             * to the device.  The reply is formatted into a byte vector.  Any
+             * to the device.  The reply is formatted into a byte_ vector.  Any
              * errors will be indicated via an exception.
              */
-            virtual std::vector<byte> *queryDevice(TransferHelper *helper,
+            virtual std::vector<byte_> *queryDevice(TransferHelper *helper,
                     unsigned int messageType,
-                    std::vector<byte> &data) throw (ProtocolException);
+                    std::vector<byte_> &data) noexcept(false);
 
             /* This creates a message of the given type and payload and sends it
              * to the device.  No response (other than an acknowledgment) is
@@ -74,7 +74,7 @@ namespace seabreeze {
              */
             virtual bool sendCommandToDevice(TransferHelper *helper,
                     unsigned int messageType,
-                    std::vector<byte> &data) throw (ProtocolException);
+                    std::vector<byte_> &data) noexcept(false);
 
             std::vector<ProtocolHint *> *hints;
         };

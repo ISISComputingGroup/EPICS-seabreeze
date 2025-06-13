@@ -919,7 +919,7 @@ int SeaBreezeWrapper::readEEPROMSlot(int index, int *errorCode,
     EEPROMSlotFeatureInterface *eeprom =
             __seabreeze_getFeature<EEPROMSlotFeatureInterface>(this->devices[index]);
     if(NULL != eeprom) {
-        vector<byte> *info;
+        vector<byte_> *info;
 
         try {
             info = eeprom->readEEPROMSlot(
@@ -953,7 +953,7 @@ int SeaBreezeWrapper::writeEEPROMSlot(int index, int *errorCode,
     EEPROMSlotFeatureInterface *feature =
             __seabreeze_getFeature<EEPROMSlotFeatureInterface>(this->devices[index]);
     if(NULL != feature) {
-        vector<byte> data(buffer_length);
+        vector<byte_> data(buffer_length);
         for (int i = 0; i < buffer_length; i++) {
             data[i] = buffer[i];
         }
@@ -1289,7 +1289,7 @@ int SeaBreezeWrapper::getUnformattedSpectrumLength(int index, int *errorCode) {
 
     LOG(__FUNCTION__);
 
-    vector<byte> *spectrum;
+    vector<byte_> *spectrum;
 
     if(NULL == this->devices[index]) {
         SET_ERROR_CODE(ERROR_NO_DEVICE);
@@ -1556,7 +1556,7 @@ int SeaBreezeWrapper::readUSB(int index, int *errorCode, unsigned char endpoint,
 
     USBInterface *usb = __seabreeze_getUSB(dev, errorCode);
 
-    vector<byte> data;
+    vector<byte_> data;
 
     if(NULL != feature && NULL != usb) {
         try {
@@ -1602,7 +1602,7 @@ int SeaBreezeWrapper::writeUSB(int index, int *errorCode, unsigned char endpoint
 
     if(NULL != feature && NULL != usb) {
         try {
-            vector<byte> data(length);
+            vector<byte_> data(length);
             for (unsigned i = 0; i < length; i++)
             {
                 data[i] = buffer[i];

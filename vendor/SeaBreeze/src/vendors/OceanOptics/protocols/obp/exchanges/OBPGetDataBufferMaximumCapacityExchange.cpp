@@ -47,10 +47,10 @@ OBPGetDataBufferMaximumCapacityExchange::~OBPGetDataBufferMaximumCapacityExchang
 }
 
 unsigned long OBPGetDataBufferMaximumCapacityExchange::queryBufferMaximumCapacity(
-        TransferHelper *helper) throw (ProtocolException) {
+        TransferHelper *helper) noexcept(false) {
 
     unsigned long maxCapacity;
-    vector<byte> *result;
+    vector<byte_> *result;
 
     result = this->queryDevice(helper);
     if(NULL == result || result->size() < 4) {

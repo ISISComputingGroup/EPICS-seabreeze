@@ -70,14 +70,14 @@ void WriteTECQESetPointExchange::setSetPointCelsius(double degreesC) {
 }
 
 Data *WriteTECQESetPointExchange::transfer(TransferHelper *helper)
-throw (ProtocolException) {
+noexcept(false) {
 
     /* The format here is to send the counts (which are in 0.1 degree C increments)
      * in LSB, MSB order.  Note that the TEC counts is a 2's complement signed value.
      * For example, commanding -5.0 C uses a value of -50 or 0xFFCD.
      */
-    (*(this->buffer))[1] = (byte)(this->tecCounts & 0x00FF);
-    (*(this->buffer))[2] = (byte)((this->tecCounts & 0xFF00) >> 8);
+    (*(this->buffer))[1] = (byte_)(this->tecCounts & 0x00FF);
+    (*(this->buffer))[2] = (byte_)((this->tecCounts & 0xFF00) >> 8);
 
     /* Now delegate to the superclass to move the buffer. */
     /* This transfer() may cause a ProtocolException to be thrown. */

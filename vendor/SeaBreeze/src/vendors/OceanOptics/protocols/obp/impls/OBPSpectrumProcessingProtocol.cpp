@@ -51,11 +51,11 @@ OBPSpectrumProcessingProtocol::~OBPSpectrumProcessingProtocol() {
 
 
 unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToAverage(const Bus &bus)
-                throw (ProtocolException) 
+                noexcept(false) 
 {
-    vector<byte> *result = NULL;
+    vector<byte_> *result = NULL;
     unsigned short int scansToAverage;
-    byte *bptr;
+    byte_ *bptr;
         
     OBPGetScansToAverageExchange xchange;
     
@@ -74,8 +74,8 @@ unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToA
         throw ProtocolException(error);
     }
     
-    // queryDevice returns a byte stream, turn that into a float... mind our endians.
-    bptr = (byte *)&scansToAverage;
+    // queryDevice returns a byte_ stream, turn that into a float... mind our endians.
+    bptr = (byte_ *)&scansToAverage;
     for(unsigned int j = 0; j < sizeof(unsigned short int); j++) {
         bptr[j] = (*result)[j];
     }
@@ -86,7 +86,7 @@ unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToA
 }
 
 void OBPSpectrumProcessingProtocol::writeSpectrumProcessingScansToAverage(
-            const Bus &bus, unsigned short int scansToAverage) throw (ProtocolException) {
+            const Bus &bus, unsigned short int scansToAverage) noexcept(false) {
 
     OBPSetScansToAverageExchange xchange;
 
@@ -107,9 +107,9 @@ void OBPSpectrumProcessingProtocol::writeSpectrumProcessingScansToAverage(
     }
 }
 
-unsigned char OBPSpectrumProcessingProtocol::readSpectrumProcessingBoxcarWidth(const Bus &bus) throw (ProtocolException) 
+unsigned char OBPSpectrumProcessingProtocol::readSpectrumProcessingBoxcarWidth(const Bus &bus) noexcept(false) 
 {
-    vector<byte> *result = NULL;
+    vector<byte_> *result = NULL;
     unsigned char boxcarWidth;
     
     OBPGetBoxcarWidthExchange xchange;
@@ -137,7 +137,7 @@ unsigned char OBPSpectrumProcessingProtocol::readSpectrumProcessingBoxcarWidth(c
 
 
 void OBPSpectrumProcessingProtocol::writeSpectrumProcessingBoxcarWidth(
-            const Bus &bus, unsigned char boxcarWidth) throw (ProtocolException) {
+            const Bus &bus, unsigned char boxcarWidth) noexcept(false) {
 
     OBPSetBoxcarWidthExchange xchange;
 

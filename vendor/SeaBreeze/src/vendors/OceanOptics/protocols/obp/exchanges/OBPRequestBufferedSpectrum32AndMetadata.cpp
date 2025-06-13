@@ -39,7 +39,7 @@ using namespace std;
 
 OBPRequestBufferedSpectrum32AndMetadataExchange::OBPRequestBufferedSpectrum32AndMetadataExchange() {
     OBPMessage message;
-    vector<byte> *stream;
+    vector<byte_> *stream;
     unsigned int i;
 
     this->hints->push_back(new OBPSpectrumHint());

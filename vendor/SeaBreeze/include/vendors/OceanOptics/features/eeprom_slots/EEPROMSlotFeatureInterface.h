@@ -41,13 +41,13 @@ namespace seabreeze {
     class EEPROMSlotFeatureInterface {
     public:
         virtual ~EEPROMSlotFeatureInterface() = 0;
-        virtual std::vector< std::vector<byte> * > *readAllEEPROMSlots(const Protocol &protocol,
+        virtual std::vector< std::vector<byte_> * > *readAllEEPROMSlots(const Protocol &protocol,
                 const Bus &bus) noexcept(false) = 0;
 
-        virtual std::vector<byte> *readEEPROMSlot(const Protocol &protocol,
+        virtual std::vector<byte_> *readEEPROMSlot(const Protocol &protocol,
                 const Bus &bus, unsigned int slot) noexcept(false) = 0;
         virtual int writeEEPROMSlot(const Protocol &protocol,
-                const Bus &bus, unsigned int slot, const std::vector<byte> &data)
+                const Bus &bus, unsigned int slot, const std::vector<byte_> &data)
                 noexcept(false) = 0;
     };
 

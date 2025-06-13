@@ -40,7 +40,7 @@ namespace seabreeze {
      * @brief   Spectrum exchange for FlameNIR spectrometer
      *
      * This class was needed because unlike other FX2-era spectrometers,
-     * the Flame-NIR does not return a "sync byte" at the end of a spectrum.
+     * the Flame-NIR does not return a "sync byte_" at the end of a spectrum.
      */
     class FlameNIRSpectrumExchange : public ReadSpectrumExchange {
     public:
@@ -48,7 +48,7 @@ namespace seabreeze {
                 unsigned int numberOfPixels, GainAdjustedSpectrometerFeature *feature);
         virtual ~FlameNIRSpectrumExchange();
 
-        virtual Data *transfer(TransferHelper *helper) throw (ProtocolException);
+        virtual Data *transfer(TransferHelper *helper) noexcept(false);
 
     protected:
         GainAdjustedSpectrometerFeature *spectrometerFeature;

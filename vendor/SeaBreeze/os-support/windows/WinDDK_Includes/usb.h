@@ -887,8 +887,8 @@ struct _URB_OS_FEATURE_DESCRIPTOR_REQUEST {
     UCHAR   Recipient:5;                // Recipient {Device,Interface,Endpoint}
     UCHAR   Reserved1:3;
     UCHAR   Reserved2;
-    UCHAR   InterfaceNumber;            // wValue - high byte
-    UCHAR   MS_PageIndex;               // wValue - low byte
+    UCHAR   InterfaceNumber;            // wValue - high byte_
+    UCHAR   MS_PageIndex;               // wValue - low byte_
     USHORT  MS_FeatureDescriptorIndex;  // wIndex field
     USHORT  Reserved3;
 };

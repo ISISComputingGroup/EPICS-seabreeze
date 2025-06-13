@@ -48,9 +48,9 @@ OBPRevisionProtocol::~OBPRevisionProtocol() {
 }
 
 
-unsigned char OBPRevisionProtocol::readHardwareRevision(const Bus &bus) throw (ProtocolException) 
+unsigned char OBPRevisionProtocol::readHardwareRevision(const Bus &bus) noexcept(false) 
 {
-    vector<byte> *result = NULL;
+    vector<byte_> *result = NULL;
     unsigned char hardwareRevision;
     
     OBPGetHardwareRevisionExchange xchange;
@@ -77,11 +77,11 @@ unsigned char OBPRevisionProtocol::readHardwareRevision(const Bus &bus) throw (P
 	return hardwareRevision;
 }
 
-unsigned short int OBPRevisionProtocol::readFirmwareRevision(const Bus &bus) throw (ProtocolException) 
+unsigned short int OBPRevisionProtocol::readFirmwareRevision(const Bus &bus) noexcept(false) 
 {
-    vector<byte> *result = NULL;
+    vector<byte_> *result = NULL;
     unsigned short int firmwareRevision;
-    byte *bptr;
+    byte_ *bptr;
     
     OBPGetFirmwareRevisionExchange xchange;
 	
@@ -102,12 +102,12 @@ unsigned short int OBPRevisionProtocol::readFirmwareRevision(const Bus &bus) thr
 	}
 	
 
-	// queryDevice returns a byte stream, turn that into an unsigned int... mind our endians.
-	bptr = (byte *)&firmwareRevision;
+	// queryDevice returns a byte_ stream, turn that into an unsigned int... mind our endians.
+	bptr = (byte_ *)&firmwareRevision;
 	for(unsigned int j = 0; j < sizeof(unsigned short int); j++) 
 	{
-		//printf("byte %d=%x\n", j, (*result)[j]);
-		bptr[j] = (*result)[j];  // little endian 2-byte integer
+		//printf("byte_ %d=%x\n", j, (*result)[j]);
+		bptr[j] = (*result)[j];  // little endian 2-byte_ integer
 	}
 
 	delete result;

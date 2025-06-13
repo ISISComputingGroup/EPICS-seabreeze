@@ -46,7 +46,7 @@ OBPLampEnableCommand::~OBPLampEnableCommand() {
 }
 
 void OBPLampEnableCommand::setEnable(TransferHelper *helper, bool enable)
-        throw (ProtocolException) {
+        noexcept(false) {
     
     this->payload.resize(1);
     

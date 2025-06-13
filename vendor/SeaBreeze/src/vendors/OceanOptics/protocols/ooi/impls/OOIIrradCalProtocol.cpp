@@ -53,7 +53,7 @@ OOIIrradCalProtocol::~OOIIrradCalProtocol() {
 }
 
 vector<float> *OOIIrradCalProtocol::readIrradCal(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     OOIReadIrradCalExchange readCalExchange(this->numberOfPixels);
 
@@ -76,7 +76,7 @@ vector<float> *OOIIrradCalProtocol::readIrradCal(const Bus &bus)
      * to do some sort of check to make sure the cast is valid.
      */
     ByteVector *bv = static_cast<ByteVector *>(result);
-    vector<byte> raw = bv->getByteVector();
+    vector<byte_> raw = bv->getByteVector();
     vector<float> *retval = new vector<float>;
 
     for(unsigned int i = 0; i < raw.size(); i += 4) {
@@ -96,7 +96,7 @@ vector<float> *OOIIrradCalProtocol::readIrradCal(const Bus &bus)
 
 
 int OOIIrradCalProtocol::writeIrradCal(const Bus &bus, const vector<float> &cal)
-            throw (ProtocolException) {
+            noexcept(false) {
     TransferHelper *helper;
     int writeLength = 0;
     OOIWriteIrradCalExchange writeCalExchange(this->numberOfPixels);
@@ -125,13 +125,13 @@ int OOIIrradCalProtocol::hasCollectionArea(const Bus &bus) {
 }
 
 float OOIIrradCalProtocol::readCollectionArea(const Bus &bus)
-            throw (ProtocolException) {
+            noexcept(false) {
     string error("OOI protocol does not support reading collection area.");
     throw ProtocolException(error);
 }
 
 void OOIIrradCalProtocol::writeCollectionArea(const Bus &bus, float area)
-            throw (ProtocolException) {
+            noexcept(false) {
     string error("OOI protocol does not support writing collection area.");
     throw ProtocolException(error);
 }

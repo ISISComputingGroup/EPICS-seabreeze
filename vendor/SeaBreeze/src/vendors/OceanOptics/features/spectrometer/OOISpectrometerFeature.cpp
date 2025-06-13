@@ -93,7 +93,7 @@ vector<double> *OOISpectrometerFeature::getSpectrum(const Protocol &protocol, co
     return retval;
 }
 
-vector<byte> *OOISpectrometerFeature::getUnformattedSpectrum(
+vector<byte_> *OOISpectrometerFeature::getUnformattedSpectrum(
         const Protocol &protocol, const Bus &bus) noexcept(false) {
     LOG(__FUNCTION__);
     writeRequestSpectrum(protocol, bus);
@@ -130,7 +130,7 @@ void OOISpectrometerFeature::writeRequestSpectrum(const Protocol &protocol,
     }
 }
 
-vector<byte> *OOISpectrometerFeature::readUnformattedSpectrum(const Protocol &protocol,
+vector<byte_> *OOISpectrometerFeature::readUnformattedSpectrum(const Protocol &protocol,
         const Bus &bus) noexcept(false) {
     LOG(__FUNCTION__);
     // logger.debug("starting OOISpectrometerFeature::readUnformattedSpectrum");
@@ -148,7 +148,7 @@ vector<byte> *OOISpectrometerFeature::readUnformattedSpectrum(const Protocol &pr
         throw FeatureProtocolNotFoundException(error);
     }
 
-    vector<byte> *retval;
+    vector<byte_> *retval;
 
     try {
         retval = spec->readUnformattedSpectrum(bus);

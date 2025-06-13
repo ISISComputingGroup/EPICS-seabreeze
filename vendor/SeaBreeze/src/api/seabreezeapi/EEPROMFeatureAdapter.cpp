@@ -59,7 +59,7 @@ int EEPROMFeatureAdapter::readEEPROMSlot(int *errorCode, int slotNumber,
                     unsigned char *buffer, int bufferLength) {
    int bytesCopied = 0;
 
-    vector<byte> *info;
+    vector<byte_> *info;
 
     try {
         info = this->feature->readEEPROMSlot(*this->protocol, *this->bus,

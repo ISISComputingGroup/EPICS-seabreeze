@@ -64,8 +64,8 @@ OOISpectrometerProtocol::~OOISpectrometerProtocol() {
     delete this->triggerModeExchange;
 }
 
-vector<byte> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
-        throw (ProtocolException) {
+vector<byte_> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
+        noexcept(false) {
     LOG(__FUNCTION__);
 
     Data *result;
@@ -89,7 +89,7 @@ vector<byte> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
 
     ByteVector *bv = static_cast<ByteVector *>(result);
 
-    vector<byte> *retval = new vector<byte > (bv->getByteVector());
+    vector<byte_> *retval = new vector<byte_ > (bv->getByteVector());
 
     delete result;
 
@@ -103,7 +103,7 @@ vector<byte> *OOISpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
 }
 
 vector<double> *OOISpectrometerProtocol::readSpectrum(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
 
     LOG(__FUNCTION__);
 
@@ -161,7 +161,7 @@ vector<double> *OOISpectrometerProtocol::readSpectrum(const Bus &bus)
 }
 
 void OOISpectrometerProtocol::requestSpectrum(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     LOG(__FUNCTION__);
 
     TransferHelper *helper;
@@ -178,7 +178,7 @@ void OOISpectrometerProtocol::requestSpectrum(const Bus &bus)
 }
 
 void OOISpectrometerProtocol::setIntegrationTimeMicros(const Bus &bus,
-        unsigned long integrationTime_usec) throw (ProtocolException) {
+        unsigned long integrationTime_usec) noexcept(false) {
     TransferHelper *helper;
 
     helper = bus.getHelper(this->integrationTimeExchange->getHints());
@@ -194,7 +194,7 @@ void OOISpectrometerProtocol::setIntegrationTimeMicros(const Bus &bus,
 }
 
 void OOISpectrometerProtocol::setTriggerMode(const Bus &bus,
-            SpectrometerTriggerMode &mode) throw (ProtocolException) {
+            SpectrometerTriggerMode &mode) noexcept(false) {
     LOG(__FUNCTION__);
     TransferHelper *helper;
 

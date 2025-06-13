@@ -53,15 +53,15 @@ namespace seabreeze {
         /* FIXME: instead of returning primitive vectors, should this return Data* so that
          * metadata (units, etc.) can also be attached?
          */
-        virtual std::vector<byte> *readUnformattedSpectrum(const Bus &bus)
-                throw (ProtocolException);
+        virtual std::vector<byte_> *readUnformattedSpectrum(const Bus &bus)
+                noexcept(false);
         virtual std::vector<double> *readSpectrum(const Bus &bus)
-                throw (ProtocolException);
-        virtual void requestSpectrum(const Bus &bus) throw (ProtocolException);
+                noexcept(false);
+        virtual void requestSpectrum(const Bus &bus) noexcept(false);
         virtual void setIntegrationTimeMicros(const Bus &bus,
-                unsigned long time_usec) throw (ProtocolException);
+                unsigned long time_usec) noexcept(false);
         virtual void setTriggerMode(const Bus &bus,
-            SpectrometerTriggerMode &mode) throw (ProtocolException);
+            SpectrometerTriggerMode &mode) noexcept(false);
 
     private:
         OBPIntegrationTimeExchange *integrationTimeExchange;

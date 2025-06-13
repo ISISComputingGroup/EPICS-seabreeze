@@ -42,7 +42,7 @@ using namespace std;
 const direction_t Transfer::TO_DEVICE = 1;
 const direction_t Transfer::FROM_DEVICE = 2;
 
-Transfer::Transfer(vector<ProtocolHint *> *hints, vector<byte> *buffer,
+Transfer::Transfer(vector<ProtocolHint *> *hints, vector<byte_> *buffer,
         direction_t direction, unsigned int length) : Exchange(hints) {
     this->buffer = buffer;
     this->direction = direction;
@@ -57,7 +57,7 @@ Transfer::Transfer(vector<ProtocolHint *> *hints, vector<byte> *buffer,
  * they can be used, they are not really suitable for the initializer list.
  */
 Transfer::Transfer() {
-    this->buffer = new vector<byte>;
+    this->buffer = new vector<byte_>;
     this->length = 0;
 
     checkBufferSize();
@@ -67,7 +67,7 @@ Transfer::~Transfer() {
     delete this->buffer;
 }
 
-Data *Transfer::transfer(TransferHelper *helper) throw (ProtocolException) {
+Data *Transfer::transfer(TransferHelper *helper) noexcept(false) {
     int flag = 0;
 
     /* Execute the actual movement of the data in this object's buffer

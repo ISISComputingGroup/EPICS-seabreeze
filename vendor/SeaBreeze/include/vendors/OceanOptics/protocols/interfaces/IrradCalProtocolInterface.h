@@ -50,12 +50,12 @@ namespace seabreeze {
          * Get the irradiance calibration from the device.
          */
         virtual std::vector<float> *readIrradCal(const Bus &bus)
-            throw (ProtocolException) = 0;
+            noexcept(false) = 0;
         /**
          * Write a new irradiance calibration to the device.
          */
         virtual int writeIrradCal(const Bus &bus, const std::vector<float> &cal)
-            throw (ProtocolException) = 0;
+            noexcept(false) = 0;
 
         /**
          * Determine whether the device has a stored irradiance collection area.
@@ -67,13 +67,13 @@ namespace seabreeze {
          * Get the irradiance collection area from the device.
          */
         virtual float readCollectionArea(const Bus &bus)
-            throw (ProtocolException) = 0;
+            noexcept(false) = 0;
 
         /**
          * Write a new irradiance collection area to the device.
          */
         virtual void writeCollectionArea(const Bus &bus, float area)
-            throw (ProtocolException) = 0;
+            noexcept(false) = 0;
 
     };
 

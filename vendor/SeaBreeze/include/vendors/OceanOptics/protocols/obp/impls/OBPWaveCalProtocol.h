@@ -43,7 +43,7 @@ namespace seabreeze {
         virtual ~OBPWaveCalProtocol();
 
         virtual std::vector<double> *readWavelengthCoeffs(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
     };
   }
 }

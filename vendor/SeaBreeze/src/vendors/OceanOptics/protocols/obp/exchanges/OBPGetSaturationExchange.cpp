@@ -48,10 +48,10 @@ OBPGetSaturationExchange::~OBPGetSaturationExchange() {
 }
 
 unsigned int OBPGetSaturationExchange::querySaturationLevel(
-        TransferHelper *helper) throw (ProtocolException) {
+        TransferHelper *helper) noexcept(false) {
 
     unsigned int saturation;
-    vector<byte> *result;
+    vector<byte_> *result;
 
     result = this->queryDevice(helper);
     if(NULL == result || result->size() < 4) {

@@ -56,7 +56,7 @@ EEPROMSlotFeatureBase::~EEPROMSlotFeatureBase() {
 
 }
 
-vector<byte> *EEPROMSlotFeatureBase::readEEPROMSlot(const Protocol &protocol,
+vector<byte_> *EEPROMSlotFeatureBase::readEEPROMSlot(const Protocol &protocol,
         const Bus &bus, unsigned int slot)
         noexcept(false) {
 
@@ -73,7 +73,7 @@ vector<byte> *EEPROMSlotFeatureBase::readEEPROMSlot(const Protocol &protocol,
         throw FeatureProtocolNotFoundException(error);
     }
 
-    vector<byte> *info = NULL;
+    vector<byte_> *info = NULL;
 
     try {
         info = eeprom->readEEPROMSlot(bus, slot);
@@ -98,7 +98,7 @@ vector<byte> *EEPROMSlotFeatureBase::readEEPROMSlot(const Protocol &protocol,
 }
 
 int EEPROMSlotFeatureBase::writeEEPROMSlot(const Protocol &protocol,
-        const Bus &bus, unsigned int slot, const vector<byte> &data)
+        const Bus &bus, unsigned int slot, const vector<byte_> &data)
         noexcept(false) {
 
     int bytesWritten = 0;
@@ -124,12 +124,12 @@ int EEPROMSlotFeatureBase::writeEEPROMSlot(const Protocol &protocol,
 }
 
 double EEPROMSlotFeatureBase::readDouble(const Protocol &protocol, const Bus &bus,
-        unsigned int slotNumber) throw (FeatureException, NumberFormatException) {
+        unsigned int slotNumber) noexcept(false) {
     LOG(__FUNCTION__);
 
     char buffer[20];
     double retval = 0.0;
-    vector<byte> *slot;
+    vector<byte_> *slot;
 
     try {
         /* This may throw a FeatureException, but cannot return NULL. */
@@ -165,12 +165,12 @@ double EEPROMSlotFeatureBase::readDouble(const Protocol &protocol, const Bus &bu
 
 
 long EEPROMSlotFeatureBase::readLong(const Protocol &protocol, const Bus &bus,
-            unsigned int slotNumber) throw (FeatureException, NumberFormatException) {
+            unsigned int slotNumber) noexcept(false) {
     LOG(__FUNCTION__)
 
     char buffer[20];
     long retval = 0;
-    vector<byte> *slot;
+    vector<byte_> *slot;
 
     try {
         /* This may throw a FeatureException, but cannot return NULL. */

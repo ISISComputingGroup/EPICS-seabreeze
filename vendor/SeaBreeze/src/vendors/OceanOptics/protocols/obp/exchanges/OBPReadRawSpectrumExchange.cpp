@@ -77,10 +77,10 @@ unsigned int OBPReadRawSpectrumExchange::isLegalMessageType(unsigned int t) {
 }
 
 Data *OBPReadRawSpectrumExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     Data *xfer;
     OBPMessage *message = NULL;
-    vector<byte> *bytes;
+    vector<byte_> *bytes;
 
     /* This will use the superclass to transfer data from the device
      */

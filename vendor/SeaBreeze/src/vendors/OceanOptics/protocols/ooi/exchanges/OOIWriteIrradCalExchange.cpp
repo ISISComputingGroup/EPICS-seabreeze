@@ -75,7 +75,7 @@ int OOIWriteIrradCalExchange::setCalibration(const vector<float> &cal) {
         vector<ProtocolHint *> *requestHints = new vector<ProtocolHint *>;
 
         /* create buffer for holding the bytes of the request */
-        vector<byte> *requestBuffer = new vector<byte>;
+        vector<byte_> *requestBuffer = new vector<byte_>;
 
         /* resize the request buffer to hold a request */
         requestBuffer->resize(BLOCK_TRANSFER_SIZE + 3);
@@ -86,11 +86,11 @@ int OOIWriteIrradCalExchange::setCalibration(const vector<float> &cal) {
         requestHints->push_back(new ControlHint());
 
         (*(requestBuffer))[0] = OpCodes::OP_WRITE_IRRAD_CAL;
-        (*(requestBuffer))[1] = (byte)( (addr) & 0x00FF);
-        (*(requestBuffer))[2] = (byte)((addr >> 8) & 0x00FF);
+        (*(requestBuffer))[1] = (byte_)( (addr) & 0x00FF);
+        (*(requestBuffer))[2] = (byte_)((addr >> 8) & 0x00FF);
         for(i = 0; i < BLOCK_TRANSFER_SIZE && factorIndex < factors; i += 4, factorIndex++) {
             fptr = (unsigned int *)&cal[factorIndex];
-            /* Convert the floats to a byte array, MSB first */
+            /* Convert the floats to a byte_ array, MSB first */
             (*(requestBuffer))[i + 3] = ((*fptr) >> 24) & 0x00FF;
             (*(requestBuffer))[i + 4] = ((*fptr) >> 16) & 0x00FF;
             (*(requestBuffer))[i + 5] = ((*fptr) >> 8) & 0x00FF;
@@ -107,7 +107,7 @@ int OOIWriteIrradCalExchange::setCalibration(const vector<float> &cal) {
 }
 
 Data *OOIWriteIrradCalExchange::transfer(TransferHelper *helper)
-        throw (ProtocolException) {
+        noexcept(false) {
     vector<Transfer *>::iterator iter = this->transfers.begin();
 
     /* Iterate over all stored transfers and delegate to the helper to

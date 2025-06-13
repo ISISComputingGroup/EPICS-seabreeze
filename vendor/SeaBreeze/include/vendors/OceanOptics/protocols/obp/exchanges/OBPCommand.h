@@ -41,11 +41,11 @@ namespace seabreeze {
             virtual ~OBPCommand();
 
             using OBPTransaction::sendCommandToDevice;
-            virtual bool sendCommandToDevice(TransferHelper *helper) throw (ProtocolException);
+            virtual bool sendCommandToDevice(TransferHelper *helper) noexcept(false);
 
         protected:
             int messageType;
-            std::vector<byte> payload;
+            std::vector<byte_> payload;
         };
     }
 }

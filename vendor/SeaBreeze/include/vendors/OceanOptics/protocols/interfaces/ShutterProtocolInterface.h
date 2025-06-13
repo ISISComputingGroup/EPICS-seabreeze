@@ -52,7 +52,7 @@ namespace seabreeze {
         ShutterProtocolInterface(Protocol *protocol);
         virtual ~ShutterProtocolInterface();
         virtual void setShutterOpen(const Bus &bus, bool opened)
-                throw (ProtocolException) = 0;
+                noexcept(false) = 0;
     };
 
 }

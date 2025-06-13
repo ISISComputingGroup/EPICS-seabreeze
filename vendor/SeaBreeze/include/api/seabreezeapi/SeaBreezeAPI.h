@@ -690,7 +690,7 @@ extern "C" {
      * @param error_code (Output) pointer to an integer that can be used for
      *      storing error codes.
      *
-     * @return the length of the serial number in an unsigned character byte
+     * @return the length of the serial number in an unsigned character byte_
      */
     DLL_DECL unsigned char
     sbapi_get_serial_number_maximum_length(long deviceID, long featureID, int *error_code);
@@ -2019,7 +2019,7 @@ extern "C" {
      * @param error_code (Output) A pointer to an integer that can be used for storing
      *      error codes.
      *
-     * @return the hardware revision as one unsigned char byte. (Note that both Ocean View and SpectraSuite display the hex value.)
+     * @return the hardware revision as one unsigned char byte_. (Note that both Ocean View and SpectraSuite display the hex value.)
      */
     DLL_DECL unsigned char sbapi_revision_hardware_get(long deviceID, long revisionFeatureID, int *error_code);
 

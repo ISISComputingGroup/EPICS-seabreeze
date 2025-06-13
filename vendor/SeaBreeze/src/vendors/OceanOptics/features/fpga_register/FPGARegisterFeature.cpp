@@ -53,7 +53,7 @@ FPGARegisterFeature::~FPGARegisterFeature() {
 
 }
 
-void FPGARegisterFeature::writeRegister(const Bus &bus, byte address,
+void FPGARegisterFeature::writeRegister(const Bus &bus, byte_ address,
         unsigned int value) noexcept(false) {
 
     FPGARegisterProtocol protocol;
@@ -67,7 +67,7 @@ void FPGARegisterFeature::writeRegister(const Bus &bus, byte address,
     }
 }
 
-unsigned int FPGARegisterFeature::readRegister(const Bus &bus, byte address)
+unsigned int FPGARegisterFeature::readRegister(const Bus &bus, byte_ address)
         noexcept(false) {
 
     unsigned int retval = 0;

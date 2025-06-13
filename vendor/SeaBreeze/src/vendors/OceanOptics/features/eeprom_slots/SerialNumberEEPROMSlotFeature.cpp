@@ -36,7 +36,7 @@ using namespace std;
 using namespace seabreeze;
 using namespace seabreeze::api;
 
-/* Most devices that use the "EEPROM slot" mechanism have fixed 16-byte
+/* Most devices that use the "EEPROM slot" mechanism have fixed 16-byte_
  * blocks.  This sets the length a little smaller to leave room for nulls.
  * This behavior can be overridden by other classes if necessary.
  */
@@ -56,7 +56,7 @@ SerialNumberEEPROMSlotFeature::~SerialNumberEEPROMSlotFeature() {
 string *SerialNumberEEPROMSlotFeature::readSerialNumber(const Protocol &protocol,
         const Bus &bus) noexcept(false) {
 
-    vector<byte> *data;
+    vector<byte_> *data;
 
     /* Slot zero has the serial number as an ASCII string. */
     try {
@@ -67,7 +67,7 @@ string *SerialNumberEEPROMSlotFeature::readSerialNumber(const Protocol &protocol
     }
 
     string *retval = new string();
-    vector<byte>::iterator iter;
+    vector<byte_>::iterator iter;
     /* This is probably not the most efficient way to copy
      * from a vector of bytes into a string, but at least
      * this way issues of string encoding should be

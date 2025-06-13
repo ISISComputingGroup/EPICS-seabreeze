@@ -43,13 +43,13 @@ namespace seabreeze {
         virtual ~OBPSpectrumProcessingProtocol();
 
 		virtual unsigned short int readSpectrumProcessingScansToAverage(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
 		virtual unsigned char readSpectrumProcessingBoxcarWidth(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         virtual void writeSpectrumProcessingScansToAverage(const Bus &bus, unsigned short int scansToAverage)
-            throw (ProtocolException);                
+            noexcept(false);                
         virtual void writeSpectrumProcessingBoxcarWidth(const Bus &bus, unsigned char boxcarWidth)
-            throw (ProtocolException);
+            noexcept(false);
     };
   }
 }

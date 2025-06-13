@@ -43,19 +43,19 @@ namespace seabreeze {
         virtual ~OBPOpticalBenchProtocol();
 
         virtual unsigned short int readOpticalBenchSlitWidthMicrons(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         virtual unsigned short int readOpticalBenchFiberDiameterMicrons(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         virtual std::string *readOpticalBenchID(const Bus &bus)
-                throw (ProtocolException);        
+                noexcept(false);        
         virtual std::string *readOpticalBenchSerialNumber(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         virtual std::string *readOpticalBenchCoating(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         virtual std::string *readOpticalBenchFilter(const Bus &bus)
-                throw (ProtocolException);
+                noexcept(false);
         virtual std::string *readOpticalBenchGrating(const Bus &bus)
-                throw (ProtocolException);        
+                noexcept(false);        
     };
   }
 }

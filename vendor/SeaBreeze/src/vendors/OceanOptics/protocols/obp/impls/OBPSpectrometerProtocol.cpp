@@ -63,8 +63,8 @@ OBPSpectrometerProtocol::~OBPSpectrometerProtocol() {
     delete this->triggerModeExchange;
 }
 
-vector<byte> *OBPSpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
-        throw (ProtocolException) {
+vector<byte_> *OBPSpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
+        noexcept(false) {
     Data *result;
     TransferHelper *helper;
 
@@ -84,7 +84,7 @@ vector<byte> *OBPSpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
 
     ByteVector *bv = static_cast<ByteVector *>(result);
 
-    vector<byte> *retval = new vector<byte > (bv->getByteVector());
+    vector<byte_> *retval = new vector<byte_ > (bv->getByteVector());
 
     delete result;
 
@@ -97,7 +97,7 @@ vector<byte> *OBPSpectrometerProtocol::readUnformattedSpectrum(const Bus &bus)
 }
 
 vector<double> *OBPSpectrometerProtocol::readSpectrum(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
     Data *result;
     unsigned int i;
@@ -156,7 +156,7 @@ vector<double> *OBPSpectrometerProtocol::readSpectrum(const Bus &bus)
 }
 
 void OBPSpectrometerProtocol::requestSpectrum(const Bus &bus)
-        throw (ProtocolException) {
+        noexcept(false) {
     TransferHelper *helper;
 
     helper = bus.getHelper(this->requestSpectrumExchange->getHints());
@@ -171,7 +171,7 @@ void OBPSpectrometerProtocol::requestSpectrum(const Bus &bus)
 }
 
 void OBPSpectrometerProtocol::setIntegrationTimeMicros(const Bus &bus,
-        unsigned long integrationTime_usec) throw (ProtocolException) {
+        unsigned long integrationTime_usec) noexcept(false) {
     TransferHelper *helper;
 
     helper = bus.getHelper(this->integrationTimeExchange->getHints());
@@ -187,7 +187,7 @@ void OBPSpectrometerProtocol::setIntegrationTimeMicros(const Bus &bus,
 }
 
 void OBPSpectrometerProtocol::setTriggerMode(const Bus &bus,
-            SpectrometerTriggerMode &mode) throw (ProtocolException) {
+            SpectrometerTriggerMode &mode) noexcept(false) {
     TransferHelper *helper;
 
     helper = bus.getHelper(this->triggerModeExchange->getHints());
