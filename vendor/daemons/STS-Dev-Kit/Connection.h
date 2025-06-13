@@ -69,7 +69,7 @@ private:
 
     // the buffer we use for the IO service communication
     std::vector<unsigned char> m_buffer;
-    /* a request is 4 byte_s long. the first 2 byte_s are the command (MSB first) followed by 2 byte_s
+    /* a request is 4 bytes long. the first 2 bytes are the command (MSB first) followed by 2 bytes
      * specifying the size of the accompanying arguments (MSB first).
     */
     static const size_t ms_requestSize = 4;

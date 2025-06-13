@@ -71,20 +71,20 @@ Data *OBPReadSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
 
     /* Extract the pixel data from the byte_ vector */
     ByteVector *bv = static_cast<ByteVector *>(xfer);
-    vector<byte_> byte_s = bv->getByteVector();
+    vector<byte_> bytes = bv->getByteVector();
 
     vector<uint32_t> formatted(this->numberOfPixels);
     for(unsigned int i = 0; i < this->numberOfPixels; i++) {
-        lswlsb = byte_s[i * 4 + this->metadataLength];
-        lswmsb = byte_s[(i * 4) + 1 + this->metadataLength];
-        mswlsb = byte_s[(i * 4) + 2 + this->metadataLength];
-        mswmsb = byte_s[(i * 4) + 3 + this->metadataLength];
+        lswlsb = bytes[i * 4 + this->metadataLength];
+        lswmsb = bytes[(i * 4) + 1 + this->metadataLength];
+        mswlsb = bytes[(i * 4) + 2 + this->metadataLength];
+        mswmsb = bytes[(i * 4) + 3 + this->metadataLength];
         formatted[i] =    ((mswmsb & 0x00FF) << 24)
                         | ((mswlsb & 0x00FF) << 16)
                         | ((lswmsb & 0x00FF) << 8)
                         |  (lswlsb & 0x00FF);
     }
-    delete xfer;  /* Equivalent to deleting bv and byte_s */
+    delete xfer;  /* Equivalent to deleting bv and bytes */
 
     U32Vector *retval = new U32Vector(formatted);
 

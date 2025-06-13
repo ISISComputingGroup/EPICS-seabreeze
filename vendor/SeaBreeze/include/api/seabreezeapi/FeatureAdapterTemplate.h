@@ -56,7 +56,7 @@ namespace seabreeze {
                 this->index = instanceIndex;
 
                 /* Create a unique ID based on the feature type and index.  This
-                 * might be expanded in the future to use one of the byte_s for
+                 * might be expanded in the future to use one of the bytes for
                  * the feature type or index as a module number.
                  */
                 this->ID = (family.getType() << 16) | (instanceIndex & 0x00FFFF);

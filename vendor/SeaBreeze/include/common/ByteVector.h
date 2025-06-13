@@ -1,5 +1,5 @@
 /***************************************************//**
- * @file    byteVector.h
+ * @file    ByteVector.h
  * @date    February 2009
  * @author  Ocean Optics, Inc.
  *
@@ -27,8 +27,8 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *******************************************************/
 
-#ifndef SEABREEZE_byteVECTOR_H
-#define SEABREEZE_byteVECTOR_H
+#ifndef SEABREEZE_BYTEVECTOR_H
+#define SEABREEZE_BYTEVECTOR_H
 
 #include "common/SeaBreeze.h"
 #include "common/Data.h"
@@ -36,12 +36,12 @@
 
 namespace seabreeze {
 
-    class byteVector : public Data {
+    class ByteVector : public Data {
     public:
-        byteVector();
+        ByteVector();
         /* Constructor that makes a copy of the given vector for internal use */
-        byteVector(const std::vector<byte> &that);
-        virtual ~byteVector();
+        ByteVector(const std::vector<byte> &that);
+        virtual ~ByteVector();
         /* Dimensionality of data.  0 for scalar, 1 for vector,
          * 2 for a pair of related vectors (e.g. [X, Y] or matrix),
          * 3 for 3D, etc.
@@ -52,7 +52,7 @@ namespace seabreeze {
         virtual std::vector<UnitDescriptor *> *getUnits();
 
         /* Get the data associated with this instance */
-        std::vector<byte> &getbyteVector();
+        std::vector<byte> &getByteVector();
 
     private:
         std::vector<byte> *data;

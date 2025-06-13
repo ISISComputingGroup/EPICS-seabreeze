@@ -75,10 +75,10 @@ unsigned int FPGARegisterProtocol::readRegister(const Bus &bus, byte_ address)
 
     vector<byte_> byte_Vec = bv->getByteVector();
     if(3 != byte_Vec.size()) {
-        throw ProtocolException(string("Expected 3 byte_s from FPGARegisterReadExchange"));
+        throw ProtocolException(string("Expected 3 bytes from FPGARegisterReadExchange"));
     }
 
-    // Response is 3 byte_s (address echo, LSB, MSB)
+    // Response is 3 bytes (address echo, LSB, MSB)
     // TODO: this will need to be updated when we have devices with 32-bit registers
     retval = (unsigned int) (byte_Vec[1] | ((unsigned int) byte_Vec[2] << 8));
 

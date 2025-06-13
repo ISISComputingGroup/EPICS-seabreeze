@@ -158,7 +158,7 @@ float OBPIrradCalProtocol::readCollectionArea(const Bus &bus)
     }
 
     if(raw->size() < sizeof(float)) {
-        string error("Failed to get back expected number of byte_s that should"
+        string error("Failed to get back expected number of bytes that should"
             " have held collection area.");
         delete raw;
         throw ProtocolException(error);

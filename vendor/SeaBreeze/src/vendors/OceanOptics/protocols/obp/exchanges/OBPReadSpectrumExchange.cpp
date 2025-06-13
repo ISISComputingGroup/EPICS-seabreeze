@@ -70,15 +70,15 @@ Data *OBPReadSpectrumExchange::transfer(TransferHelper *helper)
 
     /* Extract the pixel data from the byte_ vector */
     ByteVector *bv = static_cast<ByteVector *>(xfer);
-    vector<byte_> byte_s = bv->getByteVector();
+    vector<byte_> bytes = bv->getByteVector();
 
     vector<unsigned short> formatted(this->numberOfPixels);
     for(unsigned int i = 0; i < this->numberOfPixels; i++) {
-        lsb = byte_s[i * 2];
-        msb = byte_s[(i * 2) + 1];
+        lsb = bytes[i * 2];
+        msb = bytes[(i * 2) + 1];
         formatted[i] = ((msb & 0x00FF) << 8) | (lsb & 0x00FF);
     }
-    delete xfer;  /* Equivalent to deleting bv and byte_s */
+    delete xfer;  /* Equivalent to deleting bv and bytes */
 
     UShortVector *retval = new UShortVector(formatted);
 

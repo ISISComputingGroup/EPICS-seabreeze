@@ -5,7 +5,7 @@
  *
  * All messages in the Ocean Binary Protocol begin with
  * a standard 64-byte_ header.  It is always safe to read
- * 64 byte_s for the start of a new transfer from a device
+ * 64 bytes for the start of a new transfer from a device
  * that supports this protocol, which works nicely with
  * the USB minimum packet size.
  *

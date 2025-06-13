@@ -71,7 +71,7 @@ typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET {
     USHORT wLength;
 } USB_DEFAULT_PIPE_SETUP_PACKET, *PUSB_DEFAULT_PIPE_SETUP_PACKET;
 
-// setup packet is eight byte_s -- defined by spec
+// setup packet is eight bytes -- defined by spec
 C_ASSERT(sizeof(USB_DEFAULT_PIPE_SETUP_PACKET) == 8);
 
 

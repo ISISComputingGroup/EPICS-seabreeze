@@ -77,7 +77,7 @@ Data *IntegrationTimeExchange::transfer(TransferHelper *helper)
     /* Start with the protocol command number */
     (*(this->buffer))[0] = OpCodes::OP_ITIME;
 
-    /* Then fill in the integration time, 4 byte_s, LSB first. */
+    /* Then fill in the integration time, 4 bytes, LSB first. */
     (*(this->buffer))[1] = (byte_)(this->integrationTime_usec & 0x00000000FF);
     (*(this->buffer))[2] = (byte_)((this->integrationTime_usec & 0x000000FF00) >> 8);
     (*(this->buffer))[3] = (byte_)((this->integrationTime_usec & 0x0000FF0000) >> 16);

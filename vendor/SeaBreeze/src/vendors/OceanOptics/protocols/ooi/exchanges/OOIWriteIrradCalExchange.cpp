@@ -56,7 +56,7 @@ int OOIWriteIrradCalExchange::setCalibration(const vector<float> &cal) {
     unsigned int factorIndex;
     unsigned int *fptr;
 
-    /* Number of calibration byte_s that will be read.  Take the minimum of the
+    /* Number of calibration bytes that will be read.  Take the minimum of the
      * number of pixels and the length of the provided calibration.
      */
     unsigned int factors = (cal.size() < this->numberOfPixels) ? (unsigned) cal.size() : this->numberOfPixels;
@@ -74,7 +74,7 @@ int OOIWriteIrradCalExchange::setCalibration(const vector<float> &cal) {
         /* create vector of ProtocolHints for requests */
         vector<ProtocolHint *> *requestHints = new vector<ProtocolHint *>;
 
-        /* create buffer for holding the byte_s of the request */
+        /* create buffer for holding the bytes of the request */
         vector<byte_> *requestBuffer = new vector<byte_>;
 
         /* resize the request buffer to hold a request */

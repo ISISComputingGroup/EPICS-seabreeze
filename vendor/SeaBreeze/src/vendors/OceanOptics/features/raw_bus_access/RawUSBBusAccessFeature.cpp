@@ -67,20 +67,20 @@ vector<byte_> RawUSBBusAccessFeature::readUSB(const USBInterface *bus, int endpo
 int RawUSBBusAccessFeature::writeUSB(const USBInterface *bus, int endpoint,
         const vector<byte_> &data) noexcept(false) {
 
-    int byte_sWritten = 0;
+    int bytesWritten = 0;
 
     USB* descriptor = bus->getUSBDescriptor();
     try {
         USBTransferHelper helper(descriptor, endpoint, 0x00);
         helper.send(data, (unsigned int) data.size());
-        byte_sWritten = (int) data.size();
+        bytesWritten = (int) data.size();
     } catch (BusTransferException &e) {
         string error("Caught BusTransferException in writeUSB: ");
         error += e.what();
         throw FeatureControlException(error);
     }
 
-    return byte_sWritten;
+    return bytesWritten;
 }
 
 FeatureFamily RawUSBBusAccessFeature::getFeatureFamily() {

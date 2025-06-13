@@ -93,7 +93,7 @@ unsigned char FPGARegisterFeature::getMajorVersion(const Bus &bus) noexcept(fals
     FPGARegisterProtocolInterface *fpga = &protocol;
 
     try {
-        // firmware version appears to be packed into two byte_s as follows:
+        // firmware version appears to be packed into two bytes as follows:
         //
         //    MSB       LSB
         //  01234567 01234567

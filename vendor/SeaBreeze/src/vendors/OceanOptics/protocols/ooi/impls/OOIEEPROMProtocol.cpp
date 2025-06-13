@@ -74,7 +74,7 @@ vector<byte_> *OOIEEPROMProtocol::readEEPROMSlot(const Bus &bus, int slot)
 
     bv = static_cast<ByteVector *>(result);
 
-    // strip off leading two byte_s (echoed request)
+    // strip off leading two bytes (echoed request)
     vector<byte_> raw = bv->getByteVector();
     vector<byte_> *retval = new vector<byte_>(raw.size() - 2);
     memcpy(&((*retval)[0]), &(raw[2]), retval->size());

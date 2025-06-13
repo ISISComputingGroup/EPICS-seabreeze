@@ -5,7 +5,7 @@
  *
  * All messages in the Ocean Binary Protocol begin with
  * a standard 64-byte_ header.  It is always safe to read
- * 64 byte_s for the start of a new transfer from a device
+ * 64 bytes for the start of a new transfer from a device
  * that supports this protocol, which works nicely with
  * the USB minimum packet size.
  *
@@ -55,7 +55,7 @@ namespace seabreeze {
 
         std::vector<byte_> *tobyte_Stream();
         std::vector<byte_> *getData();
-        unsigned int getbyte_sRemaining();
+        unsigned int getbytesRemaining();
         byte_ getChecksumType();
         unsigned short getErrno();
         unsigned short getFlags();
@@ -70,7 +70,7 @@ namespace seabreeze {
         bool isNackFlagSet();
 
         void setAckRequestedFlag();
-        void setbyte_sRemaining(unsigned int byte_sRemaining);
+        void setbytesRemaining(unsigned int bytesRemaining);
         void setChecksumType(byte_ checksumType);
         void setData(std::vector<byte_> *data);
         void setErrorNumber(unsigned short errorNumber);
@@ -93,7 +93,7 @@ namespace seabreeze {
         byte_ checksumType;
         byte_ immediateDataLength;
         std::vector<byte_> *immediateData;
-        unsigned int byte_sRemaining;
+        unsigned int bytesRemaining;
         std::vector<byte_> *payload;
         std::vector<byte_> *checksum;
         std::vector<byte_> *footer;

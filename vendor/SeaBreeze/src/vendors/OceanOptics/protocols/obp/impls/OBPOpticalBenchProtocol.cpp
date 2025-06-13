@@ -81,7 +81,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchID(const Bus &bus)
     retval = new string();
     vector<byte_>::iterator iter;
     /* This is probably not the most efficient way to copy
-     * from a vector of byte_s into a string, but at least
+     * from a vector of bytes into a string, but at least
      * this way issues of string encoding should be
      * avoided (i.e. the sizeof a string element is not
      * assumed here).  Since this function will not be called
@@ -123,7 +123,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchSerialNumber(const Bus &bus)
     retval = new string();
     vector<byte_>::iterator iter;
     /* This is probably not the most efficient way to copy
-     * from a vector of byte_s into a string, but at least
+     * from a vector of bytes into a string, but at least
      * this way issues of string encoding should be
      * avoided (i.e. the sizeof a string element is not
      * assumed here).  Since this function will not be called
@@ -166,7 +166,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchCoating(const Bus &bus)
     retval = new string();
     vector<byte_>::iterator iter;
     /* This is probably not the most efficient way to copy
-     * from a vector of byte_s into a string, but at least
+     * from a vector of bytes into a string, but at least
      * this way issues of string encoding should be
      * avoided (i.e. the sizeof a string element is not
      * assumed here).  Since this function will not be called
@@ -209,7 +209,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchFilter(const Bus &bus)
     retval = new string();
     vector<byte_>::iterator iter;
     /* This is probably not the most efficient way to copy
-     * from a vector of byte_s into a string, but at least
+     * from a vector of bytes into a string, but at least
      * this way issues of string encoding should be
      * avoided (i.e. the sizeof a string element is not
      * assumed here).  Since this function will not be called
@@ -252,7 +252,7 @@ string *OBPOpticalBenchProtocol::readOpticalBenchGrating(const Bus &bus)
     retval = new string();
     vector<byte_>::iterator iter;
     /* This is probably not the most efficient way to copy
-     * from a vector of byte_s into a string, but at least
+     * from a vector of bytes into a string, but at least
      * this way issues of string encoding should be
      * avoided (i.e. the sizeof a string element is not
      * assumed here).  Since this function will not be called

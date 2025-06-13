@@ -57,7 +57,7 @@ EEPROMFeatureAdapter::~EEPROMFeatureAdapter() {
 #endif
 int EEPROMFeatureAdapter::readEEPROMSlot(int *errorCode, int slotNumber,
                     unsigned char *buffer, int bufferLength) {
-   int byte_sCopied = 0;
+   int bytesCopied = 0;
 
     vector<byte_> *info;
 
@@ -65,9 +65,9 @@ int EEPROMFeatureAdapter::readEEPROMSlot(int *errorCode, int slotNumber,
         info = this->feature->readEEPROMSlot(*this->protocol, *this->bus,
                 slotNumber);
 
-        int byte_s = (int) info->size();
-        byte_sCopied = (byte_s < bufferLength) ? byte_s : bufferLength;
-        memcpy(buffer, &((*info)[0]), byte_sCopied * sizeof (unsigned char));
+        int bytes = (int) info->size();
+        bytesCopied = (bytes < bufferLength) ? bytes : bufferLength;
+        memcpy(buffer, &((*info)[0]), bytesCopied * sizeof (unsigned char));
         delete info;
         SET_ERROR_CODE(ERROR_SUCCESS);
     } catch (FeatureException &fe) {
@@ -78,5 +78,5 @@ int EEPROMFeatureAdapter::readEEPROMSlot(int *errorCode, int slotNumber,
         return 0;
     }
 
-    return byte_sCopied;
+    return bytesCopied;
 }

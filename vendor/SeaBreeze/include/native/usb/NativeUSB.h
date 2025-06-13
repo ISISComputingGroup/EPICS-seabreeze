@@ -165,15 +165,15 @@ USBClose(void *handle);
 // handle: The device handle obtained via the open() function.
 // endpoint: The endpoint on the device to write the data to.
 // data: A pointer to the dynamically allocated byte_ array of data to be written
-// size: The number of byte_s to be written
+// size: The number of bytes to be written
 //
 // RETURN VALUE:
 // Returns an integer which will be equal to either:
-//  - The number of byte_s written to the endpoint if the write was successful
+//  - The number of bytes written to the endpoint if the write was successful
 //  - WRITE_FAILED if the data was not written to the device
 //------------------------------------------------------------------------------
 int
-USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfbyte_s);
+USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfbytes);
 
 //------------------------------------------------------------------------------
 // This function reads data from the device attached to the given handle into
@@ -183,15 +183,15 @@ USBWrite(void *handle, unsigned char endpoint, char * data, int numberOfbyte_s);
 // handle: The device handle obtained via the open() function.
 // endpoint: The endpoint on the device to read the data from.
 // data: A pointer to the dynamically allocated byte_ array to store the data.
-// size: The number of byte_s to be read.
+// size: The number of bytes to be read.
 //
 // RETURN VALUE:
 // Returns an integer which will be equal to either:
-//  - The number of byte_s read from the endpoint if the read was successful
+//  - The number of bytes read from the endpoint if the read was successful
 //  - READ_FAILED if the data was not successfully read from the device
 //------------------------------------------------------------------------------
 int
-USBRead(void *handle, unsigned char endpoint, char * data, int numberOfbyte_s);
+USBRead(void *handle, unsigned char endpoint, char * data, int numberOfbytes);
 
 //------------------------------------------------------------------------------
 // This function attempts to clear any stall on the given endpoint.

@@ -123,7 +123,7 @@ typedef enum _USB_CONTROLLER_FLAVOR {
 #define USB_DEFAULT_ENDPOINT_ADDRESS   0
 
 //
-// max packet size (byte_s) for default endpoint
+// max packet size (bytes) for default endpoint
 // until SET_ADDRESS command is received.
 //
 
@@ -600,7 +600,7 @@ typedef struct _USBD_PIPE_INFORMATION {
     // These fields are filled in by the client driver
     //
     ULONG MaximumTransferSize; // Maximum size for a single request
-                               // in byte_s.
+                               // in bytes.
     ULONG PipeFlags;
 } USBD_PIPE_INFORMATION, *PUSBD_PIPE_INFORMATION;
 

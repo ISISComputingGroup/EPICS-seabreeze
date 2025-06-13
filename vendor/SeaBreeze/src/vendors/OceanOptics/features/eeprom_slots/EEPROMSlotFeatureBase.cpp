@@ -101,7 +101,7 @@ int EEPROMSlotFeatureBase::writeEEPROMSlot(const Protocol &protocol,
         const Bus &bus, unsigned int slot, const vector<byte_> &data)
         noexcept(false) {
 
-    int byte_sWritten = 0;
+    int bytesWritten = 0;
 
     EEPROMProtocolInterface *eeprom = NULL;
     ProtocolHelper *proto;
@@ -115,12 +115,12 @@ int EEPROMSlotFeatureBase::writeEEPROMSlot(const Protocol &protocol,
     }
 
     try {
-        byte_sWritten = eeprom->writeEEPROMSlot(bus, slot, data);
+        bytesWritten = eeprom->writeEEPROMSlot(bus, slot, data);
     } catch (ProtocolException &pe) {
         throw FeatureControlException(string("Caught protocol exception: ") + pe.what());
     }
 
-    return byte_sWritten;
+    return bytesWritten;
 }
 
 double EEPROMSlotFeatureBase::readDouble(const Protocol &protocol, const Bus &bus,
@@ -138,7 +138,7 @@ double EEPROMSlotFeatureBase::readDouble(const Protocol &protocol, const Bus &bu
         throw FeatureException("Trying to read and parse invalid slot.");
     }
 
-    /* First, guarantee that the string we parse is null-terminated. 20 byte_s is overkill. */
+    /* First, guarantee that the string we parse is null-terminated. 20 bytes is overkill. */
     strncpy(buffer, ((char *)&((*slot)[0])), 19);
     buffer[19] = '\0';
     try
@@ -183,7 +183,7 @@ long EEPROMSlotFeatureBase::readLong(const Protocol &protocol, const Bus &bus,
      * catch format/parse errors.
      */
 
-    /* First, guarantee that the string we parse is null-terminated. 20 byte_s is overkill. */
+    /* First, guarantee that the string we parse is null-terminated. 20 bytes is overkill. */
     strncpy(buffer, ((char *)&((*slot)[0])), 19);
     buffer[19] = '\0';
     try

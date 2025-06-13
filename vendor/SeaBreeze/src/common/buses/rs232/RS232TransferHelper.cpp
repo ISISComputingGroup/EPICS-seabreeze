@@ -46,15 +46,15 @@ RS232TransferHelper::~RS232TransferHelper() {
 int RS232TransferHelper::receive(vector<byte_> &buffer, unsigned int length)
         noexcept(false) {
     int retval = 0;
-    unsigned int byte_sRead = 0;
+    unsigned int bytesRead = 0;
 
-    while(byte_sRead < length) {
-        retval = this->rs232->read((void *)&(buffer[byte_sRead]), length - byte_sRead);
+    while(bytesRead < length) {
+        retval = this->rs232->read((void *)&(buffer[bytesRead]), length - bytesRead);
         if(retval < 0) {
             string error("Failed to read any data from RS232.");
             throw BusTransferException(error);
         } else if(retval != 0) {
-            byte_sRead += retval;
+            bytesRead += retval;
         } else {
             /* Not enough data available to satisfy the request.  Wait for more
              * data to arrive.
@@ -63,28 +63,28 @@ int RS232TransferHelper::receive(vector<byte_> &buffer, unsigned int length)
         }
     }
 
-    return byte_sRead;
+    return bytesRead;
 }
 
 int RS232TransferHelper::send(const vector<byte_> &buffer, unsigned int length) const
         noexcept(false) {
     int retval = 0;
-    unsigned int byte_sWritten = 0;
+    unsigned int bytesWritten = 0;
 
-    while(byte_sWritten < length) {
-        retval = this->rs232->write((void *)&(buffer[byte_sWritten]), length - byte_sWritten);
+    while(bytesWritten < length) {
+        retval = this->rs232->write((void *)&(buffer[bytesWritten]), length - bytesWritten);
         if(retval < 0) {
             string error("Failed to write any data to RS232.");
             throw BusTransferException(error);
         } else if(retval != 0) {
-            byte_sWritten += retval;
+            bytesWritten += retval;
         } else {
-            /* Output buffer is probably full.  Wait for some of the byte_s to
+            /* Output buffer is probably full.  Wait for some of the bytes to
              * be transferred before trying again.
              */
             System::sleepMilliseconds(10);
         }
     }
 
-    return byte_sWritten;
+    return bytesWritten;
 }

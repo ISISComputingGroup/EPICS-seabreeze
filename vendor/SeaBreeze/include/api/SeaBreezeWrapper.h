@@ -187,10 +187,10 @@ extern "C" {
      *        codes not be zero, but can be any non-zero integer (positive or
      *        negative).
      * @param buffer (Output) A character buffer allocated to contain at least
-     *        'buffer_length' byte_s, which will be populated with the string
+     *        'buffer_length' bytes, which will be populated with the string
      *        description of the given error code.
      * @param buffer_length (Input) allocated size of the output buffer
-     * @return int: Number of byte_s written to buffer.
+     * @return int: Number of bytes written to buffer.
      */
     DLL_DECL int
     seabreeze_get_error_string(int error_code, char *buffer, int buffer_length);
@@ -201,10 +201,10 @@ extern "C" {
      * @param error_code (Output) A pointer to an integer that can be used for storing
      *      error codes.  This may be NULL.
      * @param buffer (Output)  A character buffer allocated to contain at least
-     *      'buffer_length' byte_s, which will be populated with the
+     *      'buffer_length' bytes, which will be populated with the
      *      spectrometer type.
      * @param buffer_length (Input) allocated size of the buffer
-     * @return int: Number of byte_s written to the buffer.
+     * @return int: Number of bytes written to the buffer.
      *
      * The populated buffer will hold one of the following strings:
      *
@@ -374,7 +374,7 @@ extern "C" {
      * @param buffer (Output)  A buffer (with memory already allocated) to hold the
      *        value read out of the EEPROM slot
      * @param buffer_length (Input) The length of the allocated output buffer (typically 16)
-     * @return int: The number of byte_s read from the EEPROM slot into the buffer
+     * @return int: The number of bytes read from the EEPROM slot into the buffer
      *
      * (*) Actual maximum slot count varies by spectrometer model.  For the number of supported
      *     slots on your spectrometer, see EEPROMSlotFeature instantiation in appropriate
@@ -391,7 +391,7 @@ extern "C" {
      * @param slot_number (Input) The number of the slot being written (e.g. 0-16*).
      * @param buffer (Input) A buffer containing the text to write to the slot.
      * @param buffer_length (Input) The length of the text to write (typically 15)
-     * @return number of byte_s written
+     * @return number of bytes written
      *
      * @warning CARELESS USE OF THIS FUNCTION CAN RENDER YOUR SPECTROMETER INOPERABLE,
      *          POSSIBLY REQUIRING R.M.A. OR REFLASHING TO RESTORE FUNCTIONALITY.
@@ -512,20 +512,20 @@ extern "C" {
     seabreeze_set_tec_fan_enable(int index, int *error_code, unsigned char tec_fan_enable);
 
     /**
-     * @brief This acquires a spectrum and returns the answer in raw, unformatted byte_s.
+     * @brief This acquires a spectrum and returns the answer in raw, unformatted bytes.
      * @param index (Input) The index of a device previously opened with open_spectrometer().
      * @param error_code (Output) A pointer to an integer that can be used for storing
      *        error codes.
      * @param buffer (Output) A buffer (with memory already allocated) to hold the
      *        spectral data
-     * @param buffer_length (Input) The length of the buffer in byte_s (not pixels)
-     * @return int: The number of byte_s read into the buffer
+     * @param buffer_length (Input) The length of the buffer in bytes (not pixels)
+     * @return int: The number of bytes read into the buffer
      * @see   sample-code/c/demo-unformatted-spectrum.c
      *
-     * An unformatted spectrum is the raw sequence of byte_s returned by the spectrometer to 
-     * the PC over USB.  The byte_s have not been broken down into pixels, they're in the 
+     * An unformatted spectrum is the raw sequence of bytes returned by the spectrometer to 
+     * the PC over USB.  The bytes have not been broken down into pixels, they're in the 
      * original endianness, absolutely nothing has been done to them.  The caller is expected 
-     * to know how many byte_s are returned by each spectrometer model, which byte_s indicate 
+     * to know how many bytes are returned by each spectrometer model, which bytes indicate 
      * synchronization points or whatever, etc.  
      */
     DLL_DECL int
@@ -541,7 +541,7 @@ extern "C" {
      *        error codes.
      * @param buffer (Output) A buffer (with memory already allocated) to hold the
      *        spectral data
-     * @param buffer_length (Input) The length of the buffer in floats (not byte_s)
+     * @param buffer_length (Input) The length of the buffer in floats (not bytes)
      * @return int: The number of floats read into the buffer
      *
      * A formatted spectrum returns exactly one double-precision floating-point IEEE value 
@@ -559,10 +559,10 @@ extern "C" {
      * @param index (Input) The index of a device previously opened with open_spectrometer().
      * @param error_code (Output) A pointer to an integer that can be used for storing
      *      error codes.
-     * @return int: An integer denoting the length of an unformatted spectrum in byte_s
+     * @return int: An integer denoting the length of an unformatted spectrum in bytes
      *
-     * The caller is expected to know the number of byte_s per pixel and the endian
-     * ordering, but it will normally be 2 byte_s per pixel, LSB-MSB order.
+     * The caller is expected to know the number of bytes per pixel and the endian
+     * ordering, but it will normally be 2 bytes per pixel, LSB-MSB order.
      */
     DLL_DECL int
     seabreeze_get_unformatted_spectrum_length(int index, int *error_code);
@@ -604,7 +604,7 @@ extern "C" {
      *        will be copied
      * @param buffer_length (Input) The number of values to copy into the buffer (this should
      *        be no larger than the number of chars allocated in the buffer) (typically 16)
-     * @return int: An integer denoting the number of byte_s written into the buffer
+     * @return int: An integer denoting the number of bytes written into the buffer
      *
      * Note that "serial numbers" may include both digits and letters
      */
@@ -643,16 +643,16 @@ extern "C" {
     seabreeze_shutdown();
 
     /**
-    * @brief Write a raw array of byte_s to a USB spectrometer.
+    * @brief Write a raw array of bytes to a USB spectrometer.
     * @param index (Input) index of an opened spectrometer
     * @param errorCode (Output) pointer to an allocated integer field for receiving error codes
     * @param endpoint (Input) USB endpoint for write operation
     *        (see src/vendors/OceanOptics/features/raw_bus_access/RawUSBBusAccessFeature.cpp)
-    * @param buffer (Input) array of byte_s to send to USB spectrometer
-    * @param length (Input) number of byte_s to write from buffer to spectrometer
-    * @return number of byte_s written
+    * @param buffer (Input) array of bytes to send to USB spectrometer
+    * @param length (Input) number of bytes to write from buffer to spectrometer
+    * @return number of bytes written
     *
-    * Write the byte_s in the buffer according to the two command byte_s at the
+    * Write the bytes in the buffer according to the two command bytes at the
     * start of the buffer.
     *
     * \section Endpoints
@@ -684,14 +684,14 @@ extern "C" {
     * the buffer means 'read EEPROM slot 0'. Writing this command, and following
     * it with the \c seabreeze_read_usb command and the same hex <tt>05 00</tt>
     * in the buffer, will result in the spectrometer's serial number, in ASCII
-    * characters, being delivered to the subsequent byte_s in the buffer array.
+    * characters, being delivered to the subsequent bytes in the buffer array.
     * This would appear in the output buffer as:
     *
     * \code
     *   05 00 55 53 42 32 2B 48 30 31 34 31 36 00 00 00 00 (hex)
     * \endcode
     *
-    * (<tt>USB2+H01416</tt> ASCII, skipping the two command byte_s)
+    * (<tt>USB2+H01416</tt> ASCII, skipping the two command bytes)
     *
     * A C or C++ program could use the data as-is, but a C# program could
     * append to a string, each byte_, cast as char, stopping on the first null
@@ -717,18 +717,18 @@ extern "C" {
     seabreeze_write_usb(int index, int *errorCode, unsigned char endpoint, unsigned char* buffer, unsigned int length);
 
     /**
-    * @brief Read a raw array of byte_s from a USB spectrometer.
+    * @brief Read a raw array of bytes from a USB spectrometer.
     * @param index (Input) index of a previously opened spectrometer
     * @param errorCode (Output) pointer to an allocated integer field for receiving error codes
     * @param endpoint (Input) USB endpoint for read operation
     *        (see src/vendors/OceanOptics/features/raw_bus_access/RawUSBBusAccessFeature.cpp)
-    * @param buffer (Input) array of allocated byte_s at which to recieve USB data
-    * @param length (Input) maximum number of byte_s to read from spectrometer
-    * @return number of received byte_s written to buffer
+    * @param buffer (Input) array of allocated bytes at which to recieve USB data
+    * @param length (Input) maximum number of bytes to read from spectrometer
+    * @return number of received bytes written to buffer
     *
-    * Read byte_s from the spectrometer into the buffer. The buffer starts with
-    * two byte_s of command information that will be followed by the transferred
-    * byte_s. The read and write USB functions allow low-level control of the
+    * Read bytes from the spectrometer into the buffer. The buffer starts with
+    * two bytes of command information that will be followed by the transferred
+    * bytes. The read and write USB functions allow low-level control of the
     * spectrometer via USB commands. The higher-level SeaBreeze functions issue
     * USB commands internally.
     *
@@ -746,7 +746,7 @@ extern "C" {
     * @param buffer (Output) pointer to an allocated character array
     *                        to hold the returned version string
     * @param len    (Input)  size of the allocated buffer
-    * @return number of byte_s written to buffer
+    * @return number of bytes written to buffer
     */
     DLL_DECL int
     seabreeze_get_api_version_string(char *buffer, int len);
@@ -759,7 +759,7 @@ extern "C" {
     * @param buffer    (Output) pointer to an allocated character array to hold
     *                           the returned descriptor string
     * @param len       (Input)  size of the allocated buffer
-    * @return number of byte_s written to buffer
+    * @return number of bytes written to buffer
     */
     DLL_DECL int
     seabreeze_get_usb_descriptor_string(int index, int *errorCode, int id, unsigned char *buffer, int len);

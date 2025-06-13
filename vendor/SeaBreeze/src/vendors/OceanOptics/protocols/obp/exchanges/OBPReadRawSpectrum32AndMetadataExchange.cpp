@@ -87,7 +87,7 @@ Data *OBPReadRawSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
         noexcept(false) {
     Data *xfer;
     OBPMessage *message = NULL;
-    vector<byte_> *byte_s;
+    vector<byte_> *bytes;
 
     /* This will use the superclass to transfer data from the device
      */
@@ -122,14 +122,14 @@ Data *OBPReadRawSpectrum32AndMetadataExchange::transfer(TransferHelper *helper)
      * off the metadata.  It might be desirable to stuff the metadata into the
      * resulting Data instance for later use.
      */
-    byte_s = message->getData();
-    if(byte_s->size() < (this->numberOfPixels * 4) + METADATA_LENGTH) {
+    bytes = message->getData();
+    if(bytes->size() < (this->numberOfPixels * 4) + METADATA_LENGTH) {
         string error("Spectrum response does not have enough data.");
         delete message;
         throw ProtocolException(error);
     }
     /* This incurs a copy of the buffer so it is safe to delete the message. */
-    ByteVector *retval = new ByteVector(*byte_s);
+    ByteVector *retval = new ByteVector(*bytes);
     delete message;
 
     return retval;

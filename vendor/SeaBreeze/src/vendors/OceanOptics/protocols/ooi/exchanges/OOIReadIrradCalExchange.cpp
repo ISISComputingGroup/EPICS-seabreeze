@@ -49,24 +49,24 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
 
     /* EEPROM Address from which we shall read, start at zero. */
     unsigned int addr;
-    /* Number of calibration byte_s that will be read */
-    int byte_sLeft = this->numberOfPixels * sizeof(float);
+    /* Number of calibration bytes that will be read */
+    int bytesLeft = this->numberOfPixels * sizeof(float);
 
-    for(addr = 0; byte_sLeft > 0 && addr < 65536-BLOCK_TRANSFER_SIZE;
-                addr += BLOCK_TRANSFER_SIZE, byte_sLeft -= BLOCK_TRANSFER_SIZE) {
+    for(addr = 0; bytesLeft > 0 && addr < 65536-BLOCK_TRANSFER_SIZE;
+                addr += BLOCK_TRANSFER_SIZE, bytesLeft -= BLOCK_TRANSFER_SIZE) {
         /* create vector of ProtocolHints for requests */
         vector<ProtocolHint *> *requestHints = new vector<ProtocolHint *>;
 
         /* create vector of ProtocolHints for responses */
         vector<ProtocolHint *> *responseHints = new vector<ProtocolHint *>;
 
-        /* create buffer for byte_s of response */
+        /* create buffer for bytes of response */
         vector<byte_> *responseBuffer = new vector<byte_>;
 
-        /* resize the response buffer to hold 60 byte_s */
+        /* resize the response buffer to hold 60 bytes */
         responseBuffer->resize(BLOCK_TRANSFER_SIZE);
 
-        /* create buffer for holding the byte_s of the request */
+        /* create buffer for holding the bytes of the request */
         vector<byte_> *requestBuffer = new vector<byte_>;
 
         /* resize the request buffer to hold a request */
@@ -98,8 +98,8 @@ Data *OOIReadIrradCalExchange::transfer(TransferHelper *helper)
     Data *xfer;
     ByteVector *output = new ByteVector();
     vector<Transfer *>::iterator iter = this->transfers.begin();
-    /* Number of calibration byte_s that will be read */
-    int byte_sLeft = this->numberOfPixels * sizeof(float);
+    /* Number of calibration bytes that will be read */
+    int bytesLeft = this->numberOfPixels * sizeof(float);
 
     /* Iterate over all stored transfers and delegate to the helper to
      * move the data.
@@ -113,11 +113,11 @@ Data *OOIReadIrradCalExchange::transfer(TransferHelper *helper)
         xfer = (*iter)->transfer(helper);
 
         if(NULL != xfer) {
-            /* transfer block of 60 byte_s from xfer to output */
+            /* transfer block of 60 bytes from xfer to output */
             for(    unsigned int i = 0;
                     i < ((ByteVector*)xfer)->getByteVector().size()
-                        && byte_sLeft > 0;
-                    i++, byte_sLeft--) {
+                        && bytesLeft > 0;
+                    i++, bytesLeft--) {
                 /* FIXME: can this be done more efficiently using a memcpy()? */
                 output->getByteVector().push_back(
                     ((ByteVector*)xfer)->getByteVector()[i]);

@@ -115,7 +115,7 @@ double OBPTemperatureProtocol::readTemperature(const Bus &bus, int index)
         
         // queryDevice returns a byte_ stream, turn that into a float... mind our endians.
         bptr = (byte_ *)&temperature;
-        for(unsigned int j = 0; j < sizeof(float); j++) { // four byte_s returned
+        for(unsigned int j = 0; j < sizeof(float); j++) { // four bytes returned
             //printf("byte_ %d=%x\n", j, (*result)[j]);
             bptr[j] = (*result)[j];  // get a little endian float
         }
@@ -172,7 +172,7 @@ vector<double> *OBPTemperatureProtocol::readAllTemperatures(const Bus &bus)
     }
     else {
         
-        // the byte_s must be transferred to floats for the return temperatures
+        // the bytes must be transferred to floats for the return temperatures
         for(i = 0; i < retval->size(); i++) {
             
             bptr = (byte_ *)&temperatureBuffer;

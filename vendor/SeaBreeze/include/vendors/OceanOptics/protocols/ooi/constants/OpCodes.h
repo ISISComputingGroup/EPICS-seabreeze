@@ -43,10 +43,10 @@ namespace seabreeze {
         /* Set the strobe/lamp enable */
         static const byte_ OP_STROBE;
 
-        /* Read 15 byte_s from an EEPROM slot */
+        /* Read 15 bytes from an EEPROM slot */
         static const byte_ OP_GETINFO;
 
-        /* Write 15 byte_s to an EEPROM slot */
+        /* Write 15 bytes to an EEPROM slot */
         static const byte_ OP_SETINFO;
 
         /* Request a spectrum */

@@ -79,9 +79,9 @@ vector<byte_> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol
     vector<byte_> *data = eeprom.readEEPROMSlot(protocol, bus, 0x11);
 
     if((((*data)[0] & 0xFE) != 0) || (((*data)[1] & 0xFE) != 0)) {
-        /* If programmed, only one bit for each of the first two byte_s will
+        /* If programmed, only one bit for each of the first two bytes will
          * be used.  The rest should be cleared.  If the EEPROM is not programmed,
-         * it will tend to return 0xFF for those byte_s.
+         * it will tend to return 0xFF for those bytes.
          */
         string error("No default TEC settings found.");
         throw FeatureException(error);
@@ -90,7 +90,7 @@ vector<byte_> *ThermoElectricQEFeature::readTECDefaults(const Protocol &protocol
     /* This data will have the following format:
      * byte_ 0: TEC enable (0 or 1)
      * byte_ 1: Fan enable (0 or 1)
-     * byte_s 2, 3: temperature as signed short, LSB MSB
+     * bytes 2, 3: temperature as signed short, LSB MSB
      */
     return data;
 }

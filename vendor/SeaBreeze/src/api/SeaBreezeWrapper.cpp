@@ -908,7 +908,7 @@ void SeaBreezeWrapper::setBufferCapacity(int index, int *errorCode, unsigned lon
 int SeaBreezeWrapper::readEEPROMSlot(int index, int *errorCode,
         int slot_number, unsigned char *buffer, int buffer_length) {
 
-    int byte_sCopied = 0;
+    int bytesCopied = 0;
 
     if(NULL == this->devices[index]) {
         SET_ERROR_CODE(ERROR_NO_DEVICE);
@@ -926,9 +926,9 @@ int SeaBreezeWrapper::readEEPROMSlot(int index, int *errorCode,
                     *__seabreeze_getProtocol(this->devices[index]),
                     *__seabreeze_getBus(this->devices[index]), slot_number);
 
-            int byte_s = (int) info->size();
-            byte_sCopied = (byte_s < buffer_length) ? byte_s : buffer_length;
-            memcpy(buffer, &((*info)[0]), byte_sCopied * sizeof (unsigned char));
+            int bytes = (int) info->size();
+            bytesCopied = (bytes < buffer_length) ? bytes : buffer_length;
+            memcpy(buffer, &((*info)[0]), bytesCopied * sizeof (unsigned char));
             delete info;
             SET_ERROR_CODE(ERROR_SUCCESS);
         } catch (FeatureException &fe) {
@@ -937,17 +937,17 @@ int SeaBreezeWrapper::readEEPROMSlot(int index, int *errorCode,
         }
 
     }
-    return byte_sCopied;
+    return bytesCopied;
 }
 
 int SeaBreezeWrapper::writeEEPROMSlot(int index, int *errorCode,
         int slot_number, unsigned char *buffer, int buffer_length) {
 
-    int byte_sWritten = 0;
+    int bytesWritten = 0;
 
     if(NULL == this->devices[index]) {
         SET_ERROR_CODE(ERROR_NO_DEVICE);
-        return byte_sWritten;
+        return bytesWritten;
     }
     SET_ERROR_CODE(ERROR_FEATURE_NOT_FOUND);
     EEPROMSlotFeatureInterface *feature =
@@ -958,7 +958,7 @@ int SeaBreezeWrapper::writeEEPROMSlot(int index, int *errorCode,
             data[i] = buffer[i];
         }
         try {
-            byte_sWritten = feature->writeEEPROMSlot(
+            bytesWritten = feature->writeEEPROMSlot(
                     *__seabreeze_getProtocol(this->devices[index]),
                     *__seabreeze_getBus(this->devices[index]), slot_number, data);
             SET_ERROR_CODE(ERROR_SUCCESS);
@@ -967,7 +967,7 @@ int SeaBreezeWrapper::writeEEPROMSlot(int index, int *errorCode,
         }
     }
 
-    return byte_sWritten;
+    return bytesWritten;
 }
 
 int SeaBreezeWrapper::readIrradCalibration(int index, int *errorCode,
@@ -1196,7 +1196,7 @@ void SeaBreezeWrapper::setTECFanEnable(int index, int *errorCode,
 int SeaBreezeWrapper::getUnformattedSpectrum(int index, int *errorCode,
         unsigned char *buffer, int buffer_length) {
     vector<unsigned char> *spectrum;
-    int byte_sCopied = 0;
+    int bytesCopied = 0;
 
     if(NULL == this->devices[index]) {
         SET_ERROR_CODE(ERROR_NO_DEVICE);
@@ -1217,10 +1217,10 @@ int SeaBreezeWrapper::getUnformattedSpectrum(int index, int *errorCode,
             spectrum = spec->getUnformattedSpectrum(
                     *__seabreeze_getProtocol(this->devices[index]),
                     *__seabreeze_getBus(this->devices[index]));
-            int byte_s = (int) spectrum->size();
-            byte_sCopied = (byte_s < buffer_length) ? byte_s : buffer_length;
+            int bytes = (int) spectrum->size();
+            bytesCopied = (bytes < buffer_length) ? bytes : buffer_length;
             memcpy(buffer, &((*spectrum)[0]),
-                    byte_sCopied * sizeof (unsigned char));
+                    bytesCopied * sizeof (unsigned char));
             delete spectrum;
             SET_ERROR_CODE(ERROR_SUCCESS);
         } catch (FeatureException &fe) {
@@ -1228,7 +1228,7 @@ int SeaBreezeWrapper::getUnformattedSpectrum(int index, int *errorCode,
             return 0;
         }
     }
-    return byte_sCopied;
+    return bytesCopied;
 }
 
 int SeaBreezeWrapper::getFormattedSpectrum(int index, int *errorCode,
@@ -1441,19 +1441,19 @@ int SeaBreezeWrapper::getAPIVersionString(char *buffer, int len) {
 }
 
 int SeaBreezeWrapper::getUSBDescriptorString(int index, int *errorCode, int id, unsigned char *buffer, int length) {
-    int byte_sCopied = 0;
+    int bytesCopied = 0;
     memset(buffer, 0, length);
 
     Device * dev = this->devices[index];
 
     if (NULL == dev) {
         SET_ERROR_CODE(ERROR_NO_DEVICE);
-        return byte_sCopied;
+        return bytesCopied;
     }
 
     if (NULL == buffer && length > 0) {
         SET_ERROR_CODE(ERROR_BAD_USER_BUFFER);
-        return byte_sCopied;
+        return bytesCopied;
     }
 
     SET_ERROR_CODE(ERROR_FEATURE_NOT_FOUND);
@@ -1468,8 +1468,8 @@ int SeaBreezeWrapper::getUSBDescriptorString(int index, int *errorCode, int id, 
             string* desc = usb->getUSBDescriptor()->getStringDescriptor(id);
             if (NULL != desc) {
                 int descLen = (int) desc->size();
-                byte_sCopied = descLen < length ? descLen : length;
-                strncpy((char*) buffer, desc->c_str(), byte_sCopied);
+                bytesCopied = descLen < length ? descLen : length;
+                strncpy((char*) buffer, desc->c_str(), bytesCopied);
                 delete(desc);
                 SET_ERROR_CODE(ERROR_SUCCESS);
             } else {
@@ -1477,11 +1477,11 @@ int SeaBreezeWrapper::getUSBDescriptorString(int index, int *errorCode, int id, 
             }
         } catch (FeatureException &fe) {
             SET_ERROR_CODE(ERROR_TRANSFER_ERROR);
-            return byte_sCopied;
+            return bytesCopied;
         }
     }
 
-    return byte_sCopied;
+    return bytesCopied;
 }
 
 void SeaBreezeWrapper::setContinuousStrobePeriodMicrosec(int index, int *errorCode,
@@ -1536,17 +1536,17 @@ void SeaBreezeWrapper::setAcquisitionDelayMicrosec(int index, int *errorCode,
 }
 
 int SeaBreezeWrapper::readUSB(int index, int *errorCode, unsigned char endpoint, unsigned char *buffer, unsigned int length) {
-    int byte_sCopied = 0;
+    int bytesCopied = 0;
     Device * dev = this->devices[index];
 
     if(NULL == dev) {
         SET_ERROR_CODE(ERROR_NO_DEVICE);
-        return byte_sCopied;
+        return bytesCopied;
     }
 
     if (NULL == buffer && length > 0) {
         SET_ERROR_CODE(ERROR_BAD_USER_BUFFER);
-        return byte_sCopied;
+        return bytesCopied;
     }
 
     SET_ERROR_CODE(ERROR_FEATURE_NOT_FOUND);
@@ -1564,33 +1564,33 @@ int SeaBreezeWrapper::readUSB(int index, int *errorCode, unsigned char endpoint,
             SET_ERROR_CODE(ERROR_SUCCESS);
         } catch (FeatureException &fe) {
             SET_ERROR_CODE(ERROR_TRANSFER_ERROR);
-            return byte_sCopied;
+            return bytesCopied;
         }
     }
 
-    byte_sCopied = length > data.size() ? (int) data.size() : length;
-    for (int i = 0; i < byte_sCopied; i++)
+    bytesCopied = length > data.size() ? (int) data.size() : length;
+    for (int i = 0; i < bytesCopied; i++)
     {
         buffer[i] = data[i];
     }
 
-    return byte_sCopied;
+    return bytesCopied;
 }
 
 int SeaBreezeWrapper::writeUSB(int index, int *errorCode, unsigned char endpoint, unsigned char *buffer, unsigned int length) {
 
-    int byte_sWritten = 0;
+    int bytesWritten = 0;
 
     Device * dev = this->devices[index];
 
     if (NULL == dev) {
         SET_ERROR_CODE(ERROR_NO_DEVICE);
-        return byte_sWritten;
+        return bytesWritten;
     }
 
     if (NULL == buffer && length > 0) {
         SET_ERROR_CODE(ERROR_BAD_USER_BUFFER);
-        return byte_sWritten;
+        return bytesWritten;
     }
 
     SET_ERROR_CODE(ERROR_FEATURE_NOT_FOUND);
@@ -1608,15 +1608,15 @@ int SeaBreezeWrapper::writeUSB(int index, int *errorCode, unsigned char endpoint
                 data[i] = buffer[i];
             }
 
-            byte_sWritten = feature->writeUSB(usb, endpoint, data);
+            bytesWritten = feature->writeUSB(usb, endpoint, data);
             SET_ERROR_CODE(ERROR_SUCCESS);
         } catch (FeatureException &fe) {
             SET_ERROR_CODE(ERROR_TRANSFER_ERROR);
-            return byte_sWritten;
+            return bytesWritten;
         }
     }
 
-    return byte_sWritten;
+    return bytesWritten;
 }
 
 void SeaBreezeWrapper::setVerbose(bool flag) {
