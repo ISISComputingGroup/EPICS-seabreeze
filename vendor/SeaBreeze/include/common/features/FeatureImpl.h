@@ -80,7 +80,7 @@ namespace seabreeze {
          * Protocol class that can be used to access certain features.
          */
         ProtocolHelper *lookupProtocolImpl(const Protocol &protocol)
-                        throw (FeatureProtocolNotFoundException);
+                        noexcept(false);
     };
 
 }
