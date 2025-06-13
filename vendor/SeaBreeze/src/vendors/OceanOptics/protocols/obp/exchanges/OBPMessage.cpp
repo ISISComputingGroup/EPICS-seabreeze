@@ -338,7 +338,7 @@ void OBPMessage::setBytesRemaining(unsigned int remaining) {
 }
 
 
-void OBPMessage::setChecksumType(byte t) {
+void OBPMessage::setChecksumType(unsigned char t) {
     this->checksumType = t;
 }
 
