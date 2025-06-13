@@ -71,7 +71,7 @@ float OBPLightSourceIntensityQuery::queryIntensity(TransferHelper *helper)
         throw ProtocolException("Got back no data when trying to get enable status");
     }
 
-    cptr = (byte *)&retval;
+    cptr = (unsigned char *)&retval;
 
     for(iter = result->begin(), i = 0;
                 iter != result->end() && i < sizeof(float); iter++, i++) {
