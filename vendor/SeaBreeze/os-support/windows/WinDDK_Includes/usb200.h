@@ -55,16 +55,16 @@ typedef struct _USB_DEFAULT_PIPE_SETUP_PACKET {
 
     union _wValue {
         struct {
-            UCHAR Lowbyte_;
-            UCHAR Hibyte_;
+            UCHAR LowByte;
+            UCHAR HiByte;
         };
         USHORT W;
     } wValue;
 
     union _wIndex {
         struct {
-            UCHAR Lowbyte_;
-            UCHAR Hibyte_;
+            UCHAR LowByte;
+            UCHAR HiByte;
         };
         USHORT W;
     } wIndex;

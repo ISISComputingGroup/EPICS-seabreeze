@@ -55,7 +55,7 @@ namespace seabreeze {
 
         std::vector<byte_> *toByteStream();
         std::vector<byte_> *getData();
-        unsigned int getbytesRemaining();
+        unsigned int getBytesRemaining();
         byte_ getChecksumType();
         unsigned short getErrno();
         unsigned short getFlags();
@@ -70,7 +70,7 @@ namespace seabreeze {
         bool isNackFlagSet();
 
         void setAckRequestedFlag();
-        void setbytesRemaining(unsigned int bytesRemaining);
+        void setBytesRemaining(unsigned int bytesRemaining);
         void setChecksumType(byte_ checksumType);
         void setData(std::vector<byte_> *data);
         void setErrorNumber(unsigned short errorNumber);

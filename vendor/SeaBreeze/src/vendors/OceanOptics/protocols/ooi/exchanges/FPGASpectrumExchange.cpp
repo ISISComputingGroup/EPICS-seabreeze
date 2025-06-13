@@ -54,8 +54,8 @@ Data *FPGASpectrumExchange::transfer(TransferHelper *helper)
 
     unsigned int i;
     Data *xfer;
-    unsigned char lsb;
-    unsigned char msb;
+    byte_ lsb;
+    byte_ msb;
 
     /* Use the superclass to move the data into a local buffer. */
     xfer = Transfer::transfer(helper);

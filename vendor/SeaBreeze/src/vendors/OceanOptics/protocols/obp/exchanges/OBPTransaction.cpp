@@ -135,7 +135,7 @@ vector<byte_> *OBPTransaction::queryDevice(TransferHelper *helper,
              */
             return NULL;
         }
-        unsigned int bytesToRead = response->getbytesRemaining() - 20; /* omit footer and checksum */
+        unsigned int bytesToRead = response->getBytesRemaining() - 20; /* omit footer and checksum */
         if(bytesToRead > 0) {
             fullVector = new vector<byte_>(bytesToRead + bytes->size());
             /* Safely stl::copy() the header into a full-sized block and

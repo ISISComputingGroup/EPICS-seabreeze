@@ -228,7 +228,7 @@ BOOL __stdcall
 WinUsb_GetOverlappedResult(
     __in  WINUSB_INTERFACE_HANDLE InterfaceHandle,
     __in  LPOVERLAPPED lpOverlapped,
-    __out LPDWORD lpNumberOfbytesTransferred,
+    __out LPDWORD lpNumberOfBytesTransferred,
     __in  BOOL bWait
     );
     
