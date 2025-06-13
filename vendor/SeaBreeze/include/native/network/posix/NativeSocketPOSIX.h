@@ -46,7 +46,7 @@ namespace seabreeze {
         virtual void connect(const std::string hostname, int port)
                 noexcept(false);
         
-        virtual void close() throw (BusException);
+        virtual void close() noexcept(false);
         virtual bool isClosed();
         virtual bool isBound();
         
