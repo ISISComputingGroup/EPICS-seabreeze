@@ -40,7 +40,7 @@ namespace seabreeze {
     public:
         ByteVector();
         /* Constructor that makes a copy of the given vector for internal use */
-        ByteVector(const std::vector<byte> &that);
+        ByteVector(const std::vector<byte_> &that);
         virtual ~ByteVector();
         /* Dimensionality of data.  0 for scalar, 1 for vector,
          * 2 for a pair of related vectors (e.g. [X, Y] or matrix),
