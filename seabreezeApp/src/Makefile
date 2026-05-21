@@ -23,6 +23,10 @@ ifneq ($(findstring 17.0,$(VCVERSION)),)
 VSNUM=2022
 WindowsTargetPlatformVersion=$(subst \,,$(WindowsSDKVersion))
 endif
+ifneq ($(findstring 18.0,$(VCVERSION)),)
+VSNUM=2026
+WindowsTargetPlatformVersion=$(subst \,,$(WindowsSDKVersion))
+endif
 SEABREEZE_TOP = $(TOP)/vendor/SeaBreeze
 SEABREEZE_WINTOP = $(SEABREEZE_TOP)/os-support/windows/VisualStudio$(VSNUM)
 SEABREEZE_SLN = $(SEABREEZE_WINTOP)/SeaBreeze.sln
